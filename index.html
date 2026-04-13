@@ -882,12 +882,31 @@ s0.parentNode.insertBefore(s1,s0);
             }
         }
 
+        // ── Scroll Lock (iOS-safe) ──
+        let _scrollY = 0;
+        function lockScroll() {
+            _scrollY = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${_scrollY}px`;
+            document.body.style.left = '0';
+            document.body.style.right = '0';
+            document.body.style.width = '100%';
+        }
+        function unlockScroll() {
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.left = '';
+            document.body.style.right = '';
+            document.body.style.width = '';
+            window.scrollTo(0, _scrollY);
+        }
+
         // ── Welcome Survey ──
         function closeWelcomeSurvey() {
             const el = document.getElementById('welcome-survey');
             el.style.transition = 'opacity 0.3s ease';
             el.style.opacity = '0';
-            setTimeout(() => { el.style.display = 'none'; document.body.style.overflow = 'auto'; }, 300);
+            setTimeout(() => { el.style.display = 'none'; unlockScroll(); }, 300);
         }
 
         async function submitSurvey(form) {
@@ -912,19 +931,19 @@ s0.parentNode.insertBefore(s1,s0);
             setTimeout(closeWelcomeSurvey, 600);
         }
 
-        window.addEventListener('load', function () { document.body.style.overflow = 'hidden'; });
+        window.addEventListener('load', function () { lockScroll(); });
 
         // ── Pricing Modal ──
         function openPricingModal() {
             document.getElementById('pricing-modal').classList.remove('hidden');
             document.getElementById('pricing-modal').classList.add('flex');
-            document.body.style.overflow = 'hidden';
+            lockScroll();
         }
 
         function closePricingModal() {
             document.getElementById('pricing-modal').classList.add('hidden');
             document.getElementById('pricing-modal').classList.remove('flex');
-            document.body.style.overflow = 'auto';
+            unlockScroll();
         }
 
         async function unlockPricing() {
