@@ -1,5 +1,4 @@
-export default async function handler(req, res) {
-  // CORS headers
+module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -8,7 +7,6 @@ export default async function handler(req, res) {
 
   const { type, messages, leadData, contactData } = req.body || {};
 
-  // Build system prompt based on request type
   let systemPrompt = '';
   let userMessages = [];
 
@@ -33,7 +31,6 @@ export default async function handler(req, res) {
       content: `Name: ${name}, Business: ${business || 'not provided'}, Message: "${message || 'no message'}". Write the personalized confirmation now.`
     }];
   } else {
-    // General AI chat assistant
     systemPrompt = `You are a helpful AI assistant for FMMarketing, an AI-powered lead generation agency based in South Carolina. We help local service businesses (contractors, plumbers, electricians, landscapers, roofers, etc.) get more leads through:
 - AI-Powered Websites: Custom-built, conversion-optimized, live in 48 hours
 - Lead Capture & Follow-up: Automated SMS/email response within 60 seconds of a lead
@@ -73,4 +70,4 @@ Keep responses helpful, confident, and concise (2-4 sentences max). If someone a
   } catch (e) {
     return res.status(500).json({ error: e.message });
   }
-}
+};
