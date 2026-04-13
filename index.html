@@ -465,6 +465,7 @@ Submitting this form sends your info to <span class="text-secondary">fabianovell
 <textarea class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors" name="message" placeholder="Tell us about your business goals..." rows="4"></textarea>
 </div>
 <button class="w-full bg-primary-container text-white font-headline font-bold uppercase py-5 tracking-widest hover:bg-primary transition-all shadow-xl shadow-primary-container/10" id="contact-submit-btn" type="submit">Submit Strategy Request</button>
+<div id="contact-ai-reply" class="hidden mt-4 p-4 bg-surface-container-low border-l-4 border-primary text-sm text-on-surface leading-relaxed"></div>
 </form>
 </div>
 </div>
@@ -865,6 +866,54 @@ Submitting this form sends your info to <span class="text-secondary">fabianovell
 </div>
 </div>
 </footer>
+<!-- AI Chat Widget -->
+<div id="ai-chat-widget" class="hidden">
+  <!-- Chat toggle button -->
+  <button id="ai-chat-btn" onclick="toggleChat()" class="fixed bottom-6 right-6 z-[150] w-14 h-14 bg-primary-container text-white flex items-center justify-center shadow-xl hover:bg-primary transition-all duration-200 active:scale-90" aria-label="Open AI Chat">
+    <span class="material-symbols-outlined" id="chat-btn-icon" style="font-size:24px">chat</span>
+  </button>
+  <!-- Chat panel -->
+  <div id="ai-chat-panel" class="hidden fixed bottom-24 right-6 z-[150] w-80 bg-white border border-outline-variant/30 shadow-2xl" style="height:440px;display:none;flex-direction:column">
+    <!-- Header -->
+    <div class="bg-primary-container text-white px-4 py-3 flex items-center justify-between flex-shrink-0">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 bg-primary rounded-full" style="animation:pulse 1.5s infinite"></span>
+        <span class="font-headline font-bold uppercase text-sm tracking-tight">FM AI Assistant</span>
+      </div>
+      <button onclick="toggleChat()" class="text-white/70 hover:text-white transition-colors" aria-label="Close">
+        <span class="material-symbols-outlined" style="font-size:18px">close</span>
+      </button>
+    </div>
+    <!-- Messages -->
+    <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3 bg-white">
+      <div class="flex gap-2">
+        <div class="w-7 h-7 bg-primary-container flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-white" style="font-size:14px">smart_toy</span>
+        </div>
+        <div class="bg-surface-container-low px-3 py-2 text-sm text-on-surface leading-relaxed" style="max-width:85%">
+          Hi! I'm the FMMarketing AI. Ask me anything about our services, how we get you more leads, or how it all works!
+        </div>
+      </div>
+    </div>
+    <!-- Input -->
+    <div class="border-t border-outline-variant/20 px-3 pt-3 pb-2 flex gap-2 bg-white flex-shrink-0">
+      <input id="chat-input" type="text" placeholder="Ask something..." autocomplete="off"
+        class="flex-1 text-sm border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-on-surface p-1 bg-transparent placeholder:text-[#6B9CC5]"
+        onkeydown="if(event.key==='Enter')sendChatMessage()"/>
+      <button onclick="sendChatMessage()" class="bg-primary-container text-white px-3 hover:bg-primary transition-all flex items-center justify-center" aria-label="Send">
+        <span class="material-symbols-outlined" style="font-size:16px">send</span>
+      </button>
+    </div>
+    <!-- Human escalation -->
+    <div class="px-3 pb-3 bg-white flex-shrink-0">
+      <button onclick="escalateToHuman()" class="w-full text-xs text-secondary hover:text-primary transition-colors font-headline uppercase tracking-wide border border-outline-variant/30 py-2 hover:border-primary">
+        Talk to a real person
+      </button>
+    </div>
+  </div>
+</div>
+<style>@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}</style>
+
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -923,6 +972,26 @@ s0.parentNode.insertBefore(s1,s0);
             window.scrollTo(0, _scrollY);
         }
 
+        // ── AI helper ──
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+                .replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+        }
+
+        async function askAI(type, data) {
+            try {
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type, ...data })
+                });
+                if (!res.ok) return null;
+                const json = await res.json();
+                return json.choices?.[0]?.message?.content || null;
+            } catch (e) { return null; }
+        }
+
         // ── Welcome Survey ──
         function closeWelcomeSurvey() {
             const el = document.getElementById('welcome-survey');
@@ -931,6 +1000,9 @@ s0.parentNode.insertBefore(s1,s0);
             setTimeout(() => {
                 el.style.display = 'none';
                 unlockScroll();
+                // Show AI chat widget
+                document.getElementById('ai-chat-widget').classList.remove('hidden');
+                // Show Tawk.to for human escalation
                 if (typeof Tawk_API !== 'undefined' && Tawk_API.showWidget) {
                     Tawk_API.showWidget();
                 }
@@ -945,7 +1017,8 @@ s0.parentNode.insertBefore(s1,s0);
             const phone     = data.get('phone')     || 'Not provided';
             const btn = form.querySelector('button[type="submit"]');
             setButtonState(btn, true);
-            const payload = {
+
+            const emailPayload = {
                 _subject: '🔔 New Survey Lead — FMMarketing',
                 Source: 'Welcome Survey',
                 Role: role,
@@ -953,10 +1026,24 @@ s0.parentNode.insertBefore(s1,s0);
                 Email: email || 'Not provided',
                 Phone: phone
             };
-            if (email) payload._replyto = email;
-            await sendEmail(payload);
-            setButtonState(btn, false, 'Sent!');
-            setTimeout(closeWelcomeSurvey, 600);
+            if (email) emailPayload._replyto = email;
+
+            // Send email + get AI personalized message in parallel
+            const [, aiMessage] = await Promise.all([
+                sendEmail(emailPayload),
+                askAI('qualify', { leadData: { role, challenge, email, phone } })
+            ]);
+
+            const reply = aiMessage || "Thanks! We'll reach out within 24 hours with a plan tailored to your business.";
+            form.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="w-14 h-14 bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                        <span class="material-symbols-outlined text-primary" style="font-size:36px">check_circle</span>
+                    </div>
+                    <h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-3">You're all set!</h3>
+                    <p class="text-secondary text-sm leading-relaxed px-2">${escapeHtml(reply)}</p>
+                </div>`;
+            setTimeout(closeWelcomeSurvey, 3500);
         }
 
         window.addEventListener('load', function () { lockScroll(); });
@@ -998,21 +1085,103 @@ s0.parentNode.insertBefore(s1,s0);
         async function submitContact(form) {
             const data = new FormData(form);
             const btn  = document.getElementById('contact-submit-btn');
+            const name     = data.get('name')     || '';
+            const business = data.get('business') || '';
+            const message  = data.get('message')  || '';
             setButtonState(btn, true);
-            const ok = await sendEmail({
-                _subject: '📋 New Strategy Request — FMMarketing',
-                Source: 'Contact Form',
-                Name: data.get('name'),
-                Business: data.get('business') || 'Not provided',
-                Email: data.get('email'),
-                Phone: data.get('phone') || 'Not provided',
-                Message: data.get('message') || ''
-            });
+
+            const [ok, aiReply] = await Promise.all([
+                sendEmail({
+                    _subject: '📋 New Strategy Request — FMMarketing',
+                    Source: 'Contact Form',
+                    Name: name,
+                    Business: business || 'Not provided',
+                    Email: data.get('email'),
+                    Phone: data.get('phone') || 'Not provided',
+                    Message: message
+                }),
+                askAI('contact-reply', { contactData: { name, business, message } })
+            ]);
+
             if (ok) {
                 setButtonState(btn, false, '✓ Request Sent!');
+                if (aiReply) {
+                    const replyEl = document.getElementById('contact-ai-reply');
+                    if (replyEl) {
+                        replyEl.innerHTML = escapeHtml(aiReply);
+                        replyEl.classList.remove('hidden');
+                    }
+                }
                 form.reset();
             } else {
                 setButtonState(btn, false, 'Error — Try Again');
+            }
+        }
+
+        // ── AI Chat Widget ──
+        let chatOpen = false;
+        const chatHistory = [];
+
+        function toggleChat() {
+            chatOpen = !chatOpen;
+            const panel = document.getElementById('ai-chat-panel');
+            const icon  = document.getElementById('chat-btn-icon');
+            if (chatOpen) {
+                panel.style.display = 'flex';
+                icon.textContent = 'close';
+                document.getElementById('chat-input').focus();
+                document.getElementById('chat-messages').scrollTop = 9999;
+            } else {
+                panel.style.display = 'none';
+                icon.textContent = 'chat';
+            }
+        }
+
+        function addChatMessage(role, text, isTyping) {
+            const container = document.getElementById('chat-messages');
+            const id = 'msg-' + Date.now() + Math.random();
+            let html;
+            if (role === 'user') {
+                html = `<div class="flex justify-end" id="${id}"><div class="bg-primary-container text-white px-3 py-2 text-sm leading-relaxed" style="max-width:85%">${escapeHtml(text)}</div></div>`;
+            } else {
+                const body = isTyping
+                    ? `<span style="animation:pulse 1s infinite;display:inline-block">•••</span>`
+                    : escapeHtml(text);
+                html = `<div class="flex gap-2" id="${id}"><div class="w-7 h-7 bg-primary-container flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-white" style="font-size:14px">smart_toy</span></div><div class="bg-surface-container-low px-3 py-2 text-sm text-on-surface leading-relaxed" style="max-width:85%">${body}</div></div>`;
+            }
+            container.insertAdjacentHTML('beforeend', html);
+            container.scrollTop = container.scrollHeight;
+            return id;
+        }
+
+        async function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+            input.value = '';
+            input.disabled = true;
+
+            addChatMessage('user', text);
+            chatHistory.push({ role: 'user', content: text });
+
+            const typingId = addChatMessage('ai', '', true);
+
+            const reply = await askAI('chat', { messages: [...chatHistory] });
+            document.getElementById(typingId)?.remove();
+
+            const aiText = reply || "I'm having trouble right now. Please call us at 843-327-0032 or email fabianovelloso1234@gmail.com — we'll get back to you fast!";
+            addChatMessage('ai', aiText);
+            chatHistory.push({ role: 'assistant', content: aiText });
+
+            input.disabled = false;
+            input.focus();
+        }
+
+        function escalateToHuman() {
+            if (typeof Tawk_API !== 'undefined' && Tawk_API.maximize) {
+                Tawk_API.maximize();
+            } else {
+                window.location.href = 'tel:8433270032';
             }
         }
 

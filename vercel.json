@@ -2,5 +2,8 @@
   "version": 2,
   "buildCommand": null,
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "functions": {
+    "api/chat.js": { "runtime": "@vercel/node@3" }
+  }
 }
