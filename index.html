@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FMMarketing | Never Miss A Lead Again</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Bebas+Neue&amp;family=Manrope:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#D0E8FF",
+                        "inverse-surface": "#0D2347",
+                        "on-tertiary-fixed-variant": "#0D2347",
+                        "inverse-on-surface": "#FFFFFF",
+                        "on-background": "#0D2347",
+                        "background": "#FFFFFF",
+                        "on-secondary-container": "#0D2347",
+                        "on-primary": "#FFFFFF",
+                        "error-container": "#FFDAD6",
+                        "on-tertiary-fixed": "#FFFFFF",
+                        "on-primary-container": "#FFFFFF",
+                        "outline-variant": "#C5DDF5",
+                        "on-surface-variant": "#2D5F8A",
+                        "primary-container": "#0D2347",
+                        "on-error-container": "#410002",
+                        "surface-tint": "#20C9B0",
+                        "error": "#BA1A1A",
+                        "surface-container-lowest": "#FFFFFF",
+                        "surface-container-low": "#EDF4FF",
+                        "surface-bright": "#FFFFFF",
+                        "surface-container-highest": "#D0E8FF",
+                        "on-surface": "#0D2347",
+                        "surface-container-high": "#DAEEFF",
+                        "on-tertiary-container": "#FFFFFF",
+                        "surface-container": "#E5F0FF",
+                        "tertiary-fixed": "#B2F0E8",
+                        "surface": "#F5F9FF",
+                        "primary-fixed": "#B2F0E8",
+                        "on-primary-fixed-variant": "#0D2347",
+                        "secondary-fixed-dim": "#A8C4E8",
+                        "on-secondary-fixed": "#0D2347",
+                        "tertiary-fixed-dim": "#20C9B0",
+                        "secondary-fixed": "#D0E8FF",
+                        "primary": "#20C9B0",
+                        "primary-fixed-dim": "#20C9B0",
+                        "outline": "#6B9CC5",
+                        "on-secondary-fixed-variant": "#2D5F8A",
+                        "tertiary-container": "#0D2347",
+                        "on-primary-fixed": "#0D2347",
+                        "inverse-primary": "#20C9B0",
+                        "secondary-container": "#E5F0FF",
+                        "secondary": "#4A7FA5",
+                        "on-secondary": "#FFFFFF",
+                        "surface-dim": "#EDF4FF",
+                        "on-tertiary": "#FFFFFF",
+                        "tertiary": "#20C9B0",
+                        "on-error": "#FFFFFF"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "bebas": ["Bebas Neue"],
+                        "manrope": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .grid-texture {
+            background-image: radial-gradient(circle, #20C9B0 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.08;
+        }
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .pricing-locked {
+            filter: blur(12px);
+            pointer-events: none;
+            user-select: none;
+        }
+        .orange-glow {
+            background: radial-gradient(circle at center, rgba(32, 201, 176, 0.1) 0%, transparent 70%);
+        }
+        .curve-divider {
+            clip-path: ellipse(100% 100% at 50% 0%);
+        }
+        .diagonal-divider {
+            clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+        }
+        
+        /* FAQ Transitions */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+        }
+        .faq-item.active .faq-content {
+            max-height: 1000px;
+            transition: max-height 1s ease-in-out;
+        }
+        .faq-plus {
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-plus {
+            transform: rotate(45deg);
+        }
+        .faq-item.active {
+            border-left: 3px solid #20C9B0;
+        }
+
+        /* ── Light-theme text corrections ──────────────────────────── */
+        /* Makes text-white dark on light section backgrounds           */
+        section .text-white, nav .text-white { color: #0D2347; }
+        /* Restore white text where dark backgrounds are intentional    */
+        button.text-white,
+        .marquee .text-white,
+        .bg-primary-container .text-white,
+        .bg-primary .text-white,
+        footer .text-white,
+        footer a { color: white; }
+        button.text-white, button.bg-primary-container,
+        button.bg-primary { color: white !important; }
+        /* Nav phone link stays teal */
+        nav a[href^="tel"] { color: #20C9B0 !important; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-white">
+<!-- Welcome Survey Modal -->
+<div class="fixed inset-0 z-[200] flex items-center justify-center p-4" id="welcome-survey">
+<div class="absolute inset-0 bg-background/90 backdrop-blur-sm"></div>
+<div class="relative w-full max-w-lg bg-surface-container-low border-2 border-primary-container/40 p-10 shadow-[0_0_80px_rgba(255,77,0,0.15)]">
+    <div class="mb-2">
+        <span class="text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary">Welcome</span>
+    </div>
+    <h2 class="text-3xl font-headline font-bold uppercase tracking-tighter mb-2 leading-tight">Quick question <br/>before you explore</h2>
+    <p class="text-secondary text-sm mb-8">Help us point you in the right direction — takes 20 seconds.</p>
+    <form class="space-y-6" id="survey-form" onsubmit="event.preventDefault(); submitSurvey(this);">
+        <div class="space-y-2">
+            <label class="text-xs font-headline font-bold uppercase text-secondary">What best describes you?</label>
+            <div class="grid grid-cols-1 gap-3 mt-2">
+                <label class="flex items-center gap-3 p-4 bg-surface-container cursor-pointer border border-outline-variant/20 hover:border-primary/40 transition-colors group">
+                    <input type="radio" name="role" value="contractor" class="accent-primary" required/>
+                    <span class="text-sm font-headline font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">Contractor / Service Pro</span>
+                </label>
+                <label class="flex items-center gap-3 p-4 bg-surface-container cursor-pointer border border-outline-variant/20 hover:border-primary/40 transition-colors group">
+                    <input type="radio" name="role" value="business" class="accent-primary"/>
+                    <span class="text-sm font-headline font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">Small Business Owner</span>
+                </label>
+                <label class="flex items-center gap-3 p-4 bg-surface-container cursor-pointer border border-outline-variant/20 hover:border-primary/40 transition-colors group">
+                    <input type="radio" name="role" value="curious" class="accent-primary"/>
+                    <span class="text-sm font-headline font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">Just Browsing</span>
+                </label>
+            </div>
+        </div>
+        <div class="space-y-2">
+            <label class="text-xs font-headline font-bold uppercase text-secondary">What's your biggest challenge right now?</label>
+            <select name="challenge" class="w-full bg-white border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 transition-colors" required>
+                <option value="" class="bg-white text-[#0D2347]" disabled selected>Select one...</option>
+                <option value="leads" class="bg-white text-[#0D2347]">Not getting enough leads</option>
+                <option value="followup" class="bg-white text-[#0D2347]">Missing calls / slow follow-up</option>
+                <option value="website" class="bg-white text-[#0D2347]">No website or outdated site</option>
+                <option value="scaling" class="bg-white text-[#0D2347]">Struggling to scale</option>
+            </select>
+        </div>
+        <div class="space-y-2">
+            <label class="text-xs font-headline font-bold uppercase text-secondary">Email Address <span class="text-surface-variant normal-case">(optional — we'll send you our solutions guide)</span></label>
+            <input name="email" type="email" placeholder="you@example.com" class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors"/>
+        </div>
+        <div class="space-y-2">
+            <label class="text-xs font-headline font-bold uppercase text-secondary">Phone Number <span class="text-surface-variant normal-case">(optional — we'll call you first)</span></label>
+            <input name="phone" type="tel" placeholder="(843) 000-0000" class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors"/>
+        </div>
+        <div class="flex gap-3 pt-2">
+            <button type="submit" class="flex-1 bg-primary-container text-white font-headline font-bold uppercase py-4 tracking-widest hover:bg-primary transition-all">Show Me Solutions</button>
+            <button type="button" onclick="closeWelcomeSurvey()" class="px-6 border-2 border-outline-variant text-secondary font-headline font-bold uppercase hover:border-primary hover:text-primary transition-all">Skip</button>
+        </div>
+    </form>
+</div>
+</div>
+<!-- Pricing Modal -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center p-4" id="pricing-modal">
+<div class="absolute inset-0 bg-background/80 backdrop-blur-sm" onclick="closePricingModal()"></div>
+<div class="relative w-full max-w-md bg-surface-container-low border-2 border-primary-container p-8 shadow-2xl">
+<button class="absolute top-4 right-4 text-secondary hover:text-primary transition-colors" onclick="closePricingModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="mb-8">
+<h2 class="text-3xl font-headline font-bold uppercase tracking-tighter mb-2">Unlock Our <span class="text-primary">Pricing Plans</span></h2>
+<p class="text-secondary text-sm">Enter your details to view our full agency pricing and service ecosystem.</p>
+</div>
+<form class="space-y-6" id="pricing-form" onsubmit="event.preventDefault(); unlockPricing();">
+<div class="space-y-2">
+<label class="text-xs font-headline font-bold uppercase text-secondary">Full Name</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5]" id="pf-name" placeholder="John Doe" required="" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-headline font-bold uppercase text-secondary">Email Address</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5]" id="pf-email" placeholder="john@example.com" required="" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-headline font-bold uppercase text-secondary">Phone Number <span class="text-surface-variant normal-case">(optional)</span></label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5]" id="pf-phone" placeholder="(843) 000-0000" type="tel"/>
+</div>
+<div class="text-[10px] text-surface-variant uppercase font-bold text-center">
+Submitting this form sends your info to <span class="text-secondary">fabianovelloso1234@gmail.com</span>
+</div>
+<button class="w-full bg-primary-container text-white font-headline font-bold uppercase py-4 tracking-widest hover:bg-primary transition-all" id="pricing-submit-btn" type="submit">Unlock Pricing Now</button>
+</form>
+</div>
+</div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 rounded-none bg-white/80 backdrop-blur-xl border-b border-[#E5F0FF] shadow-sm">
+<div class="flex justify-between items-center w-full px-8 py-4 mx-auto">
+<div class="flex items-center gap-3">
+    <img src="logo.jpg" alt="FMMarketing Logo" class="w-10 h-10 rounded-full object-cover"/>
+    <span class="text-xl font-black tracking-tighter uppercase text-[#0D2347] font-headline">FMMarketing</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#0D2347] hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold" href="#services">Services</a>
+<a class="text-[#0D2347] hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold" href="#how-it-works">How It Works</a>
+<a class="text-[#0D2347] hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold cursor-pointer" onclick="openPricingModal()">Pricing</a>
+<a class="text-[#0D2347] hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold" href="#contact">Contact</a>
+<a href="https://www.instagram.com/fmmarketingsc/?hl=en" target="_blank" rel="noopener" class="hover:text-primary transition-colors duration-100" title="Follow us on Instagram">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#0D2347] hover:text-primary transition-colors"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+</a>
+<a href="tel:8433270032" class="flex items-center gap-2 text-primary font-headline font-bold uppercase tracking-tighter hover:text-[#0D2347] transition-colors duration-100" style="color:#20C9B0">
+    <span class="material-symbols-outlined" style="font-size:16px">phone</span>
+    843-327-0032
+</a>
+</div>
+<button class="bg-primary-container text-white px-6 py-3 font-headline font-bold uppercase tracking-tighter transition-all duration-100 active:scale-90 hover:bg-primary" onclick="openPricingModal()">
+    Get Started Free
+</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-24 overflow-hidden bg-gradient-to-br from-white via-[#F0F7FF] to-[#E5F0FF]">
+<div class="absolute inset-0 grid-texture pointer-events-none"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full orange-glow pointer-events-none"></div>
+<!-- Marketing Dashboard Visual -->
+<div class="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block w-80 z-10">
+    <div class="bg-white shadow-2xl border border-[#D0E8FF] p-6 relative">
+        <div class="text-[10px] font-headline font-bold uppercase tracking-widest text-[#4A7FA5] mb-5 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#20C9B0] animate-pulse"></span>
+            Live Campaign Dashboard
+        </div>
+        <div class="space-y-4 mb-6">
+            <div>
+                <div class="flex justify-between text-[11px] mb-1">
+                    <span class="text-[#0D2347] font-bold uppercase">Leads Captured</span>
+                    <span class="text-[#20C9B0] font-bold">+312%</span>
+                </div>
+                <div class="h-2 bg-[#EDF4FF]"><div class="h-2 bg-[#20C9B0] transition-all" style="width:78%"></div></div>
+            </div>
+            <div>
+                <div class="flex justify-between text-[11px] mb-1">
+                    <span class="text-[#0D2347] font-bold uppercase">Conversion Rate</span>
+                    <span class="text-[#20C9B0] font-bold">87%</span>
+                </div>
+                <div class="h-2 bg-[#EDF4FF]"><div class="h-2 bg-[#0D2347]" style="width:87%"></div></div>
+            </div>
+            <div>
+                <div class="flex justify-between text-[11px] mb-1">
+                    <span class="text-[#0D2347] font-bold uppercase">ROI Growth</span>
+                    <span class="text-[#20C9B0] font-bold">+400%</span>
+                </div>
+                <div class="h-2 bg-[#EDF4FF]"><div class="h-2 bg-gradient-to-r from-[#20C9B0] to-[#0D2347]" style="width:92%"></div></div>
+            </div>
+        </div>
+        <div class="border-t border-[#E5F0FF] pt-4">
+            <div class="text-[9px] text-[#4A7FA5] uppercase tracking-widest mb-3">Monthly Lead Volume</div>
+            <div class="flex items-end gap-1.5 h-14">
+                <div class="flex-1 bg-[#EDF4FF] hover:bg-[#20C9B0] transition-colors duration-300" style="height:38%"></div>
+                <div class="flex-1 bg-[#EDF4FF] hover:bg-[#20C9B0] transition-colors duration-300" style="height:55%"></div>
+                <div class="flex-1 bg-[#EDF4FF] hover:bg-[#20C9B0] transition-colors duration-300" style="height:48%"></div>
+                <div class="flex-1 bg-[#20C9B0]" style="height:72%"></div>
+                <div class="flex-1 bg-[#20C9B0]" style="height:88%"></div>
+                <div class="flex-1 bg-[#0D2347]" style="height:100%"></div>
+            </div>
+            <div class="flex justify-between text-[8px] text-[#4A7FA5] mt-1.5 uppercase">
+                <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+            </div>
+        </div>
+        <div class="mt-4 flex items-center gap-2 bg-[#F0FDF9] p-3 border-l-4 border-[#20C9B0]">
+            <span class="material-symbols-outlined text-[#20C9B0]" style="font-size:16px">trending_up</span>
+            <span class="text-[10px] text-[#0D2347] font-bold uppercase">3 new leads today</span>
+        </div>
+    </div>
+</div>
+<div class="container mx-auto px-8 relative z-10">
+<div class="max-w-5xl">
+<div class="inline-flex items-center gap-3 px-6 py-3 bg-[#20C9B0] border-2 border-[#0D2347] mb-8 shadow-lg">
+<span class="w-3 h-3 rounded-full bg-[#0D2347] animate-pulse"></span>
+<span class="text-sm font-headline font-black uppercase tracking-[0.15em] text-[#0D2347]">Now Partnering with Local Service Pros</span>
+</div>
+<h1 id="hero-h1" class="text-6xl md:text-9xl font-headline font-bold uppercase tracking-[-0.04em] leading-[0.9] mb-8">
+                    Never Miss <br/>
+<span class="text-transparent" style="-webkit-text-stroke: 1.5px #20C9B0;">A Lead Again</span>
+</h1>
+<p class="text-xl md:text-2xl text-secondary max-w-2xl mb-12 font-light leading-relaxed">
+                    Deploy hyper-intelligent AI agents that handle your sales, support, and scheduling 24/7. Built specifically for hardworking service businesses.
+                </p>
+<div class="flex flex-col md:flex-row gap-4 mb-20">
+<button class="bg-primary-container text-white text-lg font-headline font-bold uppercase px-10 py-5 tracking-tighter hover:bg-primary transition-all duration-200" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                        Get Your Free Website
+                    </button>
+<button class="border-2 border-primary text-primary text-lg font-headline font-bold uppercase px-10 py-5 tracking-tighter hover:bg-primary/10 transition-all duration-200" onclick="document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">
+                        See How It Works
+                    </button>
+</div>
+<a href="tel:8433270032" class="inline-flex items-center gap-3 mb-20 group">
+    <span class="w-10 h-10 flex items-center justify-center bg-primary-container/20 border border-primary/30 group-hover:bg-primary-container transition-all">
+        <span class="material-symbols-outlined text-primary" style="font-size:20px">phone</span>
+    </span>
+    <span class="font-headline font-bold uppercase tracking-tighter text-[#0D2347] group-hover:text-primary transition-colors">Call Us Now: <span class="text-primary">843-327-0032</span></span>
+</a>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low/80 backdrop-blur-sm p-6 border-l-4 border-primary-container flex items-center gap-4 transition-transform hover:-translate-y-1">
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
+<div>
+<div class="text-white font-bold font-headline uppercase tracking-tighter">24/7 AI Lead Capture</div>
+<div class="text-secondary text-sm">Automated qualification</div>
+</div>
+</div>
+<div class="bg-surface-container-low/80 backdrop-blur-sm p-6 border-l-4 border-primary-container flex items-center gap-4 transition-transform hover:-translate-y-1">
+<span class="material-symbols-outlined text-primary text-3xl">trending_up</span>
+<div>
+<div class="text-white font-bold font-headline uppercase tracking-tighter">3X More Leads</div>
+<div class="text-secondary text-sm">Industry-leading conversion</div>
+</div>
+</div>
+<div class="bg-surface-container-low/80 backdrop-blur-sm p-6 border-l-4 border-primary-container flex items-center gap-4 transition-transform hover:-translate-y-1">
+<span class="material-symbols-outlined text-primary text-3xl">timer</span>
+<div>
+<div class="text-white font-bold font-headline uppercase tracking-tighter">48hr Site Live</div>
+<div class="text-secondary text-sm">From setup to launch</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Marquee Banner -->
+<div class="bg-primary-container py-4 border-y border-white/10 overflow-hidden relative z-20">
+<div class="marquee flex gap-12 items-center">
+<span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">AI AGENTS READY</span>
+<span class="material-symbols-outlined text-white">bolt</span>
+<span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">BOOST ROI BY 400%</span>
+<span class="material-symbols-outlined text-white">bolt</span>
+<span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">24/7 SALES ENGINE</span>
+<span class="material-symbols-outlined text-white">bolt</span>
+<span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">NO MORE COLD CALLS</span>
+<span class="material-symbols-outlined text-white">bolt</span>
+<span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">AI AGENTS READY</span>
+<span class="material-symbols-outlined text-white">bolt</span>
+<span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">BOOST ROI BY 400%</span>
+<span class="material-symbols-outlined text-white">bolt</span>
+<span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">24/7 SALES ENGINE</span>
+</div>
+</div>
+<!-- Contact Section -->
+<section class="py-32 bg-surface border-b border-outline-variant/10 relative" id="contact">
+<div class="absolute inset-0 orange-glow pointer-events-none opacity-40"></div>
+<div class="container mx-auto px-8 relative">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+<div>
+<h2 class="text-5xl md:text-7xl font-headline font-bold uppercase tracking-tighter mb-8 leading-none">Let's Fuel <br/>Your <span class="text-primary-container">Engine</span></h2>
+<p class="text-secondary text-xl mb-12">Ready to automate your growth? Fill out the form and we'll show you exactly how many leads you're currently leaving on the table.</p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<span class="text-white font-headline uppercase font-bold tracking-tighter">24h Guaranteed Response</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">mail</span>
+<span class="text-white font-headline uppercase font-bold tracking-tighter">fabianovelloso1234@gmail.com</span>
+</div>
+<a href="tel:8433270032" class="flex items-center gap-4 group">
+<span class="material-symbols-outlined text-primary">phone</span>
+<span class="text-white font-headline uppercase font-bold tracking-tighter group-hover:text-primary transition-colors">843-327-0032</span>
+</a>
+</div>
+</div>
+<div class="bg-surface-container-low/80 backdrop-blur-md p-12 border border-primary-container/10">
+<form class="space-y-8" id="contact-form" onsubmit="event.preventDefault(); submitContact(this);">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="text-xs font-headline font-bold uppercase text-secondary">Full Name</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors" name="name" placeholder="John Doe" required type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-headline font-bold uppercase text-secondary">Business Name</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors" name="business" placeholder="Acme Services" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-headline font-bold uppercase text-secondary">Email Address</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors" name="email" placeholder="john@example.com" required type="email"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-headline font-bold uppercase text-secondary">Phone Number <span class="text-surface-variant normal-case">(optional)</span></label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors" name="phone" placeholder="(843) 000-0000" type="tel"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-headline font-bold uppercase text-secondary">Message</label>
+<textarea class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors" name="message" placeholder="Tell us about your business goals..." rows="4"></textarea>
+</div>
+<button class="w-full bg-primary-container text-white font-headline font-bold uppercase py-5 tracking-widest hover:bg-primary transition-all shadow-xl shadow-primary-container/10" id="contact-submit-btn" type="submit">Submit Strategy Request</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Human Side of AI -->
+<section class="py-32 bg-surface relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full bg-primary-container/5 -skew-x-12 transform translate-x-1/2"></div>
+<div class="container mx-auto px-8 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="order-2 lg:order-1">
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary-container/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<img alt="Friendly contractor" class="relative w-full grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFJBHbOsrGUY1plg0RACReXwja4cDYDch3puZKqHGLRadVAnpH76qzmbERUEvjS__QxslnmQpTA14UHYZW_u2lDnsRZ-9-x9uk0yvKftROT_-ctANiLf88C4_wKYS7xifBBzLSljFd2BYbnm9yM_u6OqVLEDOgeruo8S9iQMsVsVLJdwBsSTZNhbYfe2Jkfgc6LKKpSOxHgpdcIjExK-c360t1G1gsaljBIfqi9FLR0ngo_33sYBoXKZxAAo8G8mpi05MdsNNgOOFc"/>
+<div class="absolute bottom-8 -right-8 bg-background border-2 border-primary-container p-6 max-w-xs shadow-2xl hidden md:block">
+<p class="text-sm italic text-on-background font-medium">"Finally, an agency that understands I'd rather be on the tools than on the phone."</p>
+<p class="mt-4 text-[10px] uppercase tracking-widest font-bold text-primary">— David K., HVAC Specialist</p>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2 space-y-8">
+<h2 class="text-5xl md:text-7xl font-headline font-bold uppercase tracking-tighter leading-none">The Human Side <br/>of <span class="text-primary-container">Automation</span></h2>
+<p class="text-secondary text-xl leading-relaxed">We don't just build bots; we build extensions of your personality. Our AI is designed to sound like your best employee, allowing you to focus on the craftsmanship that built your business.</p>
+<div class="flex flex-wrap gap-8">
+<div class="text-center">
+<div class="text-4xl font-headline font-bold text-white mb-1">10k+</div>
+<div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Hours Saved</div>
+</div>
+<div class="text-center">
+<div class="text-4xl font-headline font-bold text-white mb-1">2.4k</div>
+<div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Leads Captured</div>
+</div>
+<div class="text-center">
+<div class="text-4xl font-headline font-bold text-white mb-1">98%</div>
+<div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Client Joy</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Lead Capture Features -->
+<section class="py-32 bg-surface-container-lowest relative diagonal-divider">
+<div class="absolute inset-0 orange-glow pointer-events-none opacity-50"></div>
+<div class="container mx-auto px-8 relative">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div class="relative">
+<div class="bg-surface-container-high aspect-[9/16] w-full max-w-[320px] mx-auto border-[12px] border-surface-container-highest shadow-2xl relative overflow-hidden">
+<div class="h-16 bg-surface-container-highest flex items-center px-4 justify-between">
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-red-500"></div>
+<div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+</div>
+<div class="text-[10px] text-secondary font-mono tracking-widest">AI AGENT ACTIVE</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="bg-surface p-3 max-w-[80%] text-sm">Hello! I'm your AI assistant. How can I help you today?</div>
+<div class="bg-primary-container/20 p-3 max-w-[80%] ml-auto text-sm text-right">I need a quote for a new roof installation.</div>
+<div class="bg-surface p-3 max-w-[80%] text-sm">Perfect! I can help with that. Can I get your address and the best phone number to reach you?</div>
+<div class="bg-surface-container-low p-3 mt-8 border-t-2 border-primary">
+<div class="text-[10px] text-primary font-bold uppercase mb-1">System Notification</div>
+<div class="text-xs">New Lead: John Doe<br/>Topic: Roof Installation<br/>Phone: 555-0123</div>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-12">
+<div class="group">
+<div class="flex items-start gap-6">
+<span class="text-4xl font-headline font-black text-primary-container/30 group-hover:text-primary transition-colors">01</span>
+<div>
+<h3 class="text-3xl font-headline font-bold uppercase tracking-tighter mb-4">AI Live Chat Widget</h3>
+<p class="text-secondary leading-relaxed">Engage visitors instantly with a custom-trained AI that knows your business inside and out. Warm, friendly, and always on.</p>
+</div>
+</div>
+</div>
+<div class="group">
+<div class="flex items-start gap-6">
+<span class="text-4xl font-headline font-black text-primary-container/30 group-hover:text-primary transition-colors">02</span>
+<div>
+<h3 class="text-3xl font-headline font-bold uppercase tracking-tighter mb-4">AI Voice Agent + SMS</h3>
+<p class="text-secondary leading-relaxed">Missed a call? Our AI Voice Agent answers with a professional, welcoming tone, qualifies the lead, and sends an SMS summary.</p>
+</div>
+</div>
+</div>
+<div class="group">
+<div class="flex items-start gap-6">
+<span class="text-4xl font-headline font-black text-primary-container/30 group-hover:text-primary transition-colors">03</span>
+<div>
+<h3 class="text-3xl font-headline font-bold uppercase tracking-tighter mb-4">Instant Notifications</h3>
+<p class="text-secondary leading-relaxed">Every qualified conversation is pushed to your phone instantly. Close deals while the connection is still warm.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section class="relative py-32 bg-surface" id="pricing">
+<!-- Locked Overlay -->
+<div class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-background/60 backdrop-blur-xl" id="pricing-overlay">
+<div class="text-center p-12 bg-surface-container-low border-2 border-primary/20 max-w-lg shadow-[0_0_50px_rgba(255,77,0,0.1)]">
+<span class="material-symbols-outlined text-primary text-7xl mb-6">lock_open</span>
+<h2 class="text-4xl font-headline font-bold uppercase tracking-tighter mb-6">Pricing Plans Locked</h2>
+<p class="text-secondary mb-8 leading-relaxed">Access our exclusive competitive pricing packages and AI engine deployment plans by requesting access.</p>
+<button class="bg-primary-container text-white font-headline font-bold uppercase px-12 py-5 tracking-widest hover:bg-primary transition-all shadow-lg shadow-primary-container/20" onclick="openPricingModal()">Unlock Access</button>
+</div>
+</div>
+<div class="container mx-auto px-8 pricing-locked" id="pricing-content">
+<div class="text-center mb-16">
+<h2 class="text-5xl md:text-7xl font-headline font-bold uppercase tracking-tighter mb-6">No Hidden Fees. <br/>Just <span class="text-primary-container">Results.</span></h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
+<!-- Starter -->
+<div class="bg-surface-container-low p-12 border border-outline-variant/20 flex flex-col">
+<h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-2">Starter</h3>
+<div class="text-5xl font-headline font-bold text-primary-container mb-8">$497<span class="text-lg text-secondary">/mo</span></div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Conversion Landing Page</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Basic AI Chat Agent</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> SMS Lead Alerts</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Standard Support</li>
+</ul>
+<button class="w-full border-2 border-primary text-primary font-headline font-bold uppercase py-4 hover:bg-primary hover:text-white transition-all" onclick="openPricingModal()">Choose Starter</button>
+</div>
+<!-- Growth (Featured) -->
+<div class="bg-surface-container-highest p-12 border-x-0 border-y-4 lg:border-y-0 lg:border-x-4 border-primary-container flex flex-col relative z-10 scale-105 shadow-2xl shadow-primary-container/20">
+<div class="absolute top-0 right-0 bg-primary-container text-white px-4 py-1 text-xs font-headline font-bold uppercase">Most Popular</div>
+<h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-2">Growth</h3>
+<div class="text-5xl font-headline font-bold text-primary-container mb-8">$897<span class="text-lg text-secondary">/mo</span></div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3 text-sm font-bold"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Multi-page Performance Site</li>
+<li class="flex items-center gap-3 text-sm font-bold"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Advanced AI Voice + Chat</li>
+<li class="flex items-center gap-3 text-sm font-bold"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Appointment Booking Engine</li>
+<li class="flex items-center gap-3 text-sm font-bold"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Local SEO Power Pack</li>
+<li class="flex items-center gap-3 text-sm font-bold"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Priority Support</li>
+</ul>
+<button class="w-full bg-primary-container text-white font-headline font-bold uppercase py-4 hover:bg-primary transition-all" onclick="openPricingModal()">Get Started Now</button>
+</div>
+<!-- Dominate -->
+<div class="bg-surface-container-low p-12 border border-outline-variant/20 flex flex-col">
+<h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-2">Dominate</h3>
+<div class="text-5xl font-headline font-bold text-primary-container mb-8">$1497<span class="text-lg text-secondary">/mo</span></div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Full Authority Ecosystem</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Unlimited AI Call Credits</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Full Ads Management</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Weekly Strategy Calls</li>
+<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Custom CRM Integration</li>
+</ul>
+<button class="w-full border-2 border-primary text-primary font-headline font-bold uppercase py-4 hover:bg-primary hover:text-white transition-all" onclick="openPricingModal()">Go Professional</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us -->
+<section class="py-32 bg-surface">
+<div class="container mx-auto px-8">
+<div class="text-center mb-20">
+<h2 class="text-5xl md:text-7xl font-headline font-bold uppercase tracking-tighter mb-4">Built For <span class="text-primary-container">Real Work</span></h2>
+<p class="text-secondary text-xl max-w-2xl mx-auto">We combine high-tech automation with the high-touch feeling your customers expect.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-low group overflow-hidden">
+<div class="h-64 overflow-hidden relative">
+<img alt="Person on phone" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr0FsHiU8M_DR0xARI79bKH5BNAlgljHiLshDKdLN-W1mpuONgPUlt4PFxLZrORA2_AfSLA3j3q7RwRtnCuGlzia0NdEj7exyQe35G4Bdta5k6cfjgyxps7T21Xzntwo-7FOraWzwPCSYjbR7KN-c00BUhuJQgdCPrH03hdhbd2-X1L89YdwfAtA8Ncq8DrTOmWoBR0UvcH7y0s5XnilCS-zWQgha9aDS6eqZg1MVTXiaJuBnNZZyYuMThWuZ4NcBC3FhNxEaWoTDo"/>
+</div>
+<div class="p-8">
+<h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-4">Mobile Optimized</h4>
+<p class="text-sm text-secondary">Manage everything from your job site. Our dashboard is built for owners who are rarely behind a desk.</p>
+</div>
+</div>
+<div class="bg-surface-container-low group overflow-hidden">
+<div class="h-64 overflow-hidden relative">
+<img alt="Contractor working" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKikLStvgZg2TiHl5RLyMsi05s6gaTDbQ6QGsXFRQoP9kklK1fzc666TWlypaGj8U0HwuxtSSIE2tLbvz7iq7XFK_hRV-8QMc9vWtzLrFm1i7GkJp5KsOSAOxORl44aqSsy47sKqgwKj1dvH5wp7IdnvsLOu_YgXwAE6dizooZngwrDhB6nrx3YdjEqJd8TyTLx294axQbFWeMaEbdsxiV7GDSFLzW4n4Dg-Z2ddXwfu7HcglIGFmQmTnrMFapabfRtl_zMf6w9UvF"/>
+</div>
+<div class="p-8">
+<h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-4">Niche Expertise</h4>
+<p class="text-sm text-secondary">We know the difference between a quote for a roof and a quote for a repair. Our AI is industry-specific.</p>
+</div>
+</div>
+<div class="bg-surface-container-low group overflow-hidden">
+<div class="h-64 overflow-hidden relative">
+<img alt="Smiling business owner" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIZnKdTa8z879w2RoPc7KN-JUBgmxvDBVjuPbwZg3sUMR4HkviP8XsJKAHLMoTN3WpGw4z28_wMH6EMOH1zC349ktMDjyL-ZSKJZp8ZyNLVPYmNnbQD2nUJh_XhxFNeI9gBJtq74CFejX4rhdXRPJxps4C9qg0WUcyapoWZjTFzFLZEhI1JVZLRysitqq-4eeP-AEqlU5hgV_2A_InDtDEvNIJK5ZVb0fhoup31UwYTMC38NSNjdo3RP8RgrD-GsyMvCFajH_YNoKu"/>
+</div>
+<div class="p-8">
+<h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-4">Local Dominance</h4>
+<p class="text-sm text-secondary">We don't just get traffic; we get local traffic. Be the first name your neighbors see on Google.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Grid -->
+<section class="py-32 bg-surface-container-lowest curve-divider" id="services">
+<div class="container mx-auto px-8 pt-20">
+<div class="mb-16">
+<h2 class="text-5xl md:text-7xl font-headline font-bold uppercase tracking-tighter mb-4">Full-Stack <span class="text-primary-container">Dominance</span></h2>
+<p class="text-secondary text-xl max-w-2xl">Everything you need to crush your competition and scale your service business with surgical precision.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-0 hover:border-l-4 hover:border-primary-container">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">web</span>
+<h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-4">Website Design</h3>
+<p class="text-secondary">High-conversion landing pages built for speed and results. Designed to turn traffic into paying customers.</p>
+</div>
+<div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-0 hover:border-l-4 hover:border-primary-container">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">chat_bubble</span>
+<h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-4">AI Live Chat</h3>
+<p class="text-secondary">24/7 customer interaction that qualifies leads and books appointments directly into your calendar.</p>
+</div>
+<div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-0 hover:border-l-4 hover:border-primary-container">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">record_voice_over</span>
+<h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-4">AI Voice Agent</h3>
+<p class="text-secondary">Automated outbound and inbound calling that sounds human and never takes a day off.</p>
+</div>
+<div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-0 hover:border-l-4 hover:border-primary-container">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">search</span>
+<h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-4">SEO Optimization</h3>
+<p class="text-secondary">Dominate local search and stay at the top of Google. We focus on keywords that actually drive calls.</p>
+</div>
+<div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-0 hover:border-l-4 hover:border-primary-container">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">share</span>
+<h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-4">Social Media</h3>
+<p class="text-secondary">Building brand authority across all platforms. Content that resonates and engagement that converts.</p>
+</div>
+<div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-0 hover:border-l-4 hover:border-primary-container">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">ads_click</span>
+<h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-4">Paid Ads</h3>
+<p class="text-secondary">Precision-targeted campaigns on Google and Meta that deliver a consistent flow of high-intent leads.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-32 bg-background relative" id="how-it-works">
+<div class="absolute inset-0 orange-glow pointer-events-none opacity-30"></div>
+<div class="container mx-auto px-8 relative">
+<h2 class="text-5xl font-headline font-bold uppercase tracking-tighter text-center mb-20">Our <span class="text-primary-container">Blueprint</span> To Growth</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="relative p-10 bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<div class="text-6xl font-headline font-black text-primary-container/20 mb-6">01</div>
+<h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-4">Discovery Call</h4>
+<p class="text-sm text-secondary">We analyze your current lead flow and identify the massive gaps AI can fill.</p>
+</div>
+<div class="relative p-10 bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<div class="text-6xl font-headline font-black text-primary-container/20 mb-6">02</div>
+<h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-4">We Build It</h4>
+<p class="text-sm text-secondary">Our team builds your high-converting site and trains your custom AI agents.</p>
+</div>
+<div class="relative p-10 bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<div class="text-6xl font-headline font-black text-primary-container/20 mb-6">03</div>
+<h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-4">Go Live</h4>
+<p class="text-sm text-secondary">Launch day. Your site and agents start capturing traffic within 48 hours.</p>
+</div>
+<div class="relative p-10 bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<div class="text-6xl font-headline font-black text-primary-container/20 mb-6">04</div>
+<h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-4">You Grow</h4>
+<p class="text-sm text-secondary">Focus on doing the work while we keep your calendar packed with qualified leads.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-32 bg-surface-container-lowest overflow-hidden">
+<div class="container mx-auto px-8">
+<h2 class="text-4xl font-headline font-bold uppercase tracking-tighter mb-16">Tested In The <span class="text-primary-container">Field</span></h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-low p-10 relative">
+<span class="material-symbols-outlined text-primary-container/20 text-8xl absolute top-4 right-4">format_quote</span>
+<p class="text-lg italic mb-8 relative z-10 text-on-surface">"FMMarketing literally saved my sanity. I used to spend my nights returning calls. Now the AI handles the quotes while I'm on a job site. Revenue is up 40%."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-container flex items-center justify-center font-bold font-headline text-white">MJ</div>
+<div>
+<div class="font-headline font-bold uppercase text-sm tracking-tighter">Mike Johnson</div>
+<div class="text-xs text-secondary uppercase">Johnson Plumbing</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-10 relative">
+<span class="material-symbols-outlined text-primary-container/20 text-8xl absolute top-4 right-4">format_quote</span>
+<p class="text-lg italic mb-8 relative z-10 text-on-surface">"The 48-hour launch was no joke. I had a new lead within 3 hours of going live. Best investment I've made in 10 years of business."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-container flex items-center justify-center font-bold font-headline text-white">SD</div>
+<div>
+<div class="font-headline font-bold uppercase text-sm tracking-tighter">Sarah Davis</div>
+<div class="text-xs text-secondary uppercase">Davis Roofing Co.</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-10 relative">
+<span class="material-symbols-outlined text-primary-container/20 text-8xl absolute top-4 right-4">format_quote</span>
+<p class="text-lg italic mb-8 relative z-10 text-on-surface">"The AI voice agent sounds so real my customers don't even know. It schedules everything and I just show up and work. Incredible tech."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-container flex items-center justify-center font-bold font-headline text-white">RE</div>
+<div>
+<div class="font-headline font-bold uppercase text-sm tracking-tighter">Robert Evans</div>
+<div class="text-xs text-secondary uppercase">Evans Electric</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section (Moved to Bottom) -->
+<section class="bg-[#F0F7FF] py-24 px-[5%]" id="faq">
+<div class="container mx-auto">
+<div class="mb-12">
+<span class="text-[#20C9B0] font-manrope font-bold uppercase tracking-[0.2em] text-sm">Got Questions</span>
+<h2 class="text-6xl md:text-8xl font-bebas text-[#0D2347] uppercase mt-2">Frequently Asked Questions</h2>
+</div>
+<div class="space-y-0" id="faq-accordion">
+<!-- FAQ Item 1 -->
+<div class="faq-item border-b border-[#C5DDF5] transition-all duration-300">
+<button class="w-full flex justify-between items-center py-8 text-left group" onclick="toggleFaq(this)">
+<span class="text-base font-manrope font-bold text-[#0D2347] uppercase tracking-tight group-hover:text-[#20C9B0] transition-colors">How quickly can you get my website and AI agents set up?</span>
+<span class="material-symbols-outlined text-[#20C9B0] faq-plus">add</span>
+</button>
+<div class="faq-content bg-[#E8F4FF]">
+<div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#2D5F8A] leading-relaxed">
+                            Fast. Most websites are fully live within 48 hours of your strategy call. The AI chat agent goes live at the same time as your website. The AI voice agent is typically active within 72 hours. We handle everything — you just need to approve the final design before we launch.
+                        </div>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="faq-item border-b border-[#C5DDF5] transition-all duration-300">
+<button class="w-full flex justify-between items-center py-8 text-left group" onclick="toggleFaq(this)">
+<span class="text-base font-manrope font-bold text-[#0D2347] uppercase tracking-tight group-hover:text-[#20C9B0] transition-colors">What kind of integrations do you offer?</span>
+<span class="material-symbols-outlined text-[#20C9B0] faq-plus">add</span>
+</button>
+<div class="faq-content bg-[#E8F4FF]">
+<div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#2D5F8A] leading-relaxed">
+                            Our AI agents connect directly with your existing tools. We integrate with Google Calendar for automatic appointment booking, CRM platforms like GoHighLevel and HubSpot to log every lead, SMS and email notification systems so you hear about every inquiry the moment it happens, and Facebook and Google Ads platforms to track which ads are driving real leads. We set it all up for you — no technical knowledge required on your end.
+                        </div>
+</div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="faq-item border-b border-[#C5DDF5] transition-all duration-300">
+<button class="w-full flex justify-between items-center py-8 text-left group" onclick="toggleFaq(this)">
+<span class="text-base font-manrope font-bold text-[#0D2347] uppercase tracking-tight group-hover:text-[#20C9B0] transition-colors">How much does it cost?</span>
+<span class="material-symbols-outlined text-[#20C9B0] faq-plus">add</span>
+</button>
+<div class="faq-content bg-[#E8F4FF]">
+<div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#2D5F8A] leading-relaxed">
+                            Every business is different so we build custom packages rather than locking you into a one-size-fits-all price. Packages start from $497/mo. The best way to find out what your business needs and what it will cost is to book a free 15-minute strategy call — no pressure, no commitment, just an honest conversation.
+                        </div>
+</div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="faq-item border-b border-[#C5DDF5] transition-all duration-300">
+<button class="w-full flex justify-between items-center py-8 text-left group" onclick="toggleFaq(this)">
+<span class="text-base font-manrope font-bold text-[#0D2347] uppercase tracking-tight group-hover:text-[#20C9B0] transition-colors">How secure is my data and my customers' data with your AI?</span>
+<span class="material-symbols-outlined text-[#20C9B0] faq-plus">add</span>
+</button>
+<div class="faq-content bg-[#E8F4FF]">
+<div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#2D5F8A] leading-relaxed">
+                            Completely secure. All data captured by your AI chat and voice agents is encrypted and stored on private servers. We do not sell, share, or send your data to any third-party companies or outside platforms. Every system we build uses secure HTTPS connections and follows industry-standard data protection practices. Your customers' information stays private and protected at all times.
+                        </div>
+</div>
+</div>
+<!-- FAQ Item 5 -->
+<div class="faq-item border-b border-[#C5DDF5] transition-all duration-300">
+<button class="w-full flex justify-between items-center py-8 text-left group" onclick="toggleFaq(this)">
+<span class="text-base font-manrope font-bold text-[#0D2347] uppercase tracking-tight group-hover:text-[#20C9B0] transition-colors">Is this built by a third-party company or outsourced overseas?</span>
+<span class="material-symbols-outlined text-[#20C9B0] faq-plus">add</span>
+</button>
+<div class="faq-content bg-[#E8F4FF]">
+<div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#2D5F8A] leading-relaxed">
+                            Everything we build is made in-house, right here in South Carolina. We do not outsource your website or AI systems to overseas developers or third-party agencies. When you work with FMMarketing you are working directly with our local team from day one. That means faster communication, full accountability, and a team that genuinely cares about your results.
+                        </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#0D2347] border-t border-[#1E3A6A]">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 gap-8 font-['Inter'] text-sm tracking-normal">
+<div class="flex items-center gap-3">
+    <img src="logo.jpg" alt="FMMarketing Logo" class="w-9 h-9 rounded-full object-cover"/>
+    <span class="text-xl font-black tracking-tighter uppercase text-white font-headline">FMMarketing</span>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-blue-200 hover:text-white transition-colors" href="#services">Services</a>
+<a class="text-blue-200 hover:text-white transition-colors" href="#how-it-works">How It Works</a>
+<a class="text-blue-200 hover:text-white transition-colors cursor-pointer" onclick="openPricingModal()">Pricing</a>
+<a class="text-blue-200 hover:text-white transition-colors" href="#contact">Contact</a>
+<a href="https://www.instagram.com/fmmarketingsc/?hl=en" target="_blank" rel="noopener" class="text-blue-200 hover:text-[#20C9B0] transition-colors flex items-center gap-1.5">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    Instagram
+</a>
+<a class="text-blue-200 hover:text-white transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col items-center gap-1.5">
+    <a href="tel:8433270032" class="text-[#20C9B0] font-headline font-bold uppercase tracking-tighter hover:text-white transition-colors">843-327-0032</a>
+    <div class="text-blue-300 text-xs">© 2024 FMMarketing. Built with AI. Powered by results.</div>
+</div>
+</div>
+</footer>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69dc01ca41b0381c3a2fa26e/1jm1mdvh3';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+<script>
+        // ─────────────────────────────────────────────────────────────
+        // EMAIL CONFIG
+        // 1. Go to https://formspree.io → sign up → New Form
+        // 2. Replace YOUR_FORM_ID below with your actual form ID
+        // ─────────────────────────────────────────────────────────────
+        const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xojyapee';
+
+        async function sendEmail(payload) {
+            try {
+                const res = await fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                return res.ok;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function setButtonState(btn, loading, successText) {
+            if (loading) {
+                btn.disabled = true;
+                btn.dataset.original = btn.textContent;
+                btn.textContent = 'Sending...';
+            } else {
+                btn.disabled = false;
+                btn.textContent = successText || btn.dataset.original;
+            }
+        }
+
+        // ── Welcome Survey ──
+        function closeWelcomeSurvey() {
+            const el = document.getElementById('welcome-survey');
+            el.style.transition = 'opacity 0.3s ease';
+            el.style.opacity = '0';
+            setTimeout(() => { el.style.display = 'none'; document.body.style.overflow = 'auto'; }, 300);
+        }
+
+        async function submitSurvey(form) {
+            const data = new FormData(form);
+            const role      = data.get('role')      || 'Not selected';
+            const challenge = data.get('challenge') || 'Not selected';
+            const email     = data.get('email')     || '';
+            const phone     = data.get('phone')     || 'Not provided';
+            const btn = form.querySelector('button[type="submit"]');
+            setButtonState(btn, true);
+            const payload = {
+                _subject: '🔔 New Survey Lead — FMMarketing',
+                Source: 'Welcome Survey',
+                Role: role,
+                Challenge: challenge,
+                Email: email || 'Not provided',
+                Phone: phone
+            };
+            if (email) payload._replyto = email;
+            await sendEmail(payload);
+            setButtonState(btn, false, 'Sent!');
+            setTimeout(closeWelcomeSurvey, 600);
+        }
+
+        window.addEventListener('load', function () { document.body.style.overflow = 'hidden'; });
+
+        // ── Pricing Modal ──
+        function openPricingModal() {
+            document.getElementById('pricing-modal').classList.remove('hidden');
+            document.getElementById('pricing-modal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePricingModal() {
+            document.getElementById('pricing-modal').classList.add('hidden');
+            document.getElementById('pricing-modal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        async function unlockPricing() {
+            const name  = document.getElementById('pf-name').value;
+            const email = document.getElementById('pf-email').value;
+            const phone = document.getElementById('pf-phone').value;
+            const btn   = document.getElementById('pricing-submit-btn');
+            setButtonState(btn, true);
+            await sendEmail({
+                _subject: '🔥 Pricing Unlock Request — FMMarketing',
+                Source: 'Pricing Modal',
+                Name: name,
+                Email: email,
+                Phone: phone || 'Not provided'
+            });
+            setButtonState(btn, false, 'Unlocked!');
+            document.getElementById('pricing-overlay').style.display = 'none';
+            document.getElementById('pricing-content').classList.remove('pricing-locked');
+            closePricingModal();
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ── Contact Form ──
+        async function submitContact(form) {
+            const data = new FormData(form);
+            const btn  = document.getElementById('contact-submit-btn');
+            setButtonState(btn, true);
+            const ok = await sendEmail({
+                _subject: '📋 New Strategy Request — FMMarketing',
+                Source: 'Contact Form',
+                Name: data.get('name'),
+                Business: data.get('business') || 'Not provided',
+                Email: data.get('email'),
+                Phone: data.get('phone') || 'Not provided',
+                Message: data.get('message') || ''
+            });
+            if (ok) {
+                setButtonState(btn, false, '✓ Request Sent!');
+                form.reset();
+            } else {
+                setButtonState(btn, false, 'Error — Try Again');
+            }
+        }
+
+        // ── FAQ ──
+        function toggleFaq(button) {
+            const currentItem = button.closest('.faq-item');
+            const allItems = document.getElementById('faq-accordion').querySelectorAll('.faq-item');
+            allItems.forEach(item => { if (item !== currentItem) item.classList.remove('active'); });
+            currentItem.classList.toggle('active');
+        }
+
+    </script>
+</body></html>
