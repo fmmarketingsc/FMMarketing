@@ -146,13 +146,18 @@
         button.bg-primary { color: white !important; }
         /* Nav phone link stays teal */
         nav a[href^="tel"] { color: #20C9B0 !important; }
+        /* Survey modal — smooth scroll on iOS */
+        #welcome-survey {
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+        }
     </style>
 </head>
 <body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-white">
 <!-- Welcome Survey Modal -->
-<div class="fixed inset-0 z-[200] flex items-center justify-center p-4" id="welcome-survey">
+<div class="fixed inset-0 z-[200] flex items-start md:items-center justify-center overflow-y-auto py-6 px-4" id="welcome-survey">
 <div class="absolute inset-0 bg-background/90 backdrop-blur-sm"></div>
-<div class="relative w-full max-w-lg bg-surface-container-low border-2 border-primary-container/40 p-10 shadow-[0_0_80px_rgba(255,77,0,0.15)]">
+<div class="relative w-full max-w-lg bg-surface-container-low border-2 border-primary-container/40 p-6 md:p-10 shadow-[0_0_80px_rgba(32,201,176,0.15)] my-auto">
     <div class="mb-2">
         <span class="text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary">Welcome</span>
     </div>
