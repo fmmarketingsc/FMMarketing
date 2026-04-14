@@ -153,7 +153,8 @@
         .marquee .text-white,
         .bg-primary-container .text-white,
         .bg-primary .text-white,
-        footer .text-white { color: white; }
+        footer .text-white,
+        .stat-number { color: white; }
         button.text-white, button.bg-primary-container,
         button.bg-primary { color: white !important; }
         /* Nav phone link stays teal */
@@ -498,15 +499,15 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 <p class="text-secondary text-xl leading-relaxed">We don't just build bots; we build extensions of your personality. Our AI is designed to sound like your best employee, allowing you to focus on the craftsmanship that built your business.</p>
 <div class="flex flex-wrap gap-8">
 <div class="text-center">
-<div class="text-4xl font-headline font-bold text-white mb-1">10k+</div>
+<div class="text-4xl font-headline font-bold text-primary-container mb-1">10k+</div>
 <div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Hours Saved</div>
 </div>
 <div class="text-center">
-<div class="text-4xl font-headline font-bold text-white mb-1">2.4k</div>
+<div class="text-4xl font-headline font-bold text-primary-container mb-1">2.4k</div>
 <div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Leads Captured</div>
 </div>
 <div class="text-center">
-<div class="text-4xl font-headline font-bold text-white mb-1">98%</div>
+<div class="text-4xl font-headline font-bold text-primary-container mb-1">98%</div>
 <div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Client Joy</div>
 </div>
 </div>
@@ -515,7 +516,7 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 </div>
 </section>
 <!-- Lead Capture Features -->
-<section class="py-32 bg-surface-container-lowest relative diagonal-divider">
+<section class="py-32 bg-surface-container-lowest relative">
 <div class="absolute inset-0 orange-glow pointer-events-none opacity-50"></div>
 <div class="container mx-auto px-8 relative">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -953,11 +954,11 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 <!-- AI Chat Widget -->
 <div id="ai-chat-widget" class="hidden">
   <!-- Chat toggle button -->
-  <button id="ai-chat-btn" onclick="toggleChat()" class="fixed bottom-6 right-6 z-[150] w-14 h-14 bg-primary-container text-white flex items-center justify-center shadow-xl hover:bg-primary transition-all duration-200 active:scale-90" aria-label="Open AI Chat">
+  <button id="ai-chat-btn" onclick="toggleChat()" class="fixed bottom-20 right-6 z-[150] w-14 h-14 bg-primary-container text-white flex items-center justify-center shadow-xl hover:bg-primary transition-all duration-200 active:scale-90" aria-label="Open AI Chat">
     <span class="material-symbols-outlined" id="chat-btn-icon" style="font-size:24px">chat</span>
   </button>
   <!-- Chat panel -->
-  <div id="ai-chat-panel" class="hidden fixed bottom-24 right-6 z-[150] w-80 bg-white border border-outline-variant/30 shadow-2xl" style="height:440px;display:none;flex-direction:column">
+  <div id="ai-chat-panel" class="hidden fixed bottom-36 right-3 z-[150] bg-white border border-outline-variant/30 shadow-2xl" style="width:min(320px,calc(100vw - 1.5rem));height:440px;display:none;flex-direction:column">
     <!-- Header -->
     <div class="bg-primary-container text-white px-4 py-3 flex items-center justify-between flex-shrink-0">
       <div class="flex items-center gap-2">
@@ -1151,13 +1152,17 @@ s0.parentNode.insertBefore(s1,s0);
             const phone = document.getElementById('pf-phone').value;
             const btn   = document.getElementById('pricing-submit-btn');
             setButtonState(btn, true);
-            await sendEmail({
+            const ok = await sendEmail({
                 _subject: '🔥 Pricing Unlock Request — FMMarketing',
                 Source: 'Pricing Modal',
                 Name: name,
                 Email: email,
                 Phone: phone || 'Not provided'
             });
+            if (!ok) {
+                setButtonState(btn, false, 'Error — Try Again');
+                return;
+            }
             setButtonState(btn, false, 'Unlocked!');
             document.getElementById('pricing-overlay').style.display = 'none';
             document.getElementById('pricing-content').classList.remove('pricing-locked');
