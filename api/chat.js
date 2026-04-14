@@ -37,7 +37,7 @@ module.exports = async function handler(req, res) {
 - AI Chat Agent: 24/7 website chatbot that qualifies and captures leads
 - AI Voice Agent: Answers calls, qualifies leads, and books appointments automatically
 
-Contact: 843-327-0032 | fabianovelloso1234@gmail.com | Instagram: @fmmarketingsc
+Contact: 843-327-0032 | fabianomatos@fmmarketingsc.com | Instagram: @fmmarketingsc
 
 Keep responses helpful, confident, and concise (2-4 sentences max). If someone asks about pricing, invite them to fill out the contact form or call 843-327-0032. If you cannot answer something specific, offer to connect them with a human. Never make up specific pricing numbers.`;
     userMessages = messages || [];

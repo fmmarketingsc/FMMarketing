@@ -270,7 +270,7 @@
 <input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5]" id="pf-phone" placeholder="(843) 000-0000" type="tel"/>
 </div>
 <div class="text-[10px] text-surface-variant uppercase font-bold text-center">
-Submitting this form sends your info to <span class="text-secondary">fabianovelloso1234@gmail.com</span>
+Submitting this form sends your info to <span class="text-secondary">fabianomatos@fmmarketingsc.com</span>
 </div>
 <button class="w-full bg-primary-container text-white font-headline font-bold uppercase py-4 tracking-widest hover:bg-primary transition-all" id="pricing-submit-btn" type="submit">Unlock Pricing Now</button>
 </form>
@@ -360,7 +360,7 @@ Submitting this form sends your info to <span class="text-secondary">fabianovell
 <span class="w-3 h-3 rounded-full bg-[#0D2347] animate-pulse"></span>
 <span class="text-sm font-headline font-black uppercase tracking-[0.15em] text-[#0D2347]">Now Partnering with Local Service Pros</span>
 </div>
-<h1 id="hero-h1" class="text-6xl md:text-9xl font-headline font-bold uppercase tracking-[-0.04em] leading-[0.9] mb-8">
+<h1 class="text-6xl md:text-9xl font-headline font-bold uppercase tracking-[-0.04em] leading-[0.9] mb-8">
                     Never Miss <br/>
 <span class="text-transparent" style="-webkit-text-stroke: 1.5px #20C9B0;">A Lead Again</span>
 </h1>
@@ -438,10 +438,10 @@ Submitting this form sends your info to <span class="text-secondary">fabianovell
 <span class="material-symbols-outlined text-primary">schedule</span>
 <span class="text-white font-headline uppercase font-bold tracking-tighter">24h Guaranteed Response</span>
 </div>
-<div class="flex items-center gap-4">
+<a href="mailto:fabianomatos@fmmarketingsc.com" class="flex items-center gap-4 group">
 <span class="material-symbols-outlined text-primary">mail</span>
-<span class="text-white font-headline uppercase font-bold tracking-tighter">fabianovelloso1234@gmail.com</span>
-</div>
+<span class="text-white font-headline uppercase font-bold tracking-tighter group-hover:text-primary transition-colors">fabianomatos@fmmarketingsc.com</span>
+</a>
 <a href="tel:8433270032" class="flex items-center gap-4 group">
 <span class="material-symbols-outlined text-primary">phone</span>
 <span class="text-white font-headline uppercase font-bold tracking-tighter group-hover:text-primary transition-colors">843-327-0032</span>
@@ -1177,7 +1177,7 @@ s0.parentNode.insertBefore(s1,s0);
             const reply = await askAI('chat', { messages: [...chatHistory] });
             document.getElementById(typingId)?.remove();
 
-            const aiText = reply || "I'm having trouble right now. Please call us at 843-327-0032 or email fabianovelloso1234@gmail.com — we'll get back to you fast!";
+            const aiText = reply || "I'm having trouble right now. Please call us at 843-327-0032 or email fabianomatos@fmmarketingsc.com — we'll get back to you fast!";
             addChatMessage('ai', aiText);
             chatHistory.push({ role: 'assistant', content: aiText });
 
