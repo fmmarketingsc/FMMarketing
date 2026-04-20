@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en"><head>
 <meta charset="utf-8"/>
@@ -110,11 +110,6 @@
             0%   { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
-        .pricing-locked {
-            filter: blur(12px);
-            pointer-events: none;
-            user-select: none;
-        }
         .orange-glow {
             background: radial-gradient(circle at center, rgba(32, 201, 176, 0.1) 0%, transparent 70%);
         }
@@ -145,7 +140,7 @@
             border-left: 3px solid #20C9B0;
         }
 
-        /* ── Light-theme text corrections ──────────────────────────── */
+        /* â”€â”€ Light-theme text corrections â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         /* Makes text-white dark on light section backgrounds           */
         section .text-white, nav .text-white { color: #0D2347; }
         /* Restore white text where dark backgrounds are intentional    */
@@ -159,7 +154,7 @@
         button.bg-primary { color: white !important; }
         /* Nav phone link stays teal */
         nav a[href^="tel"] { color: #20C9B0 !important; }
-        /* Survey modal — smooth scroll on iOS */
+        /* Survey modal â€” smooth scroll on iOS */
         #welcome-survey {
             -webkit-overflow-scrolling: touch;
             overscroll-behavior: contain;
@@ -201,7 +196,7 @@
         <span class="text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary">Welcome</span>
     </div>
     <h2 class="text-3xl font-headline font-bold uppercase tracking-tighter mb-2 leading-tight">Quick question <br/>before you explore</h2>
-    <p class="text-secondary text-sm mb-8">Help us point you in the right direction — takes 20 seconds.</p>
+    <p class="text-secondary text-sm mb-8">Help us point you in the right direction â€” takes 20 seconds.</p>
     <form class="space-y-6" id="survey-form" onsubmit="event.preventDefault(); submitSurvey(this);">
         <div class="space-y-2">
             <label class="text-xs font-headline font-bold uppercase text-secondary">What best describes you?</label>
@@ -231,11 +226,11 @@
             </select>
         </div>
         <div class="space-y-2">
-            <label class="text-xs font-headline font-bold uppercase text-secondary">Email Address <span class="text-surface-variant normal-case">(optional — we'll send you our solutions guide)</span></label>
+            <label class="text-xs font-headline font-bold uppercase text-secondary">Email Address <span class="text-surface-variant normal-case">(optional â€” we'll send you our solutions guide)</span></label>
             <input name="email" type="email" placeholder="you@example.com" class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors"/>
         </div>
         <div class="space-y-2">
-            <label class="text-xs font-headline font-bold uppercase text-secondary">Phone Number <span class="text-surface-variant normal-case">(optional — we'll call you first)</span></label>
+            <label class="text-xs font-headline font-bold uppercase text-secondary">Phone Number <span class="text-surface-variant normal-case">(optional â€” we'll call you first)</span></label>
             <input name="phone" type="tel" placeholder="(843) 000-0000" class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors"/>
         </div>
         <div class="flex gap-3 pt-2">
@@ -243,37 +238,6 @@
             <button type="button" onclick="closeWelcomeSurvey()" class="px-6 border-2 border-outline-variant text-secondary font-headline font-bold uppercase hover:border-primary hover:text-primary transition-all">Skip</button>
         </div>
     </form>
-</div>
-</div>
-<!-- Pricing Modal -->
-<div class="fixed inset-0 z-[100] hidden items-center justify-center p-4" id="pricing-modal">
-<div class="absolute inset-0 bg-background/80 backdrop-blur-sm" onclick="closePricingModal()"></div>
-<div class="relative w-full max-w-md bg-surface-container-low border-2 border-primary-container p-8 shadow-2xl">
-<button class="absolute top-4 right-4 text-secondary hover:text-primary transition-colors" onclick="closePricingModal()">
-<span class="material-symbols-outlined">close</span>
-</button>
-<div class="mb-8">
-<h2 class="text-3xl font-headline font-bold uppercase tracking-tighter mb-2">Unlock Our <span class="text-primary">Pricing Plans</span></h2>
-<p class="text-secondary text-sm">Enter your details to view our full agency pricing and service ecosystem.</p>
-</div>
-<form class="space-y-6" id="pricing-form" onsubmit="event.preventDefault(); unlockPricing();">
-<div class="space-y-2">
-<label class="text-xs font-headline font-bold uppercase text-secondary">Full Name</label>
-<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5]" id="pf-name" placeholder="John Doe" required="" type="text"/>
-</div>
-<div class="space-y-2">
-<label class="text-xs font-headline font-bold uppercase text-secondary">Email Address</label>
-<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5]" id="pf-email" placeholder="john@example.com" required="" type="email"/>
-</div>
-<div class="space-y-2">
-<label class="text-xs font-headline font-bold uppercase text-secondary">Phone Number <span class="text-surface-variant normal-case">(optional)</span></label>
-<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5]" id="pf-phone" placeholder="(843) 000-0000" type="tel"/>
-</div>
-<div class="text-[10px] text-surface-variant uppercase font-bold text-center">
-Submitting this form sends your info to <span class="text-secondary">fabianomatos@fmmarketingsc.com</span>
-</div>
-<button class="w-full bg-primary-container text-white font-headline font-bold uppercase py-4 tracking-widest hover:bg-primary transition-all" id="pricing-submit-btn" type="submit">Unlock Pricing Now</button>
-</form>
 </div>
 </div>
 <!-- TopNavBar -->
@@ -285,7 +249,6 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 <div class="hidden md:flex items-center gap-8">
 <a class="text-[#0D2347] hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold" href="#services">Services</a>
 <a class="text-[#0D2347] hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold" href="#how-it-works">How It Works</a>
-<a class="text-[#0D2347] hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold cursor-pointer" onclick="openPricingModal()">Pricing</a>
 <a class="text-[#0D2347] hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold" href="#contact">Contact</a>
 <a href="https://www.instagram.com/fmmarketingsc/?hl=en" target="_blank" rel="noopener" class="hover:text-primary transition-colors duration-100" title="Follow us on Instagram">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#0D2347] hover:text-primary transition-colors"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -295,7 +258,7 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
     843-327-0032
 </a>
 </div>
-<button class="bg-primary-container text-white px-6 py-3 font-headline font-bold uppercase tracking-tighter transition-all duration-100 active:scale-90 hover:bg-primary" onclick="openPricingModal()">
+<button class="bg-primary-container text-white px-6 py-3 font-headline font-bold uppercase tracking-tighter transition-all duration-100 active:scale-90 hover:bg-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
     Get Started Free
 </button>
 </div>
@@ -490,7 +453,7 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 <img alt="Friendly contractor" class="relative w-full grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFJBHbOsrGUY1plg0RACReXwja4cDYDch3puZKqHGLRadVAnpH76qzmbERUEvjS__QxslnmQpTA14UHYZW_u2lDnsRZ-9-x9uk0yvKftROT_-ctANiLf88C4_wKYS7xifBBzLSljFd2BYbnm9yM_u6OqVLEDOgeruo8S9iQMsVsVLJdwBsSTZNhbYfe2Jkfgc6LKKpSOxHgpdcIjExK-c360t1G1gsaljBIfqi9FLR0ngo_33sYBoXKZxAAo8G8mpi05MdsNNgOOFc"/>
 <div class="absolute bottom-8 -right-8 bg-background border-2 border-primary-container p-6 max-w-xs shadow-2xl hidden md:block">
 <p class="text-sm italic text-on-background font-medium">"Finally, an agency that understands I'd rather be on the tools than on the phone."</p>
-<p class="mt-4 text-[10px] uppercase tracking-widest font-bold text-primary">— David K., HVAC Specialist</p>
+<p class="mt-4 text-[10px] uppercase tracking-widest font-bold text-primary">â€” David K., HVAC Specialist</p>
 </div>
 </div>
 </div>
@@ -573,64 +536,6 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 </div>
 </div>
 </section>
-<!-- Pricing Section -->
-<section class="relative py-32 bg-surface" id="pricing">
-<!-- Locked Overlay -->
-<div class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-background/60 backdrop-blur-xl" id="pricing-overlay">
-<div class="text-center p-12 bg-surface-container-low border-2 border-primary/20 max-w-lg shadow-[0_0_50px_rgba(255,77,0,0.1)]">
-<span class="material-symbols-outlined text-primary text-7xl mb-6">lock_open</span>
-<h2 class="text-4xl font-headline font-bold uppercase tracking-tighter mb-6">Pricing Plans Locked</h2>
-<p class="text-secondary mb-8 leading-relaxed">Access our exclusive competitive pricing packages and AI engine deployment plans by requesting access.</p>
-<button class="bg-primary-container text-white font-headline font-bold uppercase px-12 py-5 tracking-widest hover:bg-primary transition-all shadow-lg shadow-primary-container/20" onclick="openPricingModal()">Unlock Access</button>
-</div>
-</div>
-<div class="container mx-auto px-8 pricing-locked" id="pricing-content">
-<div class="text-center mb-16">
-<h2 class="text-5xl md:text-7xl font-headline font-bold uppercase tracking-tighter mb-6">No Hidden Fees. <br/>Just <span class="text-primary-container">Results.</span></h2>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
-<!-- Starter -->
-<div class="bg-surface-container-low p-12 border border-outline-variant/20 flex flex-col">
-<h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-2">Starter</h3>
-<div class="text-5xl font-headline font-bold text-primary-container mb-8">$497<span class="text-lg text-secondary">/mo</span></div>
-<ul class="space-y-4 mb-12 flex-grow">
-<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Conversion Landing Page</li>
-<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Basic AI Chat Agent</li>
-<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> SMS Lead Alerts</li>
-<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Standard Support</li>
-</ul>
-<button class="w-full border-2 border-primary text-primary font-headline font-bold uppercase py-4 hover:bg-primary hover:text-white transition-all" onclick="openPricingModal()">Choose Starter</button>
-</div>
-<!-- Growth (Featured) -->
-<div class="bg-surface-container-highest p-12 border-x-0 border-y-4 lg:border-y-0 lg:border-x-4 border-primary-container flex flex-col relative z-10 scale-105 shadow-2xl shadow-primary-container/20">
-<div class="absolute top-0 right-0 bg-primary-container text-white px-4 py-1 text-xs font-headline font-bold uppercase">Most Popular</div>
-<h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-2">Growth</h3>
-<div class="text-5xl font-headline font-bold text-primary-container mb-8">$897<span class="text-lg text-secondary">/mo</span></div>
-<ul class="space-y-4 mb-12 flex-grow">
-<li class="flex items-center gap-3 text-sm font-bold"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Multi-page Performance Site</li>
-<li class="flex items-center gap-3 text-sm font-bold"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Advanced AI Voice + Chat</li>
-<li class="flex items-center gap-3 text-sm font-bold"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Appointment Booking Engine</li>
-<li class="flex items-center gap-3 text-sm font-bold"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Local SEO Power Pack</li>
-<li class="flex items-center gap-3 text-sm font-bold"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Priority Support</li>
-</ul>
-<button class="w-full bg-primary-container text-white font-headline font-bold uppercase py-4 hover:bg-primary transition-all" onclick="openPricingModal()">Get Started Now</button>
-</div>
-<!-- Dominate -->
-<div class="bg-surface-container-low p-12 border border-outline-variant/20 flex flex-col">
-<h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-2">Dominate</h3>
-<div class="text-5xl font-headline font-bold text-primary-container mb-8">$1497<span class="text-lg text-secondary">/mo</span></div>
-<ul class="space-y-4 mb-12 flex-grow">
-<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Full Authority Ecosystem</li>
-<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Unlimited AI Call Credits</li>
-<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Full Ads Management</li>
-<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Weekly Strategy Calls</li>
-<li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Custom CRM Integration</li>
-</ul>
-<button class="w-full border-2 border-primary text-primary font-headline font-bold uppercase py-4 hover:bg-primary hover:text-white transition-all" onclick="openPricingModal()">Go Professional</button>
-</div>
-</div>
-</div>
-</section>
 <!-- Why Choose Us -->
 <section class="py-32 bg-surface">
 <div class="container mx-auto px-8">
@@ -675,7 +580,7 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 <div class="mb-16">
 <span class="text-xs font-headline font-bold uppercase tracking-[0.25em] text-primary mb-4 block">What We Build For You</span>
 <h2 class="text-5xl md:text-7xl font-headline font-bold uppercase tracking-tighter mb-4">Full-Stack <span class="text-primary-container">Dominance</span></h2>
-<p class="text-secondary text-xl max-w-2xl">Every service is built to work together as one growth engine — not a collection of disconnected tools.</p>
+<p class="text-secondary text-xl max-w-2xl">Every service is built to work together as one growth engine â€” not a collection of disconnected tools.</p>
 </div>
 
 <!-- Top 2 featured services -->
@@ -689,7 +594,7 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 <h3 class="text-2xl font-headline font-bold uppercase tracking-tighter">Website Design & Development</h3>
 </div>
 </div>
-<p class="text-secondary mb-6 leading-relaxed">Your website is your #1 salesperson — it works 24/7 and never calls in sick. We build custom, mobile-first sites specifically engineered to convert local traffic into booked jobs. No templates, no page builders — every site is hand-coded for speed and performance.</p>
+<p class="text-secondary mb-6 leading-relaxed">Your website is your #1 salesperson â€” it works 24/7 and never calls in sick. We build custom, mobile-first sites specifically engineered to convert local traffic into booked jobs. No templates, no page builders â€” every site is hand-coded for speed and performance.</p>
 <ul class="space-y-3">
 <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Custom design matched to your brand</li>
 <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Mobile-first & lightning fast load times</li>
@@ -708,12 +613,12 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 <h3 class="text-2xl font-headline font-bold uppercase tracking-tighter">AI Live Chat Agent</h3>
 </div>
 </div>
-<p class="text-secondary mb-6 leading-relaxed">Every visitor who lands on your site is a potential job. Our AI chat agent greets them instantly, asks the right qualifying questions, captures their contact info, and books appointments — all without you lifting a finger. Trained specifically on your business, services, and pricing.</p>
+<p class="text-secondary mb-6 leading-relaxed">Every visitor who lands on your site is a potential job. Our AI chat agent greets them instantly, asks the right qualifying questions, captures their contact info, and books appointments â€” all without you lifting a finger. Trained specifically on your business, services, and pricing.</p>
 <ul class="space-y-3">
-<li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Instant response — no customer left waiting</li>
+<li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Instant response â€” no customer left waiting</li>
 <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Qualifies leads with custom questions</li>
 <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Books appointments into your calendar</li>
-<li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Bilingual — English & Spanish support</li>
+<li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Bilingual â€” English & Spanish support</li>
 <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>CRM integration & lead notifications</li>
 </ul>
 </div>
@@ -730,11 +635,11 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 <h3 class="text-3xl font-headline font-bold uppercase tracking-tighter text-white">AI Voice Agent</h3>
 </div>
 </div>
-<p class="text-white/80 leading-relaxed">Missing a call means losing a job to your competitor. Our AI Voice Agent answers every single call — day or night, weekend or holiday — in a natural, human-sounding voice. It handles the conversation, qualifies the lead, and schedules the appointment while you're on a job site or asleep.</p>
+<p class="text-white/80 leading-relaxed">Missing a call means losing a job to your competitor. Our AI Voice Agent answers every single call â€” day or night, weekend or holiday â€” in a natural, human-sounding voice. It handles the conversation, qualifies the lead, and schedules the appointment while you're on a job site or asleep.</p>
 </div>
 <ul class="space-y-4">
 <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Answers inbound calls 24/7/365</li>
-<li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Human-sounding voice — no robotic feel</li>
+<li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Human-sounding voice â€” no robotic feel</li>
 <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Qualifies the lead on the call</li>
 <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Schedules & confirms appointments</li>
 <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Call recordings & transcripts sent to you</li>
@@ -743,7 +648,7 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 </div>
 </div>
 
-<!-- AI Social Media — full width featured -->
+<!-- AI Social Media â€” full width featured -->
 <div class="bg-primary mb-8 p-10 group">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 <div>
@@ -754,10 +659,10 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 <h3 class="text-3xl font-headline font-bold uppercase tracking-tighter text-white">AI Social Media Counseling</h3>
 </div>
 </div>
-<p class="text-white/85 leading-relaxed">Your social media runs itself — every single day. Our AI generates, schedules, and publishes videos, reels, stories, and posts across all your platforms on autopilot. We also provide 1-on-1 strategy counseling so you understand what's working, why it's working, and how to turn your audience into paying customers. You stay focused on your trade. We keep your brand visible and growing.</p>
+<p class="text-white/85 leading-relaxed">Your social media runs itself â€” every single day. Our AI generates, schedules, and publishes videos, reels, stories, and posts across all your platforms on autopilot. We also provide 1-on-1 strategy counseling so you understand what's working, why it's working, and how to turn your audience into paying customers. You stay focused on your trade. We keep your brand visible and growing.</p>
 </div>
 <ul class="space-y-4">
-<li class="flex items-center gap-3 text-sm text-white/85"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Daily AI-generated posts — every platform, every day</li>
+<li class="flex items-center gap-3 text-sm text-white/85"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Daily AI-generated posts â€” every platform, every day</li>
 <li class="flex items-center gap-3 text-sm text-white/85"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Short-form video & Reels created by AI (FB, IG, TikTok)</li>
 <li class="flex items-center gap-3 text-sm text-white/85"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>AI-written captions, hashtags & scheduling</li>
 <li class="flex items-center gap-3 text-sm text-white/85"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Monthly 1-on-1 strategy counseling session</li>
@@ -884,7 +789,7 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 </button>
 <div class="faq-content bg-[#E8F4FF]">
 <div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#2D5F8A] leading-relaxed">
-                            Fast. Most websites are fully live within 48 hours of your strategy call. The AI chat agent goes live at the same time as your website. The AI voice agent is typically active within 72 hours. We handle everything — you just need to approve the final design before we launch.
+                            Fast. Most websites are fully live within 48 hours of your strategy call. The AI chat agent goes live at the same time as your website. The AI voice agent is typically active within 72 hours. We handle everything â€” you just need to approve the final design before we launch.
                         </div>
 </div>
 </div>
@@ -896,7 +801,7 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 </button>
 <div class="faq-content bg-[#E8F4FF]">
 <div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#2D5F8A] leading-relaxed">
-                            Our AI agents connect directly with your existing tools. We integrate with Google Calendar for automatic appointment booking, CRM platforms like GoHighLevel and HubSpot to log every lead, SMS and email notification systems so you hear about every inquiry the moment it happens, and Facebook and Google Ads platforms to track which ads are driving real leads. We set it all up for you — no technical knowledge required on your end.
+                            Our AI agents connect directly with your existing tools. We integrate with Google Calendar for automatic appointment booking, CRM platforms like GoHighLevel and HubSpot to log every lead, SMS and email notification systems so you hear about every inquiry the moment it happens, and Facebook and Google Ads platforms to track which ads are driving real leads. We set it all up for you â€” no technical knowledge required on your end.
                         </div>
 </div>
 </div>
@@ -908,7 +813,7 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 </button>
 <div class="faq-content bg-[#E8F4FF]">
 <div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#2D5F8A] leading-relaxed">
-                            Every business is different so we build custom packages rather than locking you into a one-size-fits-all price. Packages start from $497/mo. The best way to find out what your business needs and what it will cost is to book a free 15-minute strategy call — no pressure, no commitment, just an honest conversation.
+                            Every business is different so we build custom packages rather than locking you into a one-size-fits-all price. Packages start from $497/mo. The best way to find out what your business needs and what it will cost is to book a free 15-minute strategy call â€” no pressure, no commitment, just an honest conversation.
                         </div>
 </div>
 </div>
@@ -948,7 +853,6 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 <div class="flex flex-wrap justify-center gap-6">
 <a class="text-blue-200 hover:text-white transition-colors" href="#services">Services</a>
 <a class="text-blue-200 hover:text-white transition-colors" href="#how-it-works">How It Works</a>
-<a class="text-blue-200 hover:text-white transition-colors cursor-pointer" onclick="openPricingModal()">Pricing</a>
 <a class="text-blue-200 hover:text-white transition-colors" href="#contact">Contact</a>
 <a href="https://www.instagram.com/fmmarketingsc/?hl=en" target="_blank" rel="noopener" class="text-blue-200 hover:text-[#20C9B0] transition-colors flex items-center gap-1.5">
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -958,7 +862,7 @@ Submitting this form sends your info to <span class="text-secondary">fabianomato
 </div>
 <div class="flex flex-col items-center gap-1.5">
     <a href="tel:8433270032" class="text-[#20C9B0] font-headline font-bold uppercase tracking-tighter hover:text-white transition-colors">843-327-0032</a>
-    <div class="text-blue-300 text-xs">© 2026 FMMarketing. Built with AI. Powered by results.</div>
+    <div class="text-blue-300 text-xs">Â© 2026 FMMarketing. Built with AI. Powered by results.</div>
 </div>
 </div>
 </footer>
@@ -1026,11 +930,11 @@ s0.parentNode.insertBefore(s1,s0);
 <!--End of Tawk.to Script-->
 
 <script>
-        // ─────────────────────────────────────────────────────────────
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         // EMAIL CONFIG
-        // 1. Go to https://formspree.io → sign up → New Form
+        // 1. Go to https://formspree.io â†’ sign up â†’ New Form
         // 2. Replace YOUR_FORM_ID below with your actual form ID
-        // ─────────────────────────────────────────────────────────────
+        // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xojyapee';
 
         async function sendEmail(payload) {
@@ -1057,7 +961,7 @@ s0.parentNode.insertBefore(s1,s0);
             }
         }
 
-        // ── Scroll Lock (WebView + iOS safe) ──
+        // â”€â”€ Scroll Lock (WebView + iOS safe) â”€â”€
         let _scrollY = 0;
         function lockScroll() {
             _scrollY = window.scrollY || 0;
@@ -1068,7 +972,7 @@ s0.parentNode.insertBefore(s1,s0);
             window.scrollTo(0, _scrollY);
         }
 
-        // ── AI helper ──
+        // â”€â”€ AI helper â”€â”€
         function escapeHtml(str) {
             return String(str)
                 .replace(/&/g,'&amp;').replace(/</g,'&lt;')
@@ -1088,7 +992,7 @@ s0.parentNode.insertBefore(s1,s0);
             } catch (e) { return null; }
         }
 
-        // ── Welcome Survey ──
+        // â”€â”€ Welcome Survey â”€â”€
         function closeWelcomeSurvey() {
             const el = document.getElementById('welcome-survey');
             el.style.transition = 'opacity 0.3s ease';
@@ -1115,7 +1019,7 @@ s0.parentNode.insertBefore(s1,s0);
             setButtonState(btn, true);
 
             const emailPayload = {
-                _subject: '🔔 New Survey Lead — FMMarketing',
+                _subject: 'ðŸ”” New Survey Lead â€” FMMarketing',
                 Source: 'Welcome Survey',
                 Role: role,
                 Challenge: challenge,
@@ -1144,44 +1048,7 @@ s0.parentNode.insertBefore(s1,s0);
 
         window.addEventListener('load', function () { lockScroll(); });
 
-        // ── Pricing Modal ──
-        function openPricingModal() {
-            document.getElementById('pricing-modal').classList.remove('hidden');
-            document.getElementById('pricing-modal').classList.add('flex');
-            lockScroll();
-        }
-
-        function closePricingModal() {
-            document.getElementById('pricing-modal').classList.add('hidden');
-            document.getElementById('pricing-modal').classList.remove('flex');
-            unlockScroll();
-        }
-
-        async function unlockPricing() {
-            const name  = document.getElementById('pf-name').value;
-            const email = document.getElementById('pf-email').value;
-            const phone = document.getElementById('pf-phone').value;
-            const btn   = document.getElementById('pricing-submit-btn');
-            setButtonState(btn, true);
-            const ok = await sendEmail({
-                _subject: '🔥 Pricing Unlock Request — FMMarketing',
-                Source: 'Pricing Modal',
-                Name: name,
-                Email: email,
-                Phone: phone || 'Not provided'
-            });
-            if (!ok) {
-                setButtonState(btn, false, 'Error — Try Again');
-                return;
-            }
-            setButtonState(btn, false, 'Unlocked!');
-            document.getElementById('pricing-overlay').style.display = 'none';
-            document.getElementById('pricing-content').classList.remove('pricing-locked');
-            closePricingModal();
-            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // ── Contact Form ──
+        // â”€â”€ Contact Form â”€â”€
         async function submitContact(form) {
             const data = new FormData(form);
             const btn  = document.getElementById('contact-submit-btn');
@@ -1192,7 +1059,7 @@ s0.parentNode.insertBefore(s1,s0);
 
             const [ok, aiReply] = await Promise.all([
                 sendEmail({
-                    _subject: '📋 New Strategy Request — FMMarketing',
+                    _subject: 'ðŸ“‹ New Strategy Request â€” FMMarketing',
                     Source: 'Contact Form',
                     Name: name,
                     Business: business || 'Not provided',
@@ -1204,7 +1071,7 @@ s0.parentNode.insertBefore(s1,s0);
             ]);
 
             if (ok) {
-                setButtonState(btn, false, '✓ Request Sent!');
+                setButtonState(btn, false, 'âœ“ Request Sent!');
                 if (aiReply) {
                     const replyEl = document.getElementById('contact-ai-reply');
                     if (replyEl) {
@@ -1214,11 +1081,11 @@ s0.parentNode.insertBefore(s1,s0);
                 }
                 form.reset();
             } else {
-                setButtonState(btn, false, 'Error — Try Again');
+                setButtonState(btn, false, 'Error â€” Try Again');
             }
         }
 
-        // ── AI Chat Widget ──
+        // â”€â”€ AI Chat Widget â”€â”€
         let chatOpen = false;
         const chatHistory = [];
 
@@ -1245,7 +1112,7 @@ s0.parentNode.insertBefore(s1,s0);
                 html = `<div class="flex justify-end" id="${id}"><div class="bg-primary-container text-white px-3 py-2 text-sm leading-relaxed" style="max-width:85%">${escapeHtml(text)}</div></div>`;
             } else {
                 const body = isTyping
-                    ? `<span style="animation:pulse 1s infinite;display:inline-block">•••</span>`
+                    ? `<span style="animation:pulse 1s infinite;display:inline-block">â€¢â€¢â€¢</span>`
                     : escapeHtml(text);
                 html = `<div class="flex gap-2" id="${id}"><div class="w-7 h-7 bg-primary-container flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-white" style="font-size:14px">smart_toy</span></div><div class="bg-surface-container-low px-3 py-2 text-sm text-on-surface leading-relaxed" style="max-width:85%">${body}</div></div>`;
             }
@@ -1269,7 +1136,7 @@ s0.parentNode.insertBefore(s1,s0);
             const reply = await askAI('chat', { messages: [...chatHistory] });
             document.getElementById(typingId)?.remove();
 
-            const aiText = reply || "I'm having trouble right now. Please call us at 843-327-0032 or email fabianomatos@fmmarketingsc.com — we'll get back to you fast!";
+            const aiText = reply || "I'm having trouble right now. Please call us at 843-327-0032 or email fabianomatos@fmmarketingsc.com â€” we'll get back to you fast!";
             addChatMessage('ai', aiText);
             chatHistory.push({ role: 'assistant', content: aiText });
 
@@ -1285,7 +1152,7 @@ s0.parentNode.insertBefore(s1,s0);
             }
         }
 
-        // ── FAQ ──
+        // â”€â”€ FAQ â”€â”€
         function toggleFaq(button) {
             const currentItem = button.closest('.faq-item');
             const allItems = document.getElementById('faq-accordion').querySelectorAll('.faq-item');
