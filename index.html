@@ -9,6 +9,13 @@
 <link rel="icon" type="image/png" href="favicon.png"/>
 <link rel="apple-touch-icon" href="favicon.png"/>
 <title>FMMarketing | Never Miss A Lead Again</title>
+<meta property="og:title" content="FMMarketing | Never Miss A Lead Again"/>
+<meta property="og:description" content="AI-powered lead generation for local service businesses in South Carolina."/>
+<meta property="og:image" content="https://fmmarketingsc.com/logo-full.png"/>
+<meta property="og:url" content="https://fmmarketingsc.com"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://fmmarketingsc.com/logo-full.png"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Bebas+Neue&amp;family=Manrope:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -93,14 +100,12 @@
             opacity: 0.08;
         }
         .marquee {
+            display: flex;
+            width: max-content;
             white-space: nowrap;
-            overflow: hidden;
-            display: inline-block;
             -webkit-animation: marquee 20s linear infinite;
             animation: marquee 20s linear infinite;
             will-change: transform;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
         }
         @-webkit-keyframes marquee {
             0%   { -webkit-transform: translateX(0);    transform: translateX(0); }
@@ -189,53 +194,57 @@
     })();
 </script>
 <!-- Welcome Survey Modal -->
-<div class="fixed inset-0 z-[200] flex items-start md:items-center justify-center overflow-y-auto py-6 px-4" id="welcome-survey">
-<div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
-<div class="relative w-full max-w-lg bg-surface-container-low border-2 border-primary-container/40 p-6 md:p-10 shadow-[0_0_80px_rgba(32,201,176,0.15)] my-auto">
-    <div class="mb-2">
-        <span class="text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary">Welcome</span>
+<div class=”fixed inset-0 z-[200] flex items-center justify-center px-4” id=”welcome-survey” style=”display:none!important”>
+<div class=”absolute inset-0 bg-black/70 backdrop-blur-sm” onclick=”closeWelcomeSurvey()”></div>
+<div class=”relative w-full max-w-lg bg-surface-container-low border-2 border-primary-container/40 p-5 shadow-[0_0_80px_rgba(32,201,176,0.15)]”>
+    <!-- Close X -->
+    <button onclick=”closeWelcomeSurvey()” aria-label=”Close” class=”absolute top-3 right-3 w-8 h-8 flex items-center justify-center text-secondary hover:text-primary hover:bg-surface-container transition-colors”>
+        <span class=”material-symbols-outlined” style=”font-size:20px”>close</span>
+    </button>
+    <div class=”mb-1”>
+        <span class=”text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary”>Welcome</span>
     </div>
-    <h2 class="text-3xl font-headline font-bold uppercase tracking-tighter mb-2 leading-tight">Quick question <br/>before you explore</h2>
-    <p class="text-secondary text-sm mb-8">Help us point you in the right direction â€” takes 20 seconds.</p>
-    <form class="space-y-6" id="survey-form" onsubmit="event.preventDefault(); submitSurvey(this);">
-        <div class="space-y-2">
-            <label class="text-xs font-headline font-bold uppercase text-secondary">What best describes you?</label>
-            <div class="grid grid-cols-1 gap-3 mt-2">
-                <label class="flex items-center gap-3 p-4 bg-surface-container cursor-pointer border border-outline-variant/20 hover:border-primary/40 transition-colors group">
-                    <input type="radio" name="role" value="contractor" class="accent-primary" required/>
-                    <span class="text-sm font-headline font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">Contractor / Service Pro</span>
+    <h2 class=”text-2xl font-headline font-bold uppercase tracking-tighter mb-1 leading-tight”>Quick question <br/>before you explore</h2>
+    <p class=”text-secondary text-sm mb-4”>Help us point you in the right direction — takes 20 seconds.</p>
+    <form class=”space-y-3” id=”survey-form” onsubmit=”event.preventDefault(); submitSurvey(this);”>
+        <div>
+            <label class=”text-xs font-headline font-bold uppercase text-secondary”>What best describes you?</label>
+            <div class=”grid grid-cols-1 gap-2 mt-2”>
+                <label class=”flex items-center gap-3 p-2.5 bg-surface-container cursor-pointer border border-outline-variant/20 hover:border-primary/40 transition-colors group”>
+                    <input type=”radio” name=”role” value=”contractor” class=”accent-primary” required/>
+                    <span class=”text-sm font-headline font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors”>Contractor / Service Pro</span>
                 </label>
-                <label class="flex items-center gap-3 p-4 bg-surface-container cursor-pointer border border-outline-variant/20 hover:border-primary/40 transition-colors group">
-                    <input type="radio" name="role" value="business" class="accent-primary"/>
-                    <span class="text-sm font-headline font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">Small Business Owner</span>
+                <label class=”flex items-center gap-3 p-2.5 bg-surface-container cursor-pointer border border-outline-variant/20 hover:border-primary/40 transition-colors group”>
+                    <input type=”radio” name=”role” value=”business” class=”accent-primary”/>
+                    <span class=”text-sm font-headline font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors”>Small Business Owner</span>
                 </label>
-                <label class="flex items-center gap-3 p-4 bg-surface-container cursor-pointer border border-outline-variant/20 hover:border-primary/40 transition-colors group">
-                    <input type="radio" name="role" value="curious" class="accent-primary"/>
-                    <span class="text-sm font-headline font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors">Just Browsing</span>
+                <label class=”flex items-center gap-3 p-2.5 bg-surface-container cursor-pointer border border-outline-variant/20 hover:border-primary/40 transition-colors group”>
+                    <input type=”radio” name=”role” value=”curious” class=”accent-primary”/>
+                    <span class=”text-sm font-headline font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors”>Just Browsing</span>
                 </label>
             </div>
         </div>
-        <div class="space-y-2">
-            <label class="text-xs font-headline font-bold uppercase text-secondary">What's your biggest challenge right now?</label>
-            <select name="challenge" class="w-full bg-white border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 transition-colors" required>
-                <option value="" class="bg-white text-[#0D2347]" disabled selected>Select one...</option>
-                <option value="leads" class="bg-white text-[#0D2347]">Not getting enough leads</option>
-                <option value="followup" class="bg-white text-[#0D2347]">Missing calls / slow follow-up</option>
-                <option value="website" class="bg-white text-[#0D2347]">No website or outdated site</option>
-                <option value="scaling" class="bg-white text-[#0D2347]">Struggling to scale</option>
+        <div>
+            <label class=”text-xs font-headline font-bold uppercase text-secondary”>What's your biggest challenge right now?</label>
+            <select name=”challenge” class=”w-full bg-white border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-2 mt-1 transition-colors” required>
+                <option value=”” class=”bg-white text-[#0D2347]” disabled selected>Select one...</option>
+                <option value=”leads” class=”bg-white text-[#0D2347]”>Not getting enough leads</option>
+                <option value=”followup” class=”bg-white text-[#0D2347]”>Missing calls / slow follow-up</option>
+                <option value=”website” class=”bg-white text-[#0D2347]”>No website or outdated site</option>
+                <option value=”scaling” class=”bg-white text-[#0D2347]”>Struggling to scale</option>
             </select>
         </div>
-        <div class="space-y-2">
-            <label class="text-xs font-headline font-bold uppercase text-secondary">Email Address <span class="text-surface-variant normal-case">(optional â€” we'll send you our solutions guide)</span></label>
-            <input name="email" type="email" placeholder="you@example.com" class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors"/>
+        <div>
+            <label class=”text-xs font-headline font-bold uppercase text-secondary”>Email Address <span class=”text-surface-variant normal-case”>(optional — we'll send you our solutions guide)</span></label>
+            <input name=”email” type=”email” placeholder=”you@example.com” class=”w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-2 mt-1 placeholder:text-[#6B9CC5] transition-colors”/>
         </div>
-        <div class="space-y-2">
-            <label class="text-xs font-headline font-bold uppercase text-secondary">Phone Number <span class="text-surface-variant normal-case">(optional â€” we'll call you first)</span></label>
-            <input name="phone" type="tel" placeholder="(843) 000-0000" class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors"/>
+        <div>
+            <label class=”text-xs font-headline font-bold uppercase text-secondary”>Phone Number <span class=”text-surface-variant normal-case”>(optional — we'll call you first)</span></label>
+            <input name=”phone” type=”tel” placeholder=”(843) 000-0000” class=”w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-2 mt-1 placeholder:text-[#6B9CC5] transition-colors”/>
         </div>
-        <div class="flex gap-3 pt-2">
-            <button type="submit" class="flex-1 bg-primary-container text-white font-headline font-bold uppercase py-4 tracking-widest hover:bg-primary transition-all">Show Me Solutions</button>
-            <button type="button" onclick="closeWelcomeSurvey()" class="px-6 border-2 border-outline-variant text-secondary font-headline font-bold uppercase hover:border-primary hover:text-primary transition-all">Skip</button>
+        <div class=”flex gap-3 pt-1”>
+            <button type=”submit” class=”flex-1 bg-primary-container text-white font-headline font-bold uppercase py-3 tracking-widest hover:bg-primary transition-all”>Show Me Solutions</button>
+            <button type=”button” onclick=”closeWelcomeSurvey()” class=”flex-1 border-2 border-primary-container text-primary-container font-headline font-bold uppercase py-3 tracking-widest hover:bg-primary-container hover:text-white transition-all”>Skip</button>
         </div>
     </form>
 </div>
@@ -324,26 +333,26 @@
 <span class="text-sm font-headline font-black uppercase tracking-[0.15em] text-[#0D2347]">Now Partnering with Local Service Pros</span>
 </div>
 <h1 class="text-6xl md:text-9xl font-headline font-bold uppercase tracking-[-0.04em] leading-[0.9] mb-8">
-                    Never Miss <br/>
-<span class="text-transparent" style="-webkit-text-stroke: 1.5px #20C9B0;">A Lead Again</span>
+                    Websites & AI That Book Jobs<br/>
+<span class="text-transparent" style="-webkit-text-stroke: 1.5px #20C9B0;">While You're on the Roof</span>
 </h1>
 <p class="text-xl md:text-2xl text-secondary max-w-2xl mb-12 font-light leading-relaxed">
-                    Deploy hyper-intelligent AI agents that handle your sales, support, and scheduling 24/7. Built specifically for hardworking service businesses.
+                    We build websites, AI chat, and voice agents for HVAC, roofing, and contracting companies across the South Carolina Lowcountry. You work the job. We work the phone.
                 </p>
 <div class="flex flex-col md:flex-row gap-4 mb-20">
 <button class="bg-primary-container text-white text-lg font-headline font-bold uppercase px-10 py-5 tracking-tighter hover:bg-primary transition-all duration-200" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-                        Get Your Free Website
+                        See If We're a Fit — Free 15-Min Call
                     </button>
-<button class="border-2 border-primary text-primary text-lg font-headline font-bold uppercase px-10 py-5 tracking-tighter hover:bg-primary/10 transition-all duration-200" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-                        See How It Works
-                    </button>
+<a href="tel:8433270032" class="inline-flex items-center justify-center border-2 border-primary text-primary text-lg font-headline font-bold uppercase px-10 py-5 tracking-tighter hover:bg-primary/10 transition-all duration-200">
+                        Call Fabiano: 843-327-0032
+                    </a>
 </div>
-<a href="tel:8433270032" class="inline-flex items-center gap-3 mb-20 group">
-    <span class="w-10 h-10 flex items-center justify-center bg-primary-container/20 border border-primary/30 group-hover:bg-primary-container transition-all">
-        <span class="material-symbols-outlined text-primary" style="font-size:20px">phone</span>
-    </span>
-    <span class="font-headline font-bold uppercase tracking-tighter text-[#0D2347] group-hover:text-primary transition-colors">Call Us Now: <span class="text-primary">843-327-0032</span></span>
-</a>
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm border border-outline-variant/40 mb-12 text-xs font-headline uppercase tracking-widest text-secondary">
+<span title="English">🇺🇸</span>
+<span title="Portuguese">🇧🇷</span>
+<span title="Spanish">🇪🇸</span>
+<span>English · Português · Español spoken</span>
+</div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <div class="bg-surface-container-low/80 backdrop-blur-sm p-6 border-l-4 border-primary-container flex items-center gap-4 transition-transform hover:-translate-y-1">
 <span class="material-symbols-outlined text-primary text-3xl">hub</span>
@@ -372,7 +381,7 @@
 </section>
 <!-- Marquee Banner -->
 <div class="bg-primary-container py-4 border-y border-white/10 overflow-hidden relative z-20">
-<div class="marquee flex gap-12 items-center">
+<div class="marquee gap-12 items-center">
 <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">AI AGENTS READY</span>
 <span class="material-symbols-outlined text-white">bolt</span>
 <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">BOOST ROI BY 400%</span>
@@ -386,8 +395,38 @@
 <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">BOOST ROI BY 400%</span>
 <span class="material-symbols-outlined text-white">bolt</span>
 <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">24/7 SALES ENGINE</span>
+<span class="material-symbols-outlined text-white">bolt</span>
+<span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">NO MORE COLD CALLS</span>
+<span class="material-symbols-outlined text-white">bolt</span>
 </div>
 </div>
+<!-- Free Site Audit Section -->
+<section class="py-24 bg-surface-container-lowest relative">
+<div class="absolute inset-0 orange-glow pointer-events-none opacity-40"></div>
+<div class="container mx-auto px-8 relative">
+<div class="max-w-2xl mx-auto text-center mb-12">
+<span class="text-xs font-headline font-bold uppercase tracking-[0.25em] text-primary mb-4 block">Free for Any Local Business</span>
+<h2 class="text-4xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-none mb-6">Is Your Site Costing You Jobs?<br/><span class="text-primary-container">Find Out in 60 Seconds.</span></h2>
+<p class="text-secondary text-lg leading-relaxed">Enter your website URL and we'll send you a free audit showing exactly where you're losing leads — no sales pitch, just honest feedback from a local agency.</p>
+</div>
+<div class="max-w-xl mx-auto bg-surface-container-low/80 backdrop-blur-md p-10 border border-primary-container/10">
+<form class="space-y-6" id="audit-form" onsubmit="event.preventDefault(); submitAudit(this);">
+<input type="hidden" name="source" value="site_audit_request"/>
+<div class="space-y-2">
+<label class="text-xs font-headline font-bold uppercase text-secondary">Your Website URL</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors" name="url" placeholder="https://yoursite.com" type="url" required/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-headline font-bold uppercase text-secondary">Email Address</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors" name="email" placeholder="you@example.com" type="email" required/>
+</div>
+<button class="w-full bg-primary-container text-white font-headline font-bold uppercase py-5 tracking-widest hover:bg-primary transition-all shadow-xl shadow-primary-container/10" id="audit-submit-btn" type="submit">Send Me My Free Audit</button>
+<p class="text-center text-xs text-secondary">We'll review it personally within 24 hours. No spam, ever.</p>
+<div id="audit-success" class="hidden mt-2 p-4 bg-surface-container-low border-l-4 border-primary text-sm text-on-surface leading-relaxed"></div>
+</form>
+</div>
+</div>
+</section>
 <!-- Contact Section -->
 <section class="py-32 bg-surface border-b border-outline-variant/10 relative" id="contact">
 <div class="absolute inset-0 orange-glow pointer-events-none opacity-40"></div>
@@ -461,17 +500,26 @@
 <h2 class="text-5xl md:text-7xl font-headline font-bold uppercase tracking-tighter leading-none">The Human Side <br/>of <span class="text-primary-container">Automation</span></h2>
 <p class="text-secondary text-xl leading-relaxed">We don't just build bots; we build extensions of your personality. Our AI is designed to sound like your best employee, allowing you to focus on the craftsmanship that built your business.</p>
 <div class="flex flex-wrap gap-8">
-<div class="text-center">
-<div class="text-4xl font-headline font-bold text-primary-container mb-1">10k+</div>
-<div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Hours Saved</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">location_on</span>
+<div>
+<div class="font-headline font-bold uppercase tracking-tighter text-on-surface">Local to the Lowcountry</div>
+<div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Serving SC businesses</div>
 </div>
-<div class="text-center">
-<div class="text-4xl font-headline font-bold text-primary-container mb-1">2.4k</div>
-<div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Leads Captured</div>
 </div>
-<div class="text-center">
-<div class="text-4xl font-headline font-bold text-primary-container mb-1">98%</div>
-<div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Client Joy</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">timer</span>
+<div>
+<div class="font-headline font-bold uppercase tracking-tighter text-on-surface">48hr Launch Guarantee</div>
+<div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Live in 2 days or less</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-3xl">flag</span>
+<div>
+<div class="font-headline font-bold uppercase tracking-tighter text-on-surface">Built in Summerville, SC</div>
+<div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Proudly made in-house</div>
+</div>
 </div>
 </div>
 </div>
@@ -732,47 +780,6 @@
 </div>
 </div>
 </section>
-<!-- Testimonials -->
-<section class="py-32 bg-surface-container-lowest overflow-hidden">
-<div class="container mx-auto px-8">
-<h2 class="text-4xl font-headline font-bold uppercase tracking-tighter mb-16">Tested In The <span class="text-primary-container">Field</span></h2>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="bg-surface-container-low p-10 relative">
-<span class="material-symbols-outlined text-primary-container/20 text-8xl absolute top-4 right-4">format_quote</span>
-<p class="text-lg italic mb-8 relative z-10 text-on-surface">"FMMarketing literally saved my sanity. I used to spend my nights returning calls. Now the AI handles the quotes while I'm on a job site. Revenue is up 40%."</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary-container flex items-center justify-center font-bold font-headline text-white">MJ</div>
-<div>
-<div class="font-headline font-bold uppercase text-sm tracking-tighter">Mike Johnson</div>
-<div class="text-xs text-secondary uppercase">Johnson Plumbing</div>
-</div>
-</div>
-</div>
-<div class="bg-surface-container-low p-10 relative">
-<span class="material-symbols-outlined text-primary-container/20 text-8xl absolute top-4 right-4">format_quote</span>
-<p class="text-lg italic mb-8 relative z-10 text-on-surface">"The 48-hour launch was no joke. I had a new lead within 3 hours of going live. Best investment I've made in 10 years of business."</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary-container flex items-center justify-center font-bold font-headline text-white">SD</div>
-<div>
-<div class="font-headline font-bold uppercase text-sm tracking-tighter">Sarah Davis</div>
-<div class="text-xs text-secondary uppercase">Davis Roofing Co.</div>
-</div>
-</div>
-</div>
-<div class="bg-surface-container-low p-10 relative">
-<span class="material-symbols-outlined text-primary-container/20 text-8xl absolute top-4 right-4">format_quote</span>
-<p class="text-lg italic mb-8 relative z-10 text-on-surface">"The AI voice agent sounds so real my customers don't even know. It schedules everything and I just show up and work. Incredible tech."</p>
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-primary-container flex items-center justify-center font-bold font-headline text-white">RE</div>
-<div>
-<div class="font-headline font-bold uppercase text-sm tracking-tighter">Robert Evans</div>
-<div class="text-xs text-secondary uppercase">Evans Electric</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
 <!-- FAQ Section (Moved to Bottom) -->
 <section class="bg-[#F0F7FF] py-24 px-[5%]" id="faq">
 <div class="container mx-auto">
@@ -862,19 +869,16 @@
 </div>
 <div class="flex flex-col items-center gap-1.5">
     <a href="tel:8433270032" class="text-[#20C9B0] font-headline font-bold uppercase tracking-tighter hover:text-white transition-colors">843-327-0032</a>
-    <div class="text-blue-300 text-xs">Â© 2026 FMMarketing. Built with AI. Powered by results.</div>
+    <div class="text-blue-300 text-xs">Â© 2026 FMMarketing. Built in Summerville, SC. Serving the Lowcountry.</div>
 </div>
 </div>
 </footer>
 <!-- AI Chat Widget -->
 <div id="ai-chat-widget" class="hidden">
-  <!-- Chat toggle button -->
   <button id="ai-chat-btn" onclick="toggleChat()" class="fixed bottom-20 right-6 z-[150] w-14 h-14 bg-primary-container text-white flex items-center justify-center shadow-xl hover:bg-primary transition-all duration-200 active:scale-90" aria-label="Open AI Chat">
     <span class="material-symbols-outlined" id="chat-btn-icon" style="font-size:24px">chat</span>
   </button>
-  <!-- Chat panel -->
   <div id="ai-chat-panel" class="hidden fixed bottom-36 right-3 z-[150] bg-white border border-outline-variant/30 shadow-2xl" style="width:min(320px,calc(100vw - 1.5rem));height:440px;display:none;flex-direction:column">
-    <!-- Header -->
     <div class="bg-primary-container text-white px-4 py-3 flex items-center justify-between flex-shrink-0">
       <div class="flex items-center gap-2">
         <span class="w-2 h-2 bg-primary rounded-full" style="animation:pulse 1.5s infinite"></span>
@@ -884,7 +888,6 @@
         <span class="material-symbols-outlined" style="font-size:18px">close</span>
       </button>
     </div>
-    <!-- Messages -->
     <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3 bg-white">
       <div class="flex gap-2">
         <div class="w-7 h-7 bg-primary-container flex items-center justify-center flex-shrink-0">
@@ -895,7 +898,6 @@
         </div>
       </div>
     </div>
-    <!-- Input -->
     <div class="border-t border-outline-variant/20 px-3 pt-3 pb-2 flex gap-2 bg-white flex-shrink-0">
       <input id="chat-input" type="text" placeholder="Ask something..." autocomplete="off"
         class="flex-1 text-sm border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-on-surface p-1 bg-transparent placeholder:text-[#6B9CC5]"
@@ -904,7 +906,6 @@
         <span class="material-symbols-outlined" style="font-size:16px">send</span>
       </button>
     </div>
-    <!-- Human escalation -->
     <div class="px-3 pb-3 bg-white flex-shrink-0">
       <button onclick="escalateToHuman()" class="w-full text-xs text-secondary hover:text-primary transition-colors font-headline uppercase tracking-wide border border-outline-variant/30 py-2 hover:border-primary">
         Talk to a real person
@@ -913,21 +914,6 @@
   </div>
 </div>
 <style>@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}</style>
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-Tawk_API.onLoad = function() { Tawk_API.hideWidget(); };
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/69dc01ca41b0381c3a2fa26e/1jm1mdvh3';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
 
 <script>
         // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -993,20 +979,39 @@ s0.parentNode.insertBefore(s1,s0);
         }
 
         // â”€â”€ Welcome Survey â”€â”€
+        function setSurveyCookie() {
+            const exp = new Date();
+            exp.setDate(exp.getDate() + 30);
+            document.cookie = 'fm_survey_seen=1; expires=' + exp.toUTCString() + '; path=/; SameSite=Lax';
+        }
+
+        function hasSurveyCookie() {
+            return document.cookie.split(';').some(c => c.trim().startsWith('fm_survey_seen='));
+        }
+
         function closeWelcomeSurvey() {
+            setSurveyCookie();
             const el = document.getElementById('welcome-survey');
             el.style.transition = 'opacity 0.3s ease';
             el.style.opacity = '0';
             setTimeout(() => {
                 el.style.display = 'none';
                 unlockScroll();
-                // Show AI chat widget
                 document.getElementById('ai-chat-widget').classList.remove('hidden');
-                // Show Tawk.to for human escalation
-                if (typeof Tawk_API !== 'undefined' && Tawk_API.showWidget) {
-                    Tawk_API.showWidget();
-                }
             }, 300);
+        }
+
+        function showWelcomeSurvey() {
+            if (hasSurveyCookie()) {
+                document.getElementById('ai-chat-widget').classList.remove('hidden');
+                return;
+            }
+            const el = document.getElementById('welcome-survey');
+            el.style.removeProperty('display');
+            el.style.opacity = '0';
+            el.style.transition = 'opacity 0.4s ease';
+            lockScroll();
+            requestAnimationFrame(() => { el.style.opacity = '1'; });
         }
 
         async function submitSurvey(form) {
@@ -1046,9 +1051,38 @@ s0.parentNode.insertBefore(s1,s0);
             setTimeout(closeWelcomeSurvey, 3500);
         }
 
-        window.addEventListener('load', function () { lockScroll(); });
+        window.addEventListener('load', function () {
+            if (hasSurveyCookie()) {
+                document.getElementById('ai-chat-widget').classList.remove('hidden');
+            } else {
+                setTimeout(showWelcomeSurvey, 5000);
+            }
+        });
 
-        // â”€â”€ Contact Form â”€â”€
+        // -- Audit Form --
+        async function submitAudit(form) {
+            const data = new FormData(form);
+            const btn  = document.getElementById('audit-submit-btn');
+            setButtonState(btn, true);
+            const ok = await sendEmail({
+                _subject: '🔍 Free Site Audit Request — FMMarketing',
+                Source: 'site_audit_request',
+                URL: data.get('url'),
+                Email: data.get('email')
+            });
+            if (ok) {
+                setButtonState(btn, false, '✓ Audit Request Sent!');
+                const msg = document.getElementById('audit-success');
+                msg.textContent = “Got it! We'll personally review your site and send honest feedback within 24 hours.”;
+                msg.classList.remove('hidden');
+                form.querySelector('input[name=”url”]').value = '';
+                form.querySelector('input[name=”email”]').value = '';
+            } else {
+                setButtonState(btn, false, 'Error — Try Again');
+            }
+        }
+
+        // -- Contact Form --
         async function submitContact(form) {
             const data = new FormData(form);
             const btn  = document.getElementById('contact-submit-btn');
@@ -1145,11 +1179,7 @@ s0.parentNode.insertBefore(s1,s0);
         }
 
         function escalateToHuman() {
-            if (typeof Tawk_API !== 'undefined' && Tawk_API.maximize) {
-                Tawk_API.maximize();
-            } else {
-                window.location.href = 'tel:8433270032';
-            }
+            window.location.href = 'tel:8433270032';
         }
 
         // â”€â”€ FAQ â”€â”€
