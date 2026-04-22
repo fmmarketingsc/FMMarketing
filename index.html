@@ -429,9 +429,19 @@
 <label class="text-xs font-headline font-bold uppercase text-secondary">Email Address</label>
 <input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors" name="email" placeholder="you@example.com" type="email" required/>
 </div>
-<button class="w-full bg-primary-container text-white font-headline font-bold uppercase py-5 tracking-widest hover:bg-primary transition-all shadow-xl shadow-primary-container/10" id="audit-submit-btn" type="submit">Send Me My Free Audit</button>
-<p class="text-center text-xs text-secondary">We'll review it personally within 24 hours. No spam, ever.</p>
-<div id="audit-success" class="hidden mt-2 p-4 bg-surface-container-low border-l-4 border-primary text-sm text-on-surface leading-relaxed"></div>
+<button class="w-full bg-primary-container text-white font-headline font-bold uppercase py-5 tracking-widest hover:bg-primary transition-all shadow-xl shadow-primary-container/10" id="audit-submit-btn" type="submit">Analyze My Site Now</button>
+<p class="text-center text-xs text-secondary">AI reads your site and responds in under 30 seconds. No spam, ever.</p>
+<div id="audit-result" class="hidden mt-6 space-y-4">
+  <div id="audit-loading" class="hidden flex items-center gap-3 text-secondary text-sm py-4">
+    <svg class="animate-spin h-5 w-5 text-primary flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg>
+    <span>Reading your site and generating your audit…</span>
+  </div>
+  <div id="audit-output" class="hidden bg-surface-container border-l-4 border-primary p-6 text-sm text-on-surface leading-relaxed space-y-3"></div>
+  <div id="audit-cta" class="hidden text-center pt-2">
+    <p class="text-xs text-secondary mb-3">Want us to fix these? Book a free 15-min call.</p>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="bg-primary-container text-white font-headline font-bold uppercase px-8 py-3 tracking-widest hover:bg-primary transition-all text-sm">Book Your Free Call</button>
+  </div>
+</div>
 </form>
 </div>
 </div>
@@ -931,25 +941,61 @@
         });
 
         // -- Audit Form --
+        function renderAudit(text) {
+            // Convert **bold** headers and • bullets into styled HTML
+            return text
+                .split('\n')
+                .map(line => {
+                    line = line.trim();
+                    if (!line) return '';
+                    if (line.startsWith('**') && line.endsWith('**'))
+                        return `<p class=”font-headline font-bold uppercase tracking-tight text-on-surface text-xs mt-4 mb-1”>${escapeHtml(line.replace(/\*\*/g,''))}</p>`;
+                    if (line.startsWith('•'))
+                        return `<p class=”flex gap-2”><span class=”text-primary flex-shrink-0”>•</span><span>${escapeHtml(line.slice(1).trim())}</span></p>`;
+                    return `<p>${escapeHtml(line)}</p>`;
+                })
+                .join('');
+        }
+
         async function submitAudit(form) {
             const data = new FormData(form);
-            const btn  = document.getElementById('audit-submit-btn');
+            const url   = data.get('url') || '';
+            const email = data.get('email') || '';
+            const btn   = document.getElementById('audit-submit-btn');
+
             setButtonState(btn, true);
-            const ok = await sendEmail({
-                _subject: '🔍 Free Site Audit Request — FMMarketing',
-                Source: 'site_audit_request',
-                URL: data.get('url'),
-                Email: data.get('email')
-            });
-            if (ok) {
-                setButtonState(btn, false, '✓ Audit Request Sent!');
-                const msg = document.getElementById('audit-success');
-                msg.textContent = “Got it! We'll personally review your site and send honest feedback within 24 hours.”;
-                msg.classList.remove('hidden');
-                form.querySelector('input[name=”url”]').value = '';
-                form.querySelector('input[name=”email”]').value = '';
+            document.getElementById('audit-result').classList.remove('hidden');
+            document.getElementById('audit-loading').classList.remove('hidden');
+            document.getElementById('audit-output').classList.add('hidden');
+            document.getElementById('audit-cta').classList.add('hidden');
+
+            // Run AI audit and Formspree notification in parallel
+            const [auditRes] = await Promise.all([
+                fetch('/api/audit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url, email }),
+                }).then(r => r.json()).catch(() => null),
+                sendEmail({
+                    _subject: '🔍 Site Audit Request — FMMarketing',
+                    Source: 'site_audit_request',
+                    URL: url,
+                    Email: email || 'Not provided',
+                }),
+            ]);
+
+            document.getElementById('audit-loading').classList.add('hidden');
+
+            const output = document.getElementById('audit-output');
+            if (auditRes && auditRes.audit) {
+                output.innerHTML = renderAudit(auditRes.audit);
+                output.classList.remove('hidden');
+                document.getElementById('audit-cta').classList.remove('hidden');
+                setButtonState(btn, false, '✓ Audit Complete');
             } else {
-                setButtonState(btn, false, 'Error — Try Again');
+                output.innerHTML = `<p class=”text-secondary”>We couldn't reach your site right now — but we'll review it manually and email you within 24 hours.</p>`;
+                output.classList.remove('hidden');
+                setButtonState(btn, false, '✓ Request Sent');
             }
         }
 
