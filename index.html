@@ -175,7 +175,7 @@
 </head>
 <body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-white">
 <!-- Welcome Survey Modal -->
-<div class=”fixed inset-0 z-[200] flex items-center justify-center px-4” id=”welcome-survey” style=”display:none!important”>
+<div class=”fixed inset-0 z-[200] flex items-center justify-center px-4” id=”welcome-survey” style=”display:none”>
 <div class=”absolute inset-0 bg-black/70 backdrop-blur-sm” onclick=”closeWelcomeSurvey()”></div>
 <div class=”relative w-full max-w-lg bg-surface-container-low border-2 border-primary-container/40 p-5 shadow-[0_0_80px_rgba(32,201,176,0.15)]”>
     <!-- Close X -->
@@ -1027,11 +1027,12 @@
                 return;
             }
             const el = document.getElementById('welcome-survey');
-            el.style.removeProperty('display');
+            el.style.display = 'flex';
             el.style.opacity = '0';
             el.style.transition = 'opacity 0.4s ease';
             lockScroll();
-            requestAnimationFrame(() => { el.style.opacity = '1'; });
+            // Double rAF ensures the browser has painted display:flex before we animate opacity
+            requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = '1'; }));
         }
 
         async function submitSurvey(form) {
