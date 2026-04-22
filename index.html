@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en"><head>
 <meta charset="utf-8"/>
@@ -8,9 +8,10 @@
 <meta name="format-detection" content="telephone=no"/>
 <link rel="icon" type="image/png" href="favicon.png"/>
 <link rel="apple-touch-icon" href="favicon.png"/>
-<title>FMMarketing | Never Miss A Lead Again</title>
-<meta property="og:title" content="FMMarketing | Never Miss A Lead Again"/>
-<meta property="og:description" content="AI-powered lead generation for local service businesses in South Carolina."/>
+<title>FMMarketing | Websites & AI That Book Jobs — Summerville, SC</title>
+<meta name="description" content="FMMarketing builds websites, AI chat agents, and AI voice agents for HVAC, roofing, and contracting companies across the SC Lowcountry. 48hr launch. Local agency, Summerville SC."/>
+<meta property="og:title" content="FMMarketing | Websites & AI That Book Jobs — Summerville, SC"/>
+<meta property="og:description" content="Websites, AI chat, and voice agents for HVAC, roofing, and contractors in the SC Lowcountry. You work the job. We work the phone."/>
 <meta property="og:image" content="https://fmmarketingsc.com/logo-full.png"/>
 <meta property="og:url" content="https://fmmarketingsc.com"/>
 <meta property="og:type" content="website"/>
@@ -18,7 +19,7 @@
 <meta name="twitter:image" content="https://fmmarketingsc.com/logo-full.png"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Bebas+Neue&amp;family=Manrope:wght@400;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -93,6 +94,12 @@
 <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            /* Clamp to a square so raw text never overflows if font fails */
+            display: inline-block;
+            overflow: hidden;
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
         }
         .grid-texture {
             background-image: radial-gradient(circle, #20C9B0 1px, transparent 1px);
@@ -159,7 +166,7 @@
         button.bg-primary { color: white !important; }
         /* Nav phone link stays teal */
         nav a[href^="tel"] { color: #20C9B0 !important; }
-        /* Survey modal â€” smooth scroll on iOS */
+        /* Survey modal — smooth scroll on iOS */
         #welcome-survey {
             -webkit-overflow-scrolling: touch;
             overscroll-behavior: contain;
@@ -167,32 +174,6 @@
     </style>
 </head>
 <body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-white">
-<!-- In-App Browser Banner -->
-<div id="inapp-banner" class="hidden fixed bottom-0 left-0 right-0 z-[300] bg-[#0D2347] text-white px-5 py-4 flex items-center justify-between gap-4 shadow-2xl">
-    <div>
-        <p class="text-xs font-headline font-bold uppercase tracking-tight">For the best experience</p>
-        <p class="text-[11px] text-blue-200 mt-0.5">Open this page in Safari or Chrome</p>
-    </div>
-    <div class="flex items-center gap-3 flex-shrink-0">
-        <a id="inapp-open-btn" href="#" class="bg-[#20C9B0] text-[#0D2347] font-headline font-bold uppercase text-xs px-4 py-2">Open in Browser</a>
-        <button onclick="document.getElementById('inapp-banner').style.display='none'" class="text-blue-200 hover:text-white">
-            <span class="material-symbols-outlined" style="font-size:18px">close</span>
-        </button>
-    </div>
-</div>
-<script>
-    (function() {
-        var ua = navigator.userAgent || '';
-        var isInApp = /Instagram|FBAN|FBAV|Twitter|TikTok|LinkedInApp|Snapchat|Pinterest/i.test(ua);
-        if (isInApp) {
-            var banner = document.getElementById('inapp-banner');
-            banner.classList.remove('hidden');
-            banner.style.display = 'flex';
-            // Build an "open in browser" link using the current URL
-            document.getElementById('inapp-open-btn').href = window.location.href;
-        }
-    })();
-</script>
 <!-- Welcome Survey Modal -->
 <div class=”fixed inset-0 z-[200] flex items-center justify-center px-4” id=”welcome-survey” style=”display:none!important”>
 <div class=”absolute inset-0 bg-black/70 backdrop-blur-sm” onclick=”closeWelcomeSurvey()”></div>
@@ -263,7 +244,7 @@
 <a href="https://www.instagram.com/fmmarketingsc/?hl=en" target="_blank" rel="noopener" class="hover:text-primary transition-colors duration-100" title="Follow us on Instagram">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#0D2347] hover:text-primary transition-colors"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
 </a>
-<a href="tel:8433270032" class="flex items-center gap-2 text-primary font-headline font-bold uppercase tracking-tighter hover:text-[#0D2347] transition-colors duration-100" style="color:#20C9B0">
+<a href="tel:+18433270032" class="flex items-center gap-2 text-primary font-headline font-bold uppercase tracking-tighter hover:text-[#0D2347] transition-colors duration-100" style="color:#20C9B0">
     <span class="material-symbols-outlined" style="font-size:16px">phone</span>
     843-327-0032
 </a>
@@ -347,7 +328,7 @@
                     </button>
 <span class="text-xs text-secondary text-center">No obligation. We'll tell you in 15 min if we're a fit.</span>
 </div>
-<a href="tel:8433270032" class="inline-flex items-center justify-center border-2 border-primary text-primary text-lg font-headline font-bold uppercase px-10 py-5 tracking-tighter hover:bg-primary/10 transition-all duration-200">
+<a href="tel:+18433270032" class="inline-flex items-center justify-center border-2 border-primary text-primary text-lg font-headline font-bold uppercase px-10 py-5 tracking-tighter hover:bg-primary/10 transition-all duration-200">
                         Call Fabiano: 843-327-0032
                     </a>
 </div>
@@ -500,6 +481,7 @@
 <div class="max-w-xl mx-auto bg-surface-container-low/80 backdrop-blur-md p-10 border border-primary-container/10">
 <form class="space-y-6" id="audit-form" onsubmit="event.preventDefault(); submitAudit(this);">
 <input type="hidden" name="source" value="site_audit_request"/>
+<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"/>
 <div class="space-y-2">
 <label class="text-xs font-headline font-bold uppercase text-secondary">Your Website URL</label>
 <input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-3 placeholder:text-[#6B9CC5] transition-colors" name="url" placeholder="https://yoursite.com" type="url" required/>
@@ -532,7 +514,7 @@
 <span class="material-symbols-outlined text-primary">mail</span>
 <span class="text-white font-headline uppercase font-bold tracking-tighter group-hover:text-primary transition-colors">fabianomatos@fmmarketingsc.com</span>
 </a>
-<a href="tel:8433270032" class="flex items-center gap-4 group">
+<a href="tel:+18433270032" class="flex items-center gap-4 group">
 <span class="material-symbols-outlined text-primary">phone</span>
 <span class="text-white font-headline uppercase font-bold tracking-tighter group-hover:text-primary transition-colors">843-327-0032</span>
 </a>
@@ -540,6 +522,7 @@
 </div>
 <div class="bg-surface-container-low/80 backdrop-blur-md p-12 border border-primary-container/10">
 <form class="space-y-8" id="contact-form" onsubmit="event.preventDefault(); submitContact(this);">
+<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"/>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <div class="space-y-2">
 <label class="text-xs font-headline font-bold uppercase text-secondary">Full Name</label>
@@ -580,7 +563,7 @@
 <img alt="Friendly contractor" class="relative w-full grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFJBHbOsrGUY1plg0RACReXwja4cDYDch3puZKqHGLRadVAnpH76qzmbERUEvjS__QxslnmQpTA14UHYZW_u2lDnsRZ-9-x9uk0yvKftROT_-ctANiLf88C4_wKYS7xifBBzLSljFd2BYbnm9yM_u6OqVLEDOgeruo8S9iQMsVsVLJdwBsSTZNhbYfe2Jkfgc6LKKpSOxHgpdcIjExK-c360t1G1gsaljBIfqi9FLR0ngo_33sYBoXKZxAAo8G8mpi05MdsNNgOOFc"/>
 <div class="absolute bottom-8 -right-8 bg-background border-2 border-primary-container p-6 max-w-xs shadow-2xl hidden md:block">
 <p class="text-sm italic text-on-background font-medium">"Finally, an agency that understands I'd rather be on the tools than on the phone."</p>
-<p class="mt-4 text-[10px] uppercase tracking-widest font-bold text-primary">â€” David K., HVAC Specialist</p>
+<p class="mt-4 text-[10px] uppercase tracking-widest font-bold text-primary">— David K., HVAC Specialist</p>
 </div>
 </div>
 </div>
@@ -730,7 +713,7 @@
 <h3 class="text-2xl font-headline font-bold uppercase tracking-tighter">Website Design & Development</h3>
 </div>
 </div>
-<p class="text-secondary mb-6 leading-relaxed">Your website is your #1 salesperson â€” it works 24/7 and never calls in sick. We build custom, mobile-first sites specifically engineered to convert local traffic into booked jobs. No templates, no page builders â€” every site is hand-coded for speed and performance.</p>
+<p class="text-secondary mb-6 leading-relaxed">Your website is your #1 salesperson — it works 24/7 and never calls in sick. We build custom, mobile-first sites specifically engineered to convert local traffic into booked jobs. No templates, no page builders — every site is hand-coded for speed and performance.</p>
 <ul class="space-y-3">
 <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Custom design matched to your brand</li>
 <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Mobile-first & lightning fast load times</li>
@@ -749,12 +732,12 @@
 <h3 class="text-2xl font-headline font-bold uppercase tracking-tighter">AI Live Chat Agent</h3>
 </div>
 </div>
-<p class="text-secondary mb-6 leading-relaxed">Every visitor who lands on your site is a potential job. Our AI chat agent greets them instantly, asks the right qualifying questions, captures their contact info, and books appointments â€” all without you lifting a finger. Trained specifically on your business, services, and pricing.</p>
+<p class="text-secondary mb-6 leading-relaxed">Every visitor who lands on your site is a potential job. Our AI chat agent greets them instantly, asks the right qualifying questions, captures their contact info, and books appointments — all without you lifting a finger. Trained specifically on your business, services, and pricing.</p>
 <ul class="space-y-3">
-<li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Instant response â€” no customer left waiting</li>
+<li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Instant response — no customer left waiting</li>
 <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Qualifies leads with custom questions</li>
 <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Books appointments into your calendar</li>
-<li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Bilingual â€” English & Spanish support</li>
+<li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Bilingual — English & Spanish support</li>
 <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>CRM integration & lead notifications</li>
 </ul>
 </div>
@@ -771,11 +754,11 @@
 <h3 class="text-3xl font-headline font-bold uppercase tracking-tighter text-white">AI Voice Agent</h3>
 </div>
 </div>
-<p class="text-white/80 leading-relaxed">Missing a call means losing a job to your competitor. Our AI Voice Agent answers every single call â€” day or night, weekend or holiday â€” in a natural, human-sounding voice. It handles the conversation, qualifies the lead, and schedules the appointment while you're on a job site or asleep.</p>
+<p class="text-white/80 leading-relaxed">Missing a call means losing a job to your competitor. Our AI Voice Agent answers every single call — day or night, weekend or holiday — in a natural, human-sounding voice. It handles the conversation, qualifies the lead, and schedules the appointment while you're on a job site or asleep.</p>
 </div>
 <ul class="space-y-4">
 <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Answers inbound calls 24/7/365</li>
-<li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Human-sounding voice â€” no robotic feel</li>
+<li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Human-sounding voice — no robotic feel</li>
 <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Qualifies the lead on the call</li>
 <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Schedules & confirms appointments</li>
 <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Call recordings & transcripts sent to you</li>
@@ -833,7 +816,7 @@
 </button>
 <div class="faq-content bg-[#E8F4FF]">
 <div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#2D5F8A] leading-relaxed">
-                            Fast. Most websites are fully live within 48 hours of your strategy call. The AI chat agent goes live at the same time as your website. The AI voice agent is typically active within 72 hours. We handle everything â€” you just need to approve the final design before we launch.
+                            Fast. Most websites are fully live within 48 hours of your strategy call. The AI chat agent goes live at the same time as your website. The AI voice agent is typically active within 72 hours. We handle everything — you just need to approve the final design before we launch.
                         </div>
 </div>
 </div>
@@ -845,7 +828,7 @@
 </button>
 <div class="faq-content bg-[#E8F4FF]">
 <div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#2D5F8A] leading-relaxed">
-                            Our AI agents connect directly with your existing tools. We integrate with Google Calendar for automatic appointment booking, CRM platforms like GoHighLevel and HubSpot to log every lead, SMS and email notification systems so you hear about every inquiry the moment it happens, and Facebook and Google Ads platforms to track which ads are driving real leads. We set it all up for you â€” no technical knowledge required on your end.
+                            Our AI agents connect directly with your existing tools. We integrate with Google Calendar for automatic appointment booking, CRM platforms like GoHighLevel and HubSpot to log every lead, SMS and email notification systems so you hear about every inquiry the moment it happens, and Facebook and Google Ads platforms to track which ads are driving real leads. We set it all up for you — no technical knowledge required on your end.
                         </div>
 </div>
 </div>
@@ -857,7 +840,7 @@
 </button>
 <div class="faq-content bg-[#E8F4FF]">
 <div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#2D5F8A] leading-relaxed">
-                            Every business is different so we build custom packages rather than locking you into a one-size-fits-all price. Packages start from $497/mo. The best way to find out what your business needs and what it will cost is to book a free 15-minute strategy call â€” no pressure, no commitment, just an honest conversation.
+                            Every business is different so we build custom packages rather than locking you into a one-size-fits-all price. Packages start from $497/mo. The best way to find out what your business needs and what it will cost is to book a free 15-minute strategy call — no pressure, no commitment, just an honest conversation.
                         </div>
 </div>
 </div>
@@ -905,7 +888,7 @@
 <a class="text-blue-200 hover:text-white transition-colors" href="mailto:fabianomatos@fmmarketingsc.com">Email Us</a>
 </div>
 <div class="flex flex-col items-center gap-1.5">
-    <a href="tel:8433270032" class="text-[#20C9B0] font-headline font-bold uppercase tracking-tighter hover:text-white transition-colors">843-327-0032</a>
+    <a href="tel:+18433270032" class="text-[#20C9B0] font-headline font-bold uppercase tracking-tighter hover:text-white transition-colors">843-327-0032</a>
     <div class="text-blue-300 text-xs">Â© 2026 FMMarketing. Built in Summerville, SC. Serving the Lowcountry.</div>
 </div>
 </div>
@@ -955,7 +938,7 @@
 <script>
         // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         // EMAIL CONFIG
-        // 1. Go to https://formspree.io â†’ sign up â†’ New Form
+        // 1. Go to https://formspree.io → sign up → New Form
         // 2. Replace YOUR_FORM_ID below with your actual form ID
         // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
         const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xojyapee';
@@ -1061,7 +1044,7 @@
             setButtonState(btn, true);
 
             const emailPayload = {
-                _subject: 'ðŸ”” New Survey Lead â€” FMMarketing',
+                _subject: '🔔 New Survey Lead — FMMarketing',
                 Source: 'Welcome Survey',
                 Role: role,
                 Challenge: challenge,
@@ -1130,7 +1113,7 @@
 
             const [ok, aiReply] = await Promise.all([
                 sendEmail({
-                    _subject: 'ðŸ“‹ New Strategy Request â€” FMMarketing',
+                    _subject: '📋 New Strategy Request — FMMarketing',
                     Source: 'Contact Form',
                     Name: name,
                     Business: business || 'Not provided',
@@ -1152,7 +1135,7 @@
                 }
                 form.reset();
             } else {
-                setButtonState(btn, false, 'Error â€” Try Again');
+                setButtonState(btn, false, 'Error — Try Again');
             }
         }
 
@@ -1183,7 +1166,7 @@
                 html = `<div class="flex justify-end" id="${id}"><div class="bg-primary-container text-white px-3 py-2 text-sm leading-relaxed" style="max-width:85%">${escapeHtml(text)}</div></div>`;
             } else {
                 const body = isTyping
-                    ? `<span style="animation:pulse 1s infinite;display:inline-block">â€¢â€¢â€¢</span>`
+                    ? `<span style="animation:pulse 1s infinite;display:inline-block">•••</span>`
                     : escapeHtml(text);
                 html = `<div class="flex gap-2" id="${id}"><div class="w-7 h-7 bg-primary-container flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-white" style="font-size:14px">smart_toy</span></div><div class="bg-surface-container-low px-3 py-2 text-sm text-on-surface leading-relaxed" style="max-width:85%">${body}</div></div>`;
             }
@@ -1207,7 +1190,7 @@
             const reply = await askAI('chat', { messages: [...chatHistory] });
             document.getElementById(typingId)?.remove();
 
-            const aiText = reply || "I'm having trouble right now. Please call us at 843-327-0032 or email fabianomatos@fmmarketingsc.com â€” we'll get back to you fast!";
+            const aiText = reply || "I'm having trouble right now. Please call us at 843-327-0032 or email fabianomatos@fmmarketingsc.com — we'll get back to you fast!";
             addChatMessage('ai', aiText);
             chatHistory.push({ role: 'assistant', content: aiText });
 
@@ -1216,7 +1199,7 @@
         }
 
         function escalateToHuman() {
-            window.location.href = 'tel:8433270032';
+            window.location.href = 'tel:+18433270032';
         }
 
         // â”€â”€ FAQ â”€â”€
