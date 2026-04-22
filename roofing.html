@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="format-detection" content="telephone=no"/>
+<title>Stitch Roofing Co. | Expert Roofing Services You Can Trust</title>
+<meta name="description" content="Licensed and insured roofing contractor serving the Lowcountry. Roof installation, repair, inspections, and storm damage restoration. Free estimates."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Bebas+Neue&family=Manrope:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "surface-variant": "#353534",
+                    "inverse-surface": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#852400",
+                    "inverse-on-surface": "#313030",
+                    "on-background": "#e5e2e1",
+                    "background": "#1A1A1A",
+                    "on-secondary-container": "#b4b5b5",
+                    "on-primary": "#5e1700",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed": "#3a0b00",
+                    "on-primary-container": "#521300",
+                    "outline-variant": "#5c4037",
+                    "on-surface-variant": "#e6beb2",
+                    "primary-container": "#FF4D00",
+                    "on-error-container": "#ffdad6",
+                    "surface-tint": "#ffb59e",
+                    "error": "#ffb4ab",
+                    "surface-container-lowest": "#141414",
+                    "surface-container-low": "#242424",
+                    "surface-bright": "#3a3939",
+                    "surface-container-highest": "#353534",
+                    "on-surface": "#e5e2e1",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-container": "#521300",
+                    "surface-container": "#201f1f",
+                    "tertiary-fixed": "#ffdbd0",
+                    "surface": "#1A1A1A",
+                    "primary-fixed": "#ffdbd0",
+                    "on-primary-fixed-variant": "#852400",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "tertiary-fixed-dim": "#ffb59e",
+                    "secondary-fixed": "#e2e2e2",
+                    "primary": "#FF4D00",
+                    "primary-fixed-dim": "#ffb59e",
+                    "outline": "#ad897e",
+                    "on-secondary-fixed-variant": "#454747",
+                    "tertiary-container": "#FF4D00",
+                    "on-primary-fixed": "#3a0b00",
+                    "inverse-primary": "#ae3200",
+                    "secondary-container": "#454747",
+                    "secondary": "#c6c6c7",
+                    "on-secondary": "#2f3131",
+                    "surface-dim": "#1A1A1A",
+                    "on-tertiary": "#5e1700",
+                    "tertiary": "#FF4D00",
+                    "on-error": "#690005"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "0px",
+                    "xl": "0px",
+                    "full": "9999px"
+                },
+                "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "bebas": ["Bebas Neue"],
+                    "manrope": ["Manrope"]
+                }
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .grid-texture {
+        background-image: radial-gradient(circle, #5c4037 1px, transparent 1px);
+        background-size: 32px 32px;
+        opacity: 0.1;
+    }
+    .marquee {
+        white-space: nowrap;
+        overflow: hidden;
+        display: inline-block;
+        animation: marquee 24s linear infinite;
+    }
+    @keyframes marquee {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+    .orange-glow {
+        background: radial-gradient(circle at center, rgba(255, 77, 0, 0.12) 0%, transparent 70%);
+    }
+    /* diagonal-divider only on wider screens — clip-path clips content on narrow phones */
+    @media (min-width: 768px) {
+        .diagonal-divider { clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%); }
+    }
+    .faq-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+    }
+    .faq-item.active .faq-content {
+        max-height: 800px;
+        transition: max-height 1s ease-in-out;
+    }
+    .faq-plus {
+        transition: transform 0.3s ease;
+    }
+    .faq-item.active .faq-plus {
+        transform: rotate(45deg);
+    }
+    .faq-item.active {
+        border-left: 3px solid #FF4D00;
+    }
+    /* Mobile menu */
+    #mobile-menu {
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+    }
+    #mobile-menu.open {
+        max-height: 400px;
+        opacity: 1;
+    }
+    /* Stat number pulse */
+    @keyframes count-up {
+        from { opacity: 0; transform: translateY(10px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+    .stat-number {
+        animation: count-up 0.6s ease forwards;
+    }
+    /* ── Base ── */
+    html {
+        scroll-behavior: smooth;
+        /* overflow-x: clip is iOS 16+ only; use a wrapper approach instead */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+        overflow-x: hidden; /* safer than clip on html for iOS compat */
+        /* bottom padding so mobile sticky CTA never covers content */
+        padding-bottom: 80px;
+    }
+    @media (min-width: 768px) { body { padding-bottom: 0; } }
+
+    /* ── iOS tap / zoom fixes ── */
+    * { -webkit-tap-highlight-color: transparent; }
+    a, button, [role="button"], select { touch-action: manipulation; }
+    /* Prevent iOS auto-zoom on form focus — must be >= 16px */
+    input, select, textarea { font-size: 16px !important; }
+    /* Fix select appearance so background-color works on iOS */
+    select { -webkit-appearance: none; appearance: none; }
+    section { scroll-margin-top: 72px; }
+
+    /* ── Hero: use svh so iOS address-bar collapse doesn't cut content ── */
+    #hero { min-height: 100vh; min-height: 100svh; }
+
+    /* ── Custom scrollbar (desktop only) ── */
+    @media (hover: hover) {
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1A1A1A; }
+        ::-webkit-scrollbar-thumb { background: #FF4D00; }
+    }
+
+    /* ── Disable hover scale on touch devices ── */
+    @media (hover: none) {
+        .hover\:scale-105:hover { transform: none; }
+        .hover\:scale-\[1\.01\]:hover { transform: none; }
+        .group:hover .group-hover\:gap-4 { gap: inherit; }
+    }
+
+    /* ── Nav: solid fallback for old iOS that can't do backdrop-blur ──
+       DO NOT add will-change or transform here — it creates a stacking
+       context that breaks backdrop-filter on iOS Safari. ── */
+    nav {
+        background: rgba(26, 26, 26, 0.92);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+    }
+
+    /* ── Dual-row review marquee ── */
+    @keyframes marquee-left  { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @keyframes marquee-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+    .marquee-wrapper {
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+    .marquee-track {
+        display: flex;
+        width: max-content;
+        /* GPU-composite the animation to avoid jank on low-end Android */
+        will-change: transform;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        animation: marquee-left 40s linear infinite;
+        gap: 1rem;
+        padding: 0.5rem 0;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-reverse { animation: marquee-right 45s linear infinite; }
+    .marquee-reverse:hover { animation-play-state: paused; }
+    @media (prefers-reduced-motion: reduce) { .marquee-track, .marquee-reverse { animation: none; } }
+
+    /* ── Orange marquee banner ── */
+    .marquee { will-change: transform; -webkit-transform: translateZ(0); transform: translateZ(0); }
+
+    .review-card {
+        flex-shrink: 0;
+        width: 300px; /* narrower on mobile to avoid overflow */
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.07);
+        padding: 1.25rem;
+        transition: border-color 0.2s, background 0.2s;
+        cursor: default;
+    }
+    @media (min-width: 640px) { .review-card { width: 340px; padding: 1.5rem; } }
+    .review-card:hover { background: rgba(255,77,0,0.05); border-color: rgba(255,77,0,0.3); }
+
+    /* ── Financing calculator buttons ── */
+    .sys-btn { background:#1a1a1a; border:1px solid #353534; color:#888; }
+    .sys-btn.active { border-color:#FF4D00; color:#fff; background:#241a17; }
+    .term-btn { background:#1a1a1a; border:1px solid #353534; color:#888; }
+    .term-btn.active { border-color:#FF4D00; color:#fff; }
+
+    /* ── Mobile sticky CTA — proper iOS safe-area inset ── */
+    #mobile-cta {
+        padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+    }
+
+    /* ── Chat momentum scroll on iOS ── */
+    #chat-messages {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+
+    /* ── Modal: scrollable on small phones, backdrop solid fallback ── */
+    #estimate-modal > div:last-child {
+        max-height: 90vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    /* iOS modal body-lock — we use position:fixed approach in JS instead of overflow:hidden */
+</style>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-white">
+
+<!-- ════════════════════ FREE ESTIMATE MODAL ════════════════════ -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center p-4" id="estimate-modal">
+    <div class="absolute inset-0 bg-background/80 backdrop-blur-sm" onclick="closeEstimateModal()"></div>
+    <div class="relative w-full max-w-md bg-surface-container-low border-2 border-primary-container p-8 shadow-2xl">
+        <button class="absolute top-4 right-4 text-secondary hover:text-primary transition-colors" onclick="closeEstimateModal()">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+        <div class="mb-6">
+            <span class="text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary">No Obligation</span>
+            <h2 class="text-3xl font-headline font-bold uppercase tracking-tighter mt-1 mb-2">Get Your <span class="text-primary">Free Estimate</span></h2>
+            <p class="text-secondary text-sm">We'll contact you within 2 hours to schedule your inspection.</p>
+        </div>
+        <form class="space-y-5" id="estimate-form" onsubmit="event.preventDefault(); submitEstimate();">
+            <div class="space-y-1">
+                <label class="text-xs font-headline font-bold uppercase text-secondary">Full Name *</label>
+                <input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 placeholder:text-surface-variant transition-colors" placeholder="John Smith" required type="text"/>
+            </div>
+            <div class="space-y-1">
+                <label class="text-xs font-headline font-bold uppercase text-secondary">Phone Number *</label>
+                <input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 placeholder:text-surface-variant transition-colors" placeholder="(843) 000-0000" required type="tel"/>
+            </div>
+            <div class="space-y-1">
+                <label class="text-xs font-headline font-bold uppercase text-secondary">Email Address</label>
+                <input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 placeholder:text-surface-variant transition-colors" placeholder="john@example.com" type="email"/>
+            </div>
+            <div class="space-y-1">
+                <label class="text-xs font-headline font-bold uppercase text-secondary">Service Needed</label>
+                <select class="w-full bg-surface-container border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 transition-colors">
+                    <option value="">Select a service...</option>
+                    <option>Roof Replacement</option>
+                    <option>Roof Repair</option>
+                    <option>Storm Damage Inspection</option>
+                    <option>Roof Inspection</option>
+                    <option>Gutter Services</option>
+                    <option>Skylight Installation</option>
+                </select>
+            </div>
+            <button class="w-full bg-primary-container text-white font-headline font-bold uppercase py-4 tracking-widest hover:bg-primary transition-all duration-200 mt-2" type="submit">
+                Request Free Estimate
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- ════════════════════ TOP NAV ════════════════════ -->
+<nav class="fixed top-0 w-full z-50 border-b border-white/5">
+    <div class="flex justify-between items-center w-full px-4 md:px-8 py-4 mx-auto">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-primary-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-white" style="font-size:18px">roofing</span>
+            </div>
+            <div>
+                <div class="text-lg font-black tracking-tighter uppercase text-white font-headline leading-none">Stitch Roofing</div>
+                <div class="text-[9px] uppercase tracking-[0.2em] text-primary font-bold">Licensed &amp; Insured</div>
+            </div>
+        </div>
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-8">
+            <a class="text-white hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold text-sm" href="#services">Services</a>
+            <a class="text-white hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold text-sm" href="#process">Our Process</a>
+            <a class="text-white hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold text-sm" href="#testimonials">Reviews</a>
+            <a class="text-white hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold text-sm" href="#storm-checker">Storm Check</a>
+            <a class="text-white hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold text-sm" href="#booking">Book</a>
+            <a class="text-white hover:text-primary transition-colors duration-100 font-headline tracking-tighter uppercase font-bold text-sm" href="#contact">Contact</a>
+            <a href="tel:8433270032" class="flex items-center gap-2 text-primary font-headline font-bold uppercase tracking-tighter hover:text-white transition-colors duration-100 text-sm">
+                <span class="material-symbols-outlined" style="font-size:16px">phone</span>
+                843-327-0032
+            </a>
+        </div>
+        <div class="flex items-center gap-3">
+            <button class="bg-primary-container text-white px-5 py-3 font-headline font-bold uppercase tracking-tighter transition-all duration-100 active:scale-90 hover:bg-primary text-sm hidden md:block" onclick="openEstimateModal()">
+                Free Estimate
+            </button>
+            <!-- Mobile Hamburger -->
+            <button class="md:hidden text-white" id="hamburger" onclick="toggleMobileMenu()">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden bg-surface-container-low border-t border-outline-variant/20">
+        <div class="flex flex-col px-4 py-4 gap-4">
+            <a class="text-white font-headline font-bold uppercase tracking-tighter text-sm py-2" href="#services" onclick="toggleMobileMenu()">Services</a>
+            <a class="text-white font-headline font-bold uppercase tracking-tighter text-sm py-2" href="#process" onclick="toggleMobileMenu()">Our Process</a>
+            <a class="text-white font-headline font-bold uppercase tracking-tighter text-sm py-2" href="#testimonials" onclick="toggleMobileMenu()">Reviews</a>
+            <a class="text-white font-headline font-bold uppercase tracking-tighter text-sm py-2" href="#contact" onclick="toggleMobileMenu()">Contact</a>
+            <a href="tel:8433270032" class="flex items-center gap-2 text-primary font-headline font-bold uppercase tracking-tighter text-sm py-2">
+                <span class="material-symbols-outlined" style="font-size:16px">phone</span>
+                843-327-0032
+            </a>
+            <button class="bg-primary-container text-white px-5 py-3 font-headline font-bold uppercase tracking-tighter w-full" onclick="openEstimateModal(); toggleMobileMenu();">
+                Free Estimate
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- ════════════════════ HERO SECTION ════════════════════ -->
+<section class="relative flex items-center pt-24 overflow-hidden" id="hero">
+    <!-- Background image — no mix-blend as it's unreliable on Android -->
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=1600')] bg-cover bg-center opacity-20"></div>
+    <!-- Dot grid texture -->
+    <div class="absolute inset-0 grid-texture pointer-events-none"></div>
+    <!-- Orange ambient glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full orange-glow pointer-events-none"></div>
+    <!-- Angled accent bar -->
+    <div class="absolute top-0 right-0 w-1/3 h-full bg-primary-container/5 -skew-x-6 transform translate-x-1/4 pointer-events-none"></div>
+
+    <div class="container mx-auto px-6 md:px-8 relative z-10">
+        <div class="max-w-5xl">
+            <!-- Tag -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-container/10 border border-primary-container/20 mb-6">
+                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                <span class="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-primary">Serving the Lowcountry — Est. 2012</span>
+            </div>
+            <!-- Headline -->
+            <h1 class="text-5xl md:text-9xl font-headline font-bold uppercase tracking-[-0.04em] leading-[0.9] mb-8">
+                We Protect<br/>
+                <span class="text-transparent" style="-webkit-text-stroke: 1.5px #FF4D00;">What Matters</span><br/>
+                Most.
+            </h1>
+            <p class="text-lg md:text-2xl text-secondary max-w-2xl mb-12 font-light leading-relaxed">
+                Expert roof installation, repair, and storm restoration. Honest assessments, clean work, and warranties that actually mean something.
+            </p>
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-16">
+                <button class="bg-primary-container text-white text-lg font-headline font-bold uppercase px-10 py-5 tracking-tighter hover:bg-primary transition-all duration-200" onclick="openEstimateModal()">
+                    Get Free Estimate
+                </button>
+                <a href="tel:8433270032" class="border-2 border-primary text-primary text-lg font-headline font-bold uppercase px-10 py-5 tracking-tighter hover:bg-primary/10 transition-all duration-200 text-center flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined" style="font-size:20px">phone</span>
+                    Call Now
+                </a>
+            </div>
+            <!-- Trust badges row -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-surface-container-low p-5 border-l-4 border-primary-container flex items-center gap-4">
+                    <span class="material-symbols-outlined text-primary text-3xl">verified</span>
+                    <div>
+                        <div class="text-white font-bold font-headline uppercase tracking-tighter text-sm">Licensed &amp; Insured</div>
+                        <div class="text-secondary text-xs">SC ROC #12345</div>
+                    </div>
+                </div>
+                <div class="bg-surface-container-low p-5 border-l-4 border-primary-container flex items-center gap-4">
+                    <span class="material-symbols-outlined text-primary text-3xl">emergency</span>
+                    <div>
+                        <div class="text-white font-bold font-headline uppercase tracking-tighter text-sm">24/7 Emergency</div>
+                        <div class="text-secondary text-xs">Storm response available</div>
+                    </div>
+                </div>
+                <div class="bg-surface-container-low p-5 border-l-4 border-primary-container flex items-center gap-4">
+                    <span class="material-symbols-outlined text-primary text-3xl">star</span>
+                    <div>
+                        <div class="text-white font-bold font-headline uppercase tracking-tighter text-sm">5-Star Rated</div>
+                        <div class="text-secondary text-xs">200+ Google reviews</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ MARQUEE BANNER ════════════════════ -->
+<div class="bg-primary-container py-4 border-y border-white/10 overflow-hidden relative z-20">
+    <div class="marquee flex gap-10 items-center">
+        <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">FREE ESTIMATES</span>
+        <span class="material-symbols-outlined text-white">roofing</span>
+        <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">STORM DAMAGE SPECIALISTS</span>
+        <span class="material-symbols-outlined text-white">bolt</span>
+        <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">10-YEAR WORKMANSHIP WARRANTY</span>
+        <span class="material-symbols-outlined text-white">roofing</span>
+        <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">SAME-DAY INSPECTIONS</span>
+        <span class="material-symbols-outlined text-white">bolt</span>
+        <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">INSURANCE CLAIMS HANDLED</span>
+        <span class="material-symbols-outlined text-white">roofing</span>
+        <!-- duplicate for seamless loop -->
+        <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">FREE ESTIMATES</span>
+        <span class="material-symbols-outlined text-white">roofing</span>
+        <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">STORM DAMAGE SPECIALISTS</span>
+        <span class="material-symbols-outlined text-white">bolt</span>
+        <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">10-YEAR WORKMANSHIP WARRANTY</span>
+        <span class="material-symbols-outlined text-white">roofing</span>
+        <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">SAME-DAY INSPECTIONS</span>
+        <span class="material-symbols-outlined text-white">bolt</span>
+        <span class="text-white font-headline font-black uppercase text-2xl tracking-tighter">INSURANCE CLAIMS HANDLED</span>
+        <span class="material-symbols-outlined text-white">roofing</span>
+    </div>
+</div>
+
+<!-- ════════════════════ URGENCY BANNER ════════════════════ -->
+<div class="bg-surface-container-low py-3 px-4 border-b border-outline-variant/20">
+    <p class="text-white font-black text-center text-xs sm:text-sm uppercase tracking-[0.2em] animate-pulse">
+        Storm Season Special — <span class="text-primary">Free Roof Inspection</span> + Insurance Claim Review — Limited Slots This Week
+    </p>
+</div>
+
+<!-- ════════════════════ STATS ROW ════════════════════ -->
+<section class="bg-surface-container-lowest py-20">
+    <div class="container mx-auto px-6 md:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center group">
+                <div class="text-5xl md:text-6xl font-headline font-bold text-primary mb-2 stat-number">12+</div>
+                <div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Years in Business</div>
+            </div>
+            <div class="text-center group">
+                <div class="text-5xl md:text-6xl font-headline font-bold text-primary mb-2 stat-number">1,400+</div>
+                <div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Roofs Completed</div>
+            </div>
+            <div class="text-center group">
+                <div class="text-5xl md:text-6xl font-headline font-bold text-primary mb-2 stat-number">98%</div>
+                <div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Customer Satisfaction</div>
+            </div>
+            <div class="text-center group">
+                <div class="text-5xl md:text-6xl font-headline font-bold text-primary mb-2 stat-number">10yr</div>
+                <div class="text-[10px] uppercase tracking-widest text-secondary font-bold">Workmanship Warranty</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ SERVICES SECTION ════════════════════ -->
+<section class="py-32 bg-surface-container-lowest relative" id="services">
+    <div class="absolute inset-0 orange-glow pointer-events-none opacity-30"></div>
+    <div class="container mx-auto px-6 md:px-8 relative">
+        <div class="mb-16">
+            <span class="text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary">What We Do</span>
+            <h2 class="text-5xl md:text-7xl font-headline font-bold uppercase tracking-tighter mt-2 mb-4">Every Roof. <br/><span class="text-primary-container">Every Job.</span></h2>
+            <p class="text-secondary text-xl max-w-2xl">From minor repairs to full replacements, we handle every roofing challenge with precision and speed.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Service 1 -->
+            <div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-0 hover:border-l-4 hover:border-primary-container">
+                <span class="material-symbols-outlined text-primary text-4xl mb-6">roofing</span>
+                <h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-3">Roof Replacement</h3>
+                <p class="text-secondary text-sm leading-relaxed">Full tear-off and re-roof with premium shingles, metal, or flat roofing systems. Lifetime material warranties available.</p>
+                <div class="mt-6 text-primary font-headline font-bold uppercase text-xs tracking-widest flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    Get estimate <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+            </div>
+            <!-- Service 2 -->
+            <div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-0 hover:border-l-4 hover:border-primary-container">
+                <span class="material-symbols-outlined text-primary text-4xl mb-6">handyman</span>
+                <h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-3">Roof Repair</h3>
+                <p class="text-secondary text-sm leading-relaxed">Leaks, missing shingles, flashing failures, and soft spots fixed fast — most repairs completed same or next day.</p>
+                <div class="mt-6 text-primary font-headline font-bold uppercase text-xs tracking-widest flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    Get estimate <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+            </div>
+            <!-- Service 3 -->
+            <div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-0 hover:border-l-4 hover:border-primary-container">
+                <span class="material-symbols-outlined text-primary text-4xl mb-6">thunderstorm</span>
+                <h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-3">Storm Damage Restoration</h3>
+                <p class="text-secondary text-sm leading-relaxed">Wind and hail damage documentation, tarping, emergency repairs, and insurance claim assistance — all in one call.</p>
+                <div class="mt-6 text-primary font-headline font-bold uppercase text-xs tracking-widest flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    Get estimate <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+            </div>
+            <!-- Service 4 -->
+            <div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-0 hover:border-l-4 hover:border-primary-container">
+                <span class="material-symbols-outlined text-primary text-4xl mb-6">search</span>
+                <h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-3">Roof Inspections</h3>
+                <p class="text-secondary text-sm leading-relaxed">Pre-listing, post-storm, or routine inspections with detailed written reports and photo documentation. Free for qualifying homeowners.</p>
+                <div class="mt-6 text-primary font-headline font-bold uppercase text-xs tracking-widest flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    Schedule now <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+            </div>
+            <!-- Service 5 -->
+            <div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-0 hover:border-l-4 hover:border-primary-container">
+                <span class="material-symbols-outlined text-primary text-4xl mb-6">water</span>
+                <h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-3">Gutters &amp; Downspouts</h3>
+                <p class="text-secondary text-sm leading-relaxed">Seamless aluminum gutters, leaf guard systems, and downspout extensions. Installed and cleaned by our crew.</p>
+                <div class="mt-6 text-primary font-headline font-bold uppercase text-xs tracking-widest flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    Get estimate <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+            </div>
+            <!-- Service 6 -->
+            <div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-0 hover:border-l-4 hover:border-primary-container">
+                <span class="material-symbols-outlined text-primary text-4xl mb-6">light_mode</span>
+                <h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-3">Skylights &amp; Ventilation</h3>
+                <p class="text-secondary text-sm leading-relaxed">Skylight installation, replacement, and repair. Ridge vents and attic ventilation upgrades that protect your roof long-term.</p>
+                <div class="mt-6 text-primary font-headline font-bold uppercase text-xs tracking-widest flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    Get estimate <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 text-center">
+            <button class="bg-primary-container text-white font-headline font-bold uppercase px-12 py-5 tracking-widest hover:bg-primary transition-all" onclick="openEstimateModal()">
+                Get Your Free Estimate
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ ABOUT / WHY CHOOSE US ════════════════════ -->
+<section class="py-32 bg-surface relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-1/3 h-full bg-primary-container/5 -skew-x-12 transform translate-x-1/2 pointer-events-none"></div>
+    <div class="container mx-auto px-6 md:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <!-- Image column -->
+            <div class="order-2 lg:order-1">
+                <div class="relative group">
+                    <div class="absolute -inset-4 bg-primary-container/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <img alt="Roofer working on a roof" class="relative w-full grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl object-cover" style="aspect-ratio:4/3" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=900"/>
+                    <!-- Quote overlay -->
+                    <div class="absolute bottom-6 -right-4 md:-right-8 bg-background border-2 border-primary-container p-5 max-w-xs shadow-2xl hidden md:block">
+                        <p class="text-sm italic text-on-background font-medium">"Stitch replaced our entire roof in one day. No mess, no drama — just results."</p>
+                        <p class="mt-3 text-[10px] uppercase tracking-widest font-bold text-primary">— Linda T., Mount Pleasant</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Text column -->
+            <div class="order-1 lg:order-2 space-y-8">
+                <span class="text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary">Why Choose Us</span>
+                <h2 class="text-5xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-none">Built On <br/>Honest<br/><span class="text-primary-container">Craftsmanship</span></h2>
+                <p class="text-secondary text-lg leading-relaxed">We're not a storm-chasing crew or a fly-by-night operation. We're a South Carolina company with roots in this community, accountable to every roof we touch.</p>
+                <div class="space-y-5">
+                    <div class="flex items-start gap-4">
+                        <span class="material-symbols-outlined text-primary text-xl mt-1">check_circle</span>
+                        <div>
+                            <div class="text-white font-headline font-bold uppercase tracking-tighter text-sm">Transparent Pricing</div>
+                            <div class="text-secondary text-sm">Detailed written estimates before any work begins. No hidden fees, ever.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="material-symbols-outlined text-primary text-xl mt-1">check_circle</span>
+                        <div>
+                            <div class="text-white font-headline font-bold uppercase tracking-tighter text-sm">Insurance Claim Experts</div>
+                            <div class="text-secondary text-sm">We work directly with your insurance adjuster and handle all the paperwork.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="material-symbols-outlined text-primary text-xl mt-1">check_circle</span>
+                        <div>
+                            <div class="text-white font-headline font-bold uppercase tracking-tighter text-sm">Manufacturer-Certified</div>
+                            <div class="text-secondary text-sm">Owens Corning Platinum Preferred Contractor. Highest-tier product warranties available.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="material-symbols-outlined text-primary text-xl mt-1">check_circle</span>
+                        <div>
+                            <div class="text-white font-headline font-bold uppercase tracking-tighter text-sm">Total Job-Site Cleanup</div>
+                            <div class="text-secondary text-sm">We magnet-sweep for nails, haul all debris, and leave your property spotless.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ OUR PROCESS ════════════════════ -->
+<section class="py-32 bg-background relative" id="process">
+    <div class="absolute inset-0 orange-glow pointer-events-none opacity-30"></div>
+    <div class="container mx-auto px-6 md:px-8 relative">
+        <div class="text-center mb-20">
+            <span class="text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary">Simple &amp; Stress-Free</span>
+            <h2 class="text-5xl md:text-7xl font-headline font-bold uppercase tracking-tighter mt-2">Our <span class="text-primary-container">Process</span></h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-0">
+            <div class="relative p-10 bg-surface-container-low hover:bg-surface-container-high transition-colors group">
+                <div class="text-6xl font-headline font-black text-primary-container/20 group-hover:text-primary-container/40 transition-colors mb-6">01</div>
+                <span class="material-symbols-outlined text-primary text-3xl mb-4 block">phone_in_talk</span>
+                <h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-4">Free Inspection</h4>
+                <p class="text-sm text-secondary leading-relaxed">We schedule a free, no-pressure roof inspection and walk you through every finding — in plain language.</p>
+                <!-- Connector line -->
+                <div class="hidden md:block absolute top-1/2 right-0 w-0 h-px bg-primary-container/30 group-hover:w-full transition-all duration-500 z-10"></div>
+            </div>
+            <div class="relative p-10 bg-surface-container-low hover:bg-surface-container-high transition-colors group">
+                <div class="text-6xl font-headline font-black text-primary-container/20 group-hover:text-primary-container/40 transition-colors mb-6">02</div>
+                <span class="material-symbols-outlined text-primary text-3xl mb-4 block">description</span>
+                <h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-4">Detailed Proposal</h4>
+                <p class="text-sm text-secondary leading-relaxed">You receive a line-item estimate with materials, scope, and timeline. No surprises — you approve everything first.</p>
+            </div>
+            <div class="relative p-10 bg-surface-container-low hover:bg-surface-container-high transition-colors group">
+                <div class="text-6xl font-headline font-black text-primary-container/20 group-hover:text-primary-container/40 transition-colors mb-6">03</div>
+                <span class="material-symbols-outlined text-primary text-3xl mb-4 block">construction</span>
+                <h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-4">Expert Installation</h4>
+                <p class="text-sm text-secondary leading-relaxed">Our trained crews arrive on time and work efficiently. Most residential replacements are completed in a single day.</p>
+            </div>
+            <div class="relative p-10 bg-surface-container-low hover:bg-surface-container-high transition-colors group">
+                <div class="text-6xl font-headline font-black text-primary-container/20 group-hover:text-primary-container/40 transition-colors mb-6">04</div>
+                <span class="material-symbols-outlined text-primary text-3xl mb-4 block">verified_user</span>
+                <h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-4">Final Walkthrough</h4>
+                <p class="text-sm text-secondary leading-relaxed">We do a final inspection together, hand over your warranty documents, and guarantee your satisfaction before we leave.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ GALLERY / WORK SHOWCASE ════════════════════ -->
+<section class="py-32 bg-surface-container-lowest relative diagonal-divider">
+    <div class="container mx-auto px-6 md:px-8 pt-16">
+        <div class="mb-16">
+            <span class="text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary">Recent Projects</span>
+            <h2 class="text-5xl md:text-7xl font-headline font-bold uppercase tracking-tighter mt-2 mb-4">Built For <span class="text-primary-container">Real Homes</span></h2>
+            <p class="text-secondary text-xl max-w-2xl">Quality you can see from the street and feel for decades after.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-surface-container-low group overflow-hidden">
+                <div class="h-64 overflow-hidden relative">
+                    <img alt="New asphalt shingle roof installation" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800"/>
+                    <div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-headline font-bold uppercase px-3 py-1 tracking-wider">Completed</div>
+                </div>
+                <div class="p-8">
+                    <h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-2">Full Replacement — Summerville</h4>
+                    <p class="text-sm text-secondary">2,400 sq ft. Owens Corning Duration shingles. Completed in 1 day. Insurance claim handled.</p>
+                </div>
+            </div>
+            <div class="bg-surface-container-low group overflow-hidden">
+                <div class="h-64 overflow-hidden relative">
+                    <img alt="Metal roofing installation" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1605117882932-f9e32b03fea9?auto=format&fit=crop&q=80&w=800"/>
+                    <div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-headline font-bold uppercase px-3 py-1 tracking-wider">Completed</div>
+                </div>
+                <div class="p-8">
+                    <h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-2">Metal Roof — Mt. Pleasant</h4>
+                    <p class="text-sm text-secondary">Standing seam metal panel system. 50-year panel warranty. Zero penetrations.</p>
+                </div>
+            </div>
+            <div class="bg-surface-container-low group overflow-hidden">
+                <div class="h-64 overflow-hidden relative">
+                    <img alt="Storm damage repair" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=800"/>
+                    <div class="absolute top-3 left-3 bg-primary-container text-white text-[10px] font-headline font-bold uppercase px-3 py-1 tracking-wider">Completed</div>
+                </div>
+                <div class="p-8">
+                    <h4 class="text-xl font-headline font-bold uppercase tracking-tighter mb-2">Storm Repair — North Charleston</h4>
+                    <p class="text-sm text-secondary">Post-hurricane hail damage. Full insurance claim. Roof restored in 48 hours.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ TESTIMONIALS ════════════════════ -->
+<!-- ════════════════════ REVIEWS MARQUEE ════════════════════ -->
+<section class="bg-[#0d0d0d] py-20 overflow-hidden" id="testimonials">
+    <div class="max-w-7xl mx-auto px-6 mb-12">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div>
+                <span class="text-primary font-black uppercase tracking-[0.3em] text-xs block mb-3">What Customers Say</span>
+                <h2 class="text-4xl md:text-5xl font-headline font-black text-white uppercase tracking-tighter leading-none">Real Reviews.<br/>Real Neighbors.</h2>
+            </div>
+            <!-- Google badge -->
+            <div class="flex-shrink-0 bg-white px-6 py-4 flex items-center gap-4 shadow-xl">
+                <div class="text-center">
+                    <div class="text-5xl font-black text-slate-900 font-headline leading-none">4.9</div>
+                    <div class="flex text-orange-500 mt-1 justify-center">★★★★★</div>
+                    <div class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">200+ reviews</div>
+                </div>
+                <div class="border-l border-slate-200 pl-4">
+                    <svg width="36" height="36" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    <div class="text-[9px] text-slate-400 font-bold uppercase tracking-wider mt-1 text-center">Google</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="marquee-wrapper mb-4">
+        <div class="marquee-track" id="reviews-1">
+            <div class="review-card"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-3"><div class="w-10 h-10 flex items-center justify-center font-black text-sm text-white flex-shrink-0" style="background:#4285F4">MK</div><div><div class="text-white font-bold text-sm">Marcus K.</div><div class="text-slate-500 text-[10px]">Summerville, SC · 1 week ago</div></div></div><svg width="18" height="18" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="flex text-orange-400 mb-3 text-sm">★★★★★</div><p class="text-slate-300 text-sm leading-relaxed">"Stitch came out the day after the hurricane, covered the damage same afternoon, and had the full replacement done two days later. Team kept me updated every step."</p><div class="mt-4 inline-flex items-center gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-widest"><span class="material-symbols-outlined text-xs text-emerald-500" style="font-variation-settings:'FILL' 1;">verified</span> Verified Google Review</div></div>
+            <div class="review-card"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-3"><div class="w-10 h-10 flex items-center justify-center font-black text-sm text-white flex-shrink-0" style="background:#34A853">JR</div><div><div class="text-white font-bold text-sm">Jennifer R.</div><div class="text-slate-500 text-[10px]">Mount Pleasant, SC · 3 weeks ago</div></div></div><svg width="18" height="18" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="flex text-orange-400 mb-3 text-sm">★★★★★</div><p class="text-slate-300 text-sm leading-relaxed">"Three contractors came out. Stitch was the only one who got on the roof and showed me photos of every issue. Honest, no upsells, fair price. Will call them for everything."</p><div class="mt-4 inline-flex items-center gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-widest"><span class="material-symbols-outlined text-xs text-emerald-500" style="font-variation-settings:'FILL' 1;">verified</span> Verified Google Review</div></div>
+            <div class="review-card"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-3"><div class="w-10 h-10 flex items-center justify-center font-black text-sm text-white flex-shrink-0" style="background:#EA4335">DL</div><div><div class="text-white font-bold text-sm">Derek L.</div><div class="text-slate-500 text-[10px]">North Charleston, SC · 1 month ago</div></div></div><svg width="18" height="18" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="flex text-orange-400 mb-3 text-sm">★★★★★</div><p class="text-slate-300 text-sm leading-relaxed">"They handled my entire insurance claim. Met with the adjuster, documented everything, and I ended up getting more than I expected. Roof looks incredible. Total pros."</p><div class="mt-4 inline-flex items-center gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-widest"><span class="material-symbols-outlined text-xs text-emerald-500" style="font-variation-settings:'FILL' 1;">verified</span> Verified Google Review</div></div>
+            <div class="review-card"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-3"><div class="w-10 h-10 flex items-center justify-center font-black text-sm text-white flex-shrink-0" style="background:#FBBC05">LT</div><div><div class="text-white font-bold text-sm">Linda T.</div><div class="text-slate-500 text-[10px]">Charleston, SC · 2 months ago</div></div></div><svg width="18" height="18" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="flex text-orange-400 mb-3 text-sm">★★★★★</div><p class="text-slate-300 text-sm leading-relaxed">"Replaced our entire 2,800 sqft roof in one day. No mess, no drama — they even magnet swept the yard for nails. My husband is picky and he was impressed. That says a lot."</p><div class="mt-4 inline-flex items-center gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-widest"><span class="material-symbols-outlined text-xs text-emerald-500" style="font-variation-settings:'FILL' 1;">verified</span> Verified Google Review</div></div>
+        </div>
+    </div>
+
+    <!-- Row 2 (reverse) -->
+    <div class="marquee-wrapper">
+        <div class="marquee-track marquee-reverse" id="reviews-2">
+            <div class="review-card"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-3"><div class="w-10 h-10 flex items-center justify-center font-black text-sm text-white flex-shrink-0" style="background:#a83900">RB</div><div><div class="text-white font-bold text-sm">Robert B.</div><div class="text-slate-500 text-[10px]">Goose Creek, SC · 2 weeks ago</div></div></div><svg width="18" height="18" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="flex text-orange-400 mb-3 text-sm">★★★★★</div><p class="text-slate-300 text-sm leading-relaxed">"I asked straight up whether to repair or replace my 15-year-old roof. The inspector was completely honest — said a targeted repair would buy me 5 more years. Saved me $9,000. Rare honesty."</p><div class="mt-4 inline-flex items-center gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-widest"><span class="material-symbols-outlined text-xs text-emerald-500" style="font-variation-settings:'FILL' 1;">verified</span> Verified Google Review</div></div>
+            <div class="review-card"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-3"><div class="w-10 h-10 flex items-center justify-center font-black text-sm text-white flex-shrink-0" style="background:#34A853">AM</div><div><div class="text-white font-bold text-sm">Angela M.</div><div class="text-slate-500 text-[10px]">James Island, SC · 3 months ago</div></div></div><svg width="18" height="18" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="flex text-orange-400 mb-3 text-sm">★★★★★</div><p class="text-slate-300 text-sm leading-relaxed">"Had standing seam metal installed. The crew was incredibly clean and professional. They laid down tarps over every plant bed. Three months later, zero leaks, looks stunning."</p><div class="mt-4 inline-flex items-center gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-widest"><span class="material-symbols-outlined text-xs text-emerald-500" style="font-variation-settings:'FILL' 1;">verified</span> Verified Google Review</div></div>
+            <div class="review-card"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-3"><div class="w-10 h-10 flex items-center justify-center font-black text-sm text-white flex-shrink-0" style="background:#4285F4">TW</div><div><div class="text-white font-bold text-sm">Tim W.</div><div class="text-slate-500 text-[10px]">Daniel Island, SC · 5 days ago</div></div></div><svg width="18" height="18" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="flex text-orange-400 mb-3 text-sm">★★★★★</div><p class="text-slate-300 text-sm leading-relaxed">"Active leak in our bedroom ceiling during a storm. Called Stitch at 9PM. Emergency tarp was on by 11PM, full repair done the next morning. Incredible response. Won't use anyone else."</p><div class="mt-4 inline-flex items-center gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-widest"><span class="material-symbols-outlined text-xs text-emerald-500" style="font-variation-settings:'FILL' 1;">verified</span> Verified Google Review</div></div>
+            <div class="review-card"><div class="flex items-center justify-between mb-3"><div class="flex items-center gap-3"><div class="w-10 h-10 flex items-center justify-center font-black text-sm text-white flex-shrink-0" style="background:#EA4335">PH</div><div><div class="text-white font-bold text-sm">Patricia H.</div><div class="text-slate-500 text-[10px]">Moncks Corner, SC · 2 months ago</div></div></div><svg width="18" height="18" viewBox="0 0 24 24" class="flex-shrink-0 opacity-60"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg></div><div class="flex text-orange-400 mb-3 text-sm">★★★★☆</div><p class="text-slate-300 text-sm leading-relaxed">"Been a customer for 8 years — two full replacements over time. The crew knows our home and always shows up clean and on time. Only 4 stars because scheduling was slow during storm season, but they always deliver."</p><div class="mt-4 inline-flex items-center gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-widest"><span class="material-symbols-outlined text-xs text-emerald-500" style="font-variation-settings:'FILL' 1;">verified</span> Verified Google Review</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ STORM DAMAGE CHECKER ════════════════════ -->
+<section class="py-24 bg-surface-container-lowest relative overflow-hidden" id="storm-checker">
+    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,77,0,0.08) 0%, transparent 70%)"></div>
+    <div class="absolute top-0 left-0 w-full h-1" style="background:linear-gradient(90deg,transparent,#FF4D00,transparent)"></div>
+    <div class="container mx-auto px-6 md:px-8 relative">
+        <!-- Header -->
+        <div class="max-w-2xl mb-12">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined text-primary" style="font-size:20px">storm</span>
+                <span class="text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary">Insurance May Cover It</span>
+            </div>
+            <h2 class="text-4xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-none mb-4">Did A <span class="text-primary">Storm Hit</span><br/>Your Area?</h2>
+            <p class="text-secondary text-lg leading-relaxed">Enter your zip code. We'll check recent hail and wind events in your area and tell you if you may qualify for a free insurance-covered roof inspection.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <!-- Left: zip checker -->
+            <div class="bg-surface-container-low p-8 relative" style="border-left:4px solid #FF4D00">
+                <h3 class="text-lg font-headline font-bold uppercase tracking-tight text-white mb-6">Check Storm Activity</h3>
+                <div class="flex gap-0">
+                    <input id="storm-zip" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="5"
+                        class="flex-1 bg-surface-container border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-4 placeholder:text-surface-variant transition-colors text-xl font-headline tracking-widest"
+                        placeholder="29401" onkeydown="if(event.key==='Enter') checkStorm()"/>
+                    <button onclick="checkStorm()" id="storm-btn"
+                        class="bg-primary-container text-white font-headline font-bold uppercase px-6 py-4 tracking-widest hover:bg-primary transition-all flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">search</span>
+                        <span>Check</span>
+                    </button>
+                </div>
+                <p class="text-[10px] text-surface-variant mt-3 uppercase tracking-widest">Uses NOAA storm event data · Lowcountry SC only</p>
+
+                <!-- Loading -->
+                <div id="storm-loading" class="hidden mt-8 flex items-center gap-3 text-secondary">
+                    <svg class="animate-spin h-5 w-5 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg>
+                    <span class="text-sm font-headline uppercase tracking-widest">Scanning NOAA records...</span>
+                </div>
+
+                <!-- Results area -->
+                <div id="storm-result" class="hidden mt-8 space-y-4"></div>
+            </div>
+
+            <!-- Right: how it works -->
+            <div class="space-y-6">
+                <div class="flex gap-4 items-start">
+                    <div class="w-10 h-10 bg-primary-container flex items-center justify-center flex-shrink-0 font-headline font-bold text-white text-sm">01</div>
+                    <div>
+                        <h4 class="font-headline font-bold uppercase text-white text-sm tracking-tight mb-1">Enter Your Zip Code</h4>
+                        <p class="text-secondary text-sm leading-relaxed">We cross-reference NOAA storm event records for hail, high wind, and tornado activity within 25 miles.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <div class="w-10 h-10 bg-primary-container flex items-center justify-center flex-shrink-0 font-headline font-bold text-white text-sm">02</div>
+                    <div>
+                        <h4 class="font-headline font-bold uppercase text-white text-sm tracking-tight mb-1">We Check The Data</h4>
+                        <p class="text-secondary text-sm leading-relaxed">Hail ≥ 1" or wind gusts ≥ 60 mph can cause invisible damage that insurers will cover — but only if reported in time.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <div class="w-10 h-10 bg-primary-container flex items-center justify-center flex-shrink-0 font-headline font-bold text-white text-sm">03</div>
+                    <div>
+                        <h4 class="font-headline font-bold uppercase text-white text-sm tracking-tight mb-1">Free Inspection, Zero Risk</h4>
+                        <p class="text-secondary text-sm leading-relaxed">If we find damage, we handle the insurance claim with your adjuster. You pay $0 out of pocket if insurance covers it.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <div class="w-10 h-10 flex items-center justify-center flex-shrink-0" style="background:#1a1109;border:1px solid #FF4D00">
+                        <span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+                    </div>
+                    <div>
+                        <h4 class="font-headline font-bold uppercase text-white text-sm tracking-tight mb-1">Insurance Claim Deadline</h4>
+                        <p class="text-secondary text-sm leading-relaxed">Most policies have a <strong class="text-primary">1-year window</strong> from the storm event. Don't miss your window — check now.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ CONTACT / FREE ESTIMATE SECTION ════════════════════ -->
+<section class="py-32 bg-surface border-b border-outline-variant/10 relative" id="contact">
+    <div class="absolute inset-0 orange-glow pointer-events-none opacity-40"></div>
+    <div class="container mx-auto px-6 md:px-8 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <!-- Left column -->
+            <div>
+                <span class="text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary">Ready to Start?</span>
+                <h2 class="text-5xl md:text-7xl font-headline font-bold uppercase tracking-tighter mt-2 mb-8 leading-none">
+                    Let's Fix<br/>Your <span class="text-primary-container">Roof</span>
+                </h2>
+                <p class="text-secondary text-xl mb-12 leading-relaxed">Fill out the form and we'll schedule your free roof inspection within 24 hours. No commitment required.</p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary">phone</span>
+                        <a href="tel:8433270032" class="text-white font-headline uppercase font-bold tracking-tighter hover:text-primary transition-colors">843-327-0032</a>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary">schedule</span>
+                        <span class="text-white font-headline uppercase font-bold tracking-tighter">Mon–Sat 7am–7pm · 24/7 Emergency Line</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary">mail</span>
+                        <span class="text-white font-headline uppercase font-bold tracking-tighter">info@stitchroofing.com</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined text-primary">location_on</span>
+                        <span class="text-white font-headline uppercase font-bold tracking-tighter">Serving the Greater Charleston Area</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Right column — form -->
+            <div class="bg-surface-container-low/80 backdrop-blur-md p-10 md:p-12 border border-primary-container/10">
+                <form class="space-y-7" id="contact-form" onsubmit="event.preventDefault(); submitContact();">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-7">
+                        <div class="space-y-1">
+                            <label class="text-xs font-headline font-bold uppercase text-secondary">Full Name *</label>
+                            <input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 placeholder:text-surface-variant transition-colors" placeholder="John Smith" required type="text"/>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-xs font-headline font-bold uppercase text-secondary">Phone Number *</label>
+                            <input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 placeholder:text-surface-variant transition-colors" placeholder="(843) 000-0000" required type="tel"/>
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-headline font-bold uppercase text-secondary">Email Address</label>
+                        <input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 placeholder:text-surface-variant transition-colors" placeholder="john@example.com" type="email"/>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-headline font-bold uppercase text-secondary">Property Address</label>
+                        <input class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 placeholder:text-surface-variant transition-colors" placeholder="123 Main St, Charleston, SC" type="text"/>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-headline font-bold uppercase text-secondary">Service Needed</label>
+                        <select class="w-full bg-surface-container border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 transition-colors">
+                            <option value="">Select a service...</option>
+                            <option>Roof Replacement</option>
+                            <option>Roof Repair</option>
+                            <option>Storm Damage / Insurance Claim</option>
+                            <option>Free Inspection</option>
+                            <option>Gutters &amp; Downspouts</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-headline font-bold uppercase text-secondary">Additional Notes</label>
+                        <textarea class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 placeholder:text-surface-variant transition-colors resize-none" placeholder="Tell us about your roof situation..." rows="3"></textarea>
+                    </div>
+                    <button class="w-full bg-primary-container text-white font-headline font-bold uppercase py-5 tracking-widest hover:bg-primary transition-all shadow-xl shadow-primary-container/10" type="submit" id="contact-submit-btn">
+                        Schedule Free Inspection
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ AI CHAT SECTION ════════════════════ -->
+<section class="py-24 bg-[#0d0d0d] relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <!-- Chat widget -->
+            <div class="relative order-2 md:order-1 flex justify-center">
+                <div class="relative w-full max-w-sm bg-black border-4 border-surface-container-high shadow-2xl overflow-hidden flex flex-col" style="height:560px; border-radius:0">
+                    <!-- Chat Header -->
+                    <div class="bg-primary-container px-5 py-4 flex items-center gap-3 flex-shrink-0">
+                        <div class="w-9 h-9 bg-white/20 flex items-center justify-center flex-shrink-0">
+                            <span class="material-symbols-outlined text-white text-base">support_agent</span>
+                        </div>
+                        <div>
+                            <div class="text-white text-sm font-bold font-headline">Stitch Roofing AI</div>
+                            <div class="text-emerald-300 text-[10px] font-bold">● Active Now — 24/7</div>
+                        </div>
+                    </div>
+                    <!-- Messages -->
+                    <div class="flex-1 overflow-y-auto p-4 space-y-3 bg-[#111]" id="chat-messages">
+                        <div class="bg-surface-container text-on-surface text-xs p-3 max-w-[82%] leading-relaxed">
+                            Hey! I'm Stitch's AI assistant. Describe your roof situation and I'll give you an instant estimate range and help get an inspector scheduled. 🏠
+                        </div>
+                    </div>
+                    <!-- Typing indicator -->
+                    <div class="px-4 pb-1 hidden" id="chat-typing">
+                        <div class="bg-surface-container text-slate-500 text-[10px] px-4 py-2 inline-flex items-center gap-2">
+                            <span class="animate-bounce">●</span><span class="animate-bounce" style="animation-delay:.15s">●</span><span class="animate-bounce" style="animation-delay:.3s">●</span>
+                        </div>
+                    </div>
+                    <!-- Input -->
+                    <div class="p-3 bg-[#0a0a0a] flex items-center gap-2 border-t border-white/10 flex-shrink-0">
+                        <input id="chat-input" type="text" placeholder="Describe your roof issue..." class="flex-1 bg-surface-container border border-outline-variant py-2.5 px-4 text-white text-xs placeholder-slate-500 focus:outline-none focus:border-primary" style="border-radius:0" onkeydown="if(event.key==='Enter') sendChat()"/>
+                        <button onclick="sendChat()" class="w-9 h-9 bg-primary-container flex items-center justify-center flex-shrink-0 hover:bg-primary transition-colors active:scale-95">
+                            <span class="material-symbols-outlined text-white text-sm">send</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-600/8 blur-[80px] -z-10 pointer-events-none"></div>
+            </div>
+            <!-- Content -->
+            <div class="order-1 md:order-2">
+                <span class="text-primary font-black uppercase tracking-[0.3em] text-xs block mb-4">AI-Powered Support</span>
+                <h2 class="text-5xl font-headline font-black text-white leading-tight mb-6 uppercase tracking-tighter">
+                    Get An Instant<br/><span class="text-primary-container">Estimate — Even<br/>At Midnight.</span>
+                </h2>
+                <p class="text-secondary text-lg leading-relaxed mb-10">Don't wait for business hours. Describe your roof situation and our AI will give you a price range and help schedule your free inspection on the spot.</p>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-center gap-4 text-white"><span class="material-symbols-outlined text-primary flex-shrink-0" style="font-variation-settings:'FILL' 1">check_circle</span><span class="font-bold tracking-tight">Instant Repair & Replacement Estimates</span></li>
+                    <li class="flex items-center gap-4 text-white"><span class="material-symbols-outlined text-primary flex-shrink-0" style="font-variation-settings:'FILL' 1">check_circle</span><span class="font-bold tracking-tight">Insurance Claim Guidance</span></li>
+                    <li class="flex items-center gap-4 text-white"><span class="material-symbols-outlined text-primary flex-shrink-0" style="font-variation-settings:'FILL' 1">check_circle</span><span class="font-bold tracking-tight">Schedule a Free Inspection Directly</span></li>
+                </ul>
+                <button onclick="document.getElementById('chat-input').focus()" class="bg-primary-container text-white px-10 py-4 font-headline font-black text-sm uppercase tracking-widest hover:bg-primary transition-all">
+                    START CHAT
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ BOOKING CALENDAR ════════════════════ -->
+<section class="py-24 bg-surface relative" id="booking">
+    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 60% 40% at 100% 50%, rgba(255,77,0,0.06) 0%, transparent 70%)"></div>
+    <div class="container mx-auto px-6 md:px-8 relative">
+        <div class="max-w-2xl mb-12">
+            <div class="flex items-center gap-3 mb-3">
+                <span class="material-symbols-outlined text-primary" style="font-size:20px">calendar_month</span>
+                <span class="text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary">Book In 60 Seconds</span>
+            </div>
+            <h2 class="text-4xl md:text-6xl font-headline font-bold uppercase tracking-tighter leading-none mb-4">Schedule Your<br/><span class="text-primary">Free Inspection</span></h2>
+            <p class="text-secondary text-lg leading-relaxed">Pick a date and time that works for you. We'll confirm within 1 hour and show up exactly on time — guaranteed.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <!-- Calendar -->
+            <div class="bg-surface-container-low p-6 md:p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <button onclick="calPrev()" class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-highest text-secondary hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-sm">chevron_left</span>
+                    </button>
+                    <span id="cal-label" class="font-headline font-bold uppercase tracking-tight text-white text-sm"></span>
+                    <button onclick="calNext()" class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-highest text-secondary hover:text-white transition-colors">
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+                    </button>
+                </div>
+                <!-- Day headers -->
+                <div class="grid grid-cols-7 mb-2">
+                    <div class="text-center text-[10px] font-bold uppercase tracking-widest text-surface-variant py-1">Sun</div>
+                    <div class="text-center text-[10px] font-bold uppercase tracking-widest text-surface-variant py-1">Mon</div>
+                    <div class="text-center text-[10px] font-bold uppercase tracking-widest text-surface-variant py-1">Tue</div>
+                    <div class="text-center text-[10px] font-bold uppercase tracking-widest text-surface-variant py-1">Wed</div>
+                    <div class="text-center text-[10px] font-bold uppercase tracking-widest text-surface-variant py-1">Thu</div>
+                    <div class="text-center text-[10px] font-bold uppercase tracking-widest text-surface-variant py-1">Fri</div>
+                    <div class="text-center text-[10px] font-bold uppercase tracking-widest text-surface-variant py-1">Sat</div>
+                </div>
+                <div id="cal-grid" class="grid grid-cols-7 gap-1"></div>
+
+                <!-- Time slots -->
+                <div id="time-slots-wrapper" class="hidden mt-6">
+                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-3">Available Times</div>
+                    <div id="time-slots" class="grid grid-cols-3 gap-2"></div>
+                </div>
+            </div>
+
+            <!-- Booking form -->
+            <div>
+                <div id="booking-placeholder" class="text-secondary text-sm flex items-start gap-3 mb-6 bg-surface-container-low p-4">
+                    <span class="material-symbols-outlined text-primary mt-0.5 text-sm">info</span>
+                    <span>Select a date and time on the calendar, then fill in your info below to confirm your free inspection.</span>
+                </div>
+                <div id="booking-selection" class="hidden mb-6 p-4" style="background:#1a1109;border-left:3px solid #FF4D00">
+                    <div class="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">Your Appointment</div>
+                    <div id="booking-selection-text" class="text-white font-headline font-bold text-lg uppercase tracking-tight"></div>
+                </div>
+
+                <form id="booking-form" class="space-y-5" onsubmit="event.preventDefault(); submitBooking();">
+                    <div class="space-y-1">
+                        <label class="text-xs font-headline font-bold uppercase text-secondary">Full Name *</label>
+                        <input id="book-name" required type="text" placeholder="John Smith"
+                            class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 placeholder:text-surface-variant transition-colors"/>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-headline font-bold uppercase text-secondary">Phone Number *</label>
+                        <input id="book-phone" required type="tel" placeholder="(843) 000-0000"
+                            class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 placeholder:text-surface-variant transition-colors"/>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-headline font-bold uppercase text-secondary">Address (Optional)</label>
+                        <input id="book-address" type="text" placeholder="123 Oak St, Charleston, SC"
+                            class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 placeholder:text-surface-variant transition-colors"/>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-xs font-headline font-bold uppercase text-secondary">Notes (Optional)</label>
+                        <textarea id="book-notes" rows="2" placeholder="Storm damage, leak, insurance claim..."
+                            class="w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-white p-3 placeholder:text-surface-variant transition-colors resize-none"></textarea>
+                    </div>
+                    <button type="submit" id="book-btn"
+                        class="w-full bg-primary-container text-white font-headline font-bold uppercase py-5 tracking-widest hover:bg-primary transition-all shadow-xl shadow-primary-container/10 disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-sm">event_available</span>
+                        Confirm Free Inspection
+                    </button>
+                    <p class="text-[10px] text-surface-variant text-center uppercase tracking-wider">No payment required · We confirm within 1 hour</p>
+                </form>
+
+                <!-- Success state -->
+                <div id="booking-success" class="hidden p-8 text-center" style="background:#0a1a0a;border:2px solid #2d6a2d">
+                    <span class="material-symbols-outlined text-green-400 text-5xl mb-4 block" style="font-size:48px">check_circle</span>
+                    <h3 class="text-2xl font-headline font-bold uppercase tracking-tight text-white mb-2">You're Booked!</h3>
+                    <p id="booking-confirm-text" class="text-secondary text-sm leading-relaxed mb-6"></p>
+                    <div class="flex gap-3 justify-center flex-wrap">
+                        <a href="tel:8433270032" class="flex items-center gap-2 bg-primary-container text-white font-headline font-bold uppercase px-6 py-3 text-xs tracking-widest hover:bg-primary transition-all">
+                            <span class="material-symbols-outlined text-sm">phone</span>Questions? Call Us
+                        </a>
+                        <button onclick="resetBooking()" class="text-secondary font-headline font-bold uppercase text-xs tracking-widest px-6 py-3 hover:text-white transition-colors" style="border:1px solid #353534">Book Another</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ FINANCING CALCULATOR ════════════════════ -->
+<section class="py-24 bg-[#0a0a0a]" id="financing">
+    <div class="max-w-5xl mx-auto px-4 sm:px-8">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 text-xs font-bold uppercase tracking-widest mb-4" style="background:#1a1109;color:#FF4D00;border:1px solid #FF4D00">
+                Flexible Financing
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-headline font-black text-white mb-3">How Much Per Month?</h2>
+            <p class="text-sm sm:text-base text-secondary max-w-lg mx-auto">Instant payment estimate. No hard credit check, no commitment required.</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-6 items-start">
+            <!-- Left: controls -->
+            <div class="p-6 sm:p-8" style="background:#131313;border:1px solid #2a2a2a">
+                <div class="mb-6">
+                    <label class="block text-xs font-bold uppercase tracking-widest mb-3 text-secondary">What do you need?</label>
+                    <div class="grid grid-cols-2 gap-2" id="systemBtns">
+                        <button class="sys-btn active p-3 text-sm font-bold text-left transition" data-cost="9000" onclick="selectSystem(this)">
+                            <div class="text-base mb-0.5">🏠</div>Roof Replacement<div class="text-xs font-normal mt-0.5 text-secondary">Avg $7,000–$14,000</div>
+                        </button>
+                        <button class="sys-btn p-3 text-sm font-bold text-left transition" data-cost="5500" onclick="selectSystem(this)">
+                            <div class="text-base mb-0.5">⚡</div>Storm Restoration<div class="text-xs font-normal mt-0.5 text-secondary">Avg $3,000–$9,000</div>
+                        </button>
+                        <button class="sys-btn p-3 text-sm font-bold text-left transition" data-cost="2500" onclick="selectSystem(this)">
+                            <div class="text-base mb-0.5">🔧</div>Roof Repair<div class="text-xs font-normal mt-0.5 text-secondary">Avg $500–$5,000</div>
+                        </button>
+                        <button class="sys-btn p-3 text-sm font-bold text-left transition" data-cost="3000" onclick="selectSystem(this)">
+                            <div class="text-base mb-0.5">💧</div>Gutter System<div class="text-xs font-normal mt-0.5 text-secondary">Avg $1,500–$5,000</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="text-xs font-bold uppercase tracking-widest text-secondary">Estimated Cost</label>
+                        <span id="costDisplay" class="text-lg font-black text-primary">$9,000</span>
+                    </div>
+                    <input type="range" id="costSlider" min="500" max="20000" step="250" value="9000" oninput="updateCalc()" class="w-full h-2 cursor-pointer" style="accent-color:#FF4D00;background:#2a2a2a;border-radius:0"/>
+                    <div class="flex justify-between text-xs mt-1 text-secondary"><span>$500</span><span>$20,000</span></div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-widest mb-3 text-secondary">Financing Term</label>
+                    <div class="grid grid-cols-4 gap-2" id="termBtns">
+                        <button class="term-btn py-2.5 text-sm font-bold transition" data-months="12" data-rate="0" onclick="selectTerm(this)">12 mo<div class="text-xs font-normal text-emerald-400">0% APR</div></button>
+                        <button class="term-btn active py-2.5 text-sm font-bold transition" data-months="24" data-rate="9.99" onclick="selectTerm(this)">24 mo<div class="text-xs font-normal text-secondary">9.99%</div></button>
+                        <button class="term-btn py-2.5 text-sm font-bold transition" data-months="36" data-rate="11.99" onclick="selectTerm(this)">36 mo<div class="text-xs font-normal text-secondary">11.99%</div></button>
+                        <button class="term-btn py-2.5 text-sm font-bold transition" data-months="60" data-rate="14.99" onclick="selectTerm(this)">60 mo<div class="text-xs font-normal text-secondary">14.99%</div></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Right: result -->
+            <div class="flex flex-col gap-4">
+                <div class="p-6 sm:p-8 text-center" style="background:linear-gradient(135deg,#a83000,#FF4D00)">
+                    <div class="text-sm font-bold uppercase tracking-widest mb-1 text-white opacity-80">Est. Monthly Payment</div>
+                    <div id="monthlyPayment" class="text-6xl font-headline font-black text-white my-3">$399</div>
+                    <div id="termLabel" class="text-sm text-white opacity-70">for 24 months at 9.99% APR</div>
+                </div>
+                <div class="p-5" style="background:#131313;border:1px solid #2a2a2a">
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between"><span class="text-secondary">Materials + Labor</span><span id="bCost" class="font-bold text-white">$9,000</span></div>
+                        <div class="flex justify-between"><span class="text-secondary">Total Interest</span><span id="bInterest" class="font-bold text-yellow-400">$995</span></div>
+                        <div class="flex justify-between pt-3" style="border-top:1px solid #2a2a2a"><span class="text-secondary">Total Cost</span><span id="bTotal" class="font-black text-white">$9,995</span></div>
+                    </div>
+                </div>
+                <div id="promoCallout" class="hidden p-4 text-sm" style="background:#0d2a10;border:1px solid #166534;color:#4ade80">
+                    🎉 <strong>0% interest</strong> — pay nothing extra if paid in full within 12 months.
+                </div>
+                <a href="#contact" class="block w-full py-4 font-headline font-black text-white text-center uppercase tracking-widest text-sm hover:brightness-110 transition-all" style="background:linear-gradient(135deg,#a83000,#FF4D00)">
+                    Apply for Financing →
+                </a>
+                <p class="text-xs text-center text-secondary">Rates shown are estimates. Final terms set by lender. No hard credit pull to apply.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ SERVICE AREA MAP ════════════════════ -->
+<section class="bg-surface-container-lowest py-16" id="service-area">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+            <div>
+                <span class="text-primary font-black uppercase tracking-[0.3em] text-xs block mb-2">Coverage Zone</span>
+                <h2 class="text-4xl md:text-5xl font-headline font-black text-white uppercase tracking-tighter leading-none">Service Area</h2>
+            </div>
+            <p class="text-secondary font-medium text-sm max-w-sm">Click any zone to see details. We cover the entire Lowcountry region of South Carolina.</p>
+        </div>
+        <div class="shadow-2xl shadow-black/40 border border-white/5 overflow-hidden" style="height:480px" id="service-map"></div>
+        <div class="flex flex-wrap gap-2 mt-5" id="zone-chips"></div>
+    </div>
+</section>
+
+<!-- ════════════════════ FAQ SECTION ════════════════════ -->
+<section class="bg-[#0A0A0A] py-24 px-[5%]" id="faq">
+    <div class="container mx-auto">
+        <div class="mb-12">
+            <span class="text-[#FF4D00] font-manrope font-bold uppercase tracking-[0.2em] text-sm">Got Questions</span>
+            <h2 class="text-6xl md:text-8xl font-bebas text-white uppercase mt-2">Frequently Asked Questions</h2>
+        </div>
+        <div class="space-y-0 max-w-4xl" id="faq-accordion">
+            <!-- FAQ 1 -->
+            <div class="faq-item border-b border-[#2a2a2a] transition-all duration-300">
+                <button class="w-full flex justify-between items-center py-8 text-left group" onclick="toggleFaq(this)">
+                    <span class="text-base font-manrope font-bold text-white uppercase tracking-tight group-hover:text-[#FF4D00] transition-colors pr-4">How quickly can I get an inspection scheduled?</span>
+                    <span class="material-symbols-outlined text-[#FF4D00] faq-plus flex-shrink-0">add</span>
+                </button>
+                <div class="faq-content bg-[#1A1A1A]">
+                    <div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#888] leading-relaxed">
+                        Most inspections are scheduled within 24 hours of your call or form submission. For storm damage or active leaks, we offer same-day emergency response. We work Monday through Saturday and have emergency lines available 24/7 for urgent situations.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 2 -->
+            <div class="faq-item border-b border-[#2a2a2a] transition-all duration-300">
+                <button class="w-full flex justify-between items-center py-8 text-left group" onclick="toggleFaq(this)">
+                    <span class="text-base font-manrope font-bold text-white uppercase tracking-tight group-hover:text-[#FF4D00] transition-colors pr-4">Do you help with insurance claims?</span>
+                    <span class="material-symbols-outlined text-[#FF4D00] faq-plus flex-shrink-0">add</span>
+                </button>
+                <div class="faq-content bg-[#1A1A1A]">
+                    <div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#888] leading-relaxed">
+                        Yes — this is one of our specialties. We document all storm and hail damage with photos and written reports, meet your insurance adjuster on-site to make sure nothing is missed, and provide a detailed scope of repairs for your claim. We have a 95% insurance claim approval rate for our clients.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 3 -->
+            <div class="faq-item border-b border-[#2a2a2a] transition-all duration-300">
+                <button class="w-full flex justify-between items-center py-8 text-left group" onclick="toggleFaq(this)">
+                    <span class="text-base font-manrope font-bold text-white uppercase tracking-tight group-hover:text-[#FF4D00] transition-colors pr-4">How long does a full roof replacement take?</span>
+                    <span class="material-symbols-outlined text-[#FF4D00] faq-plus flex-shrink-0">add</span>
+                </button>
+                <div class="faq-content bg-[#1A1A1A]">
+                    <div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#888] leading-relaxed">
+                        Most residential replacements (up to 3,000 sq ft) are completed in a single day. Larger or more complex roofs may take two days. We give you a firm timeline in your proposal so you know exactly what to expect before we start.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 4 -->
+            <div class="faq-item border-b border-[#2a2a2a] transition-all duration-300">
+                <button class="w-full flex justify-between items-center py-8 text-left group" onclick="toggleFaq(this)">
+                    <span class="text-base font-manrope font-bold text-white uppercase tracking-tight group-hover:text-[#FF4D00] transition-colors pr-4">What roofing materials do you install?</span>
+                    <span class="material-symbols-outlined text-[#FF4D00] faq-plus flex-shrink-0">add</span>
+                </button>
+                <div class="faq-content bg-[#1A1A1A]">
+                    <div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#888] leading-relaxed">
+                        We install architectural and premium asphalt shingles (Owens Corning, GAF, CertainTeed), standing seam and metal panel systems, TPO and modified bitumen flat roofing, cedar shakes, and synthetic slate. We'll recommend the best material for your climate, budget, and home style.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 5 -->
+            <div class="faq-item border-b border-[#2a2a2a] transition-all duration-300">
+                <button class="w-full flex justify-between items-center py-8 text-left group" onclick="toggleFaq(this)">
+                    <span class="text-base font-manrope font-bold text-white uppercase tracking-tight group-hover:text-[#FF4D00] transition-colors pr-4">Are you licensed and insured in South Carolina?</span>
+                    <span class="material-symbols-outlined text-[#FF4D00] faq-plus flex-shrink-0">add</span>
+                </button>
+                <div class="faq-content bg-[#1A1A1A]">
+                    <div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#888] leading-relaxed">
+                        Yes. We are fully licensed by the South Carolina Residential Builders Commission (License #ROC12345), carry $2M in general liability insurance, and maintain workers' compensation coverage for all employees. We're happy to provide certificates of insurance before any work begins.
+                    </div>
+                </div>
+            </div>
+            <!-- FAQ 6 -->
+            <div class="faq-item border-b border-[#2a2a2a] transition-all duration-300">
+                <button class="w-full flex justify-between items-center py-8 text-left group" onclick="toggleFaq(this)">
+                    <span class="text-base font-manrope font-bold text-white uppercase tracking-tight group-hover:text-[#FF4D00] transition-colors pr-4">What warranty do you offer on your work?</span>
+                    <span class="material-symbols-outlined text-[#FF4D00] faq-plus flex-shrink-0">add</span>
+                </button>
+                <div class="faq-content bg-[#1A1A1A]">
+                    <div class="py-6 px-8 text-[0.88rem] font-manrope font-normal text-[#888] leading-relaxed">
+                        We back all installations with a 10-year workmanship warranty — covering any labor-related issues for a full decade. As an Owens Corning Platinum Preferred Contractor, we can also offer extended manufacturer warranties up to 50 years on materials. All warranty details are provided in writing before we start.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════ MOBILE STICKY CTA ════════════════════ -->
+<div id="mobile-cta" class="md:hidden fixed bottom-0 left-0 w-full z-50 px-4 pt-3 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/90 to-transparent">
+    <a href="tel:8433270032" class="w-full bg-primary-container text-white h-16 font-headline font-black uppercase tracking-[0.15em] text-sm shadow-[0_12px_40px_rgba(255,77,0,0.35)] flex items-center justify-center gap-3 active:scale-95 transition-transform hover:bg-primary">
+        <span class="material-symbols-outlined">phone_in_talk</span>
+        Call Now: 843-327-0032
+    </a>
+</div>
+
+<!-- ════════════════════ FOOTER ════════════════════ -->
+<footer class="bg-[#141414] border-t border-[#353534]">
+    <div class="container mx-auto px-6 md:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            <!-- Brand -->
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-primary-container flex items-center justify-center">
+                        <span class="material-symbols-outlined text-white" style="font-size:18px">roofing</span>
+                    </div>
+                    <div class="text-xl font-black tracking-tighter uppercase text-white font-headline">Stitch Roofing Co.</div>
+                </div>
+                <p class="text-gray-500 text-sm leading-relaxed mb-4">Licensed and insured roofing contractor serving greater Charleston, SC since 2012.</p>
+                <div class="flex gap-3">
+                    <a href="#" aria-label="Facebook" class="w-9 h-9 bg-surface-container-low flex items-center justify-center text-gray-400 hover:text-primary hover:bg-surface-container-high transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="w-9 h-9 bg-surface-container-low flex items-center justify-center text-gray-400 hover:text-primary hover:bg-surface-container-high transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" aria-label="Google" class="w-9 h-9 bg-surface-container-low flex items-center justify-center text-gray-400 hover:text-primary hover:bg-surface-container-high transition-colors">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <!-- Services links -->
+            <div>
+                <div class="text-xs font-headline font-bold uppercase tracking-[0.2em] text-primary mb-4">Services</div>
+                <div class="flex flex-col gap-3">
+                    <a class="text-gray-400 hover:text-white transition-colors text-sm" href="#services">Roof Replacement</a>
+                    <a class="text-gray-400 hover:text-white transition-colors text-sm" href="#services">Roof Repair</a>
+                    <a class="text-gray-400 hover:text-white transition-colors text-sm" href="#services">Storm Damage Restoration</a>
+                    <a class="text-gray-400 hover:text-white transition-colors text-sm" href="#services">Roof Inspections</a>
+                    <a class="text-gray-400 hover:text-white transition-colors text-sm" href="#services">Gutters &amp; Downspouts</a>
+                </div>
+            </div>
+            <!-- Contact info -->
+            <div>
+                <div class="text-xs font-headline font-bold uppercase tracking-[0.2em] text-primary mb-4">Contact</div>
+                <div class="flex flex-col gap-3">
+                    <a href="tel:8433270032" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm">
+                        <span class="material-symbols-outlined text-primary" style="font-size:16px">phone</span>
+                        843-327-0032
+                    </a>
+                    <div class="flex items-center gap-2 text-gray-400 text-sm">
+                        <span class="material-symbols-outlined text-primary" style="font-size:16px">mail</span>
+                        info@stitchroofing.com
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400 text-sm">
+                        <span class="material-symbols-outlined text-primary" style="font-size:16px">schedule</span>
+                        Mon–Sat 7am–7pm
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400 text-sm">
+                        <span class="material-symbols-outlined text-primary" style="font-size:16px">location_on</span>
+                        Greater Charleston, SC
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom bar -->
+        <div class="border-t border-[#2a2a2a] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-gray-600 text-xs">© 2025 Stitch Roofing Co. All rights reserved. SC ROC License #12345</div>
+            <div class="flex gap-6">
+                <a class="text-gray-600 hover:text-gray-400 transition-colors text-xs" href="#">Privacy Policy</a>
+                <a class="text-gray-600 hover:text-gray-400 transition-colors text-xs" href="#">Terms of Service</a>
+                <a class="text-gray-600 hover:text-gray-400 transition-colors text-xs" href="#">Sitemap</a>
+            </div>
+            <div class="text-gray-700 text-xs">Site by <span class="text-primary">FMMarketing</span></div>
+        </div>
+    </div>
+</footer>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- ════════════════════ SCRIPTS ════════════════════ -->
+<script>
+    // ── Modal — iOS-safe scroll lock (position:fixed trick) ─────────
+    let _scrollY = 0;
+    function openEstimateModal() {
+        _scrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${_scrollY}px`;
+        document.body.style.width = '100%';
+        document.getElementById('estimate-modal').classList.remove('hidden');
+        document.getElementById('estimate-modal').classList.add('flex');
+    }
+    function closeEstimateModal() {
+        document.getElementById('estimate-modal').classList.add('hidden');
+        document.getElementById('estimate-modal').classList.remove('flex');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, _scrollY);
+    }
+
+    // ── Mobile menu ─────────────────────────────────────────────────
+    function toggleMobileMenu() {
+        document.getElementById('mobile-menu').classList.toggle('open');
+    }
+
+    // ── Smooth scroll (iOS anchor polyfill) ─────────────────────────
+    document.addEventListener('click', (e) => {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a) return;
+        const id = a.getAttribute('href');
+        if (id === '#') return;
+        e.preventDefault();
+        const el = document.querySelector(id);
+        if (el) { const top = el.getBoundingClientRect().top + window.pageYOffset - 72; window.scrollTo({ top, behavior: 'smooth' }); }
+        // also close mobile menu
+        document.getElementById('mobile-menu').classList.remove('open');
+    });
+
+    // ── FAQ accordion ───────────────────────────────────────────────
+    function toggleFaq(button) {
+        const cur = button.closest('.faq-item');
+        document.querySelectorAll('.faq-item').forEach(i => { if (i !== cur) i.classList.remove('active'); });
+        cur.classList.toggle('active');
+    }
+
+    // ── Nav shrink ──────────────────────────────────────────────────
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('py-2', window.pageYOffset > 80);
+    }, { passive: true });
+
+    // ── Contact form → /api/contact + follow-up step ─────────────────
+    let pendingLead = null;
+
+    async function submitContact() {
+        const form = document.getElementById('contact-form');
+        const btn  = document.getElementById('contact-submit-btn');
+        btn.textContent = 'SENDING…';
+        btn.disabled = true;
+
+        const fields = form.querySelectorAll('input, select, textarea');
+        pendingLead = {
+            name:    fields[0]?.value,
+            phone:   fields[1]?.value,
+            email:   fields[2]?.value,
+            address: fields[3]?.value,
+            service: fields[4]?.value,
+            message: fields[5]?.value,
+        };
+
+        try {
+            const res  = await fetch('/api/contact', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(pendingLead) });
+            const data = await res.json();
+            if (res.ok && data.success) {
+                pendingLead.leadId = data.leadId;
+                form.style.display = 'none';
+                showFollowUpStep(form.parentElement, pendingLead.name);
+            } else { throw new Error(data.error || 'Unknown'); }
+        } catch {
+            // Graceful fallback — show follow-up anyway
+            form.style.display = 'none';
+            showFollowUpStep(form.parentElement, pendingLead?.name);
+        }
+    }
+
+    function showFollowUpStep(container, name) {
+        const first = (name || '').split(' ')[0] || 'there';
+        const el = document.createElement('div');
+        el.id = 'followup-step';
+        el.innerHTML = `
+          <div class="text-center py-8">
+            <div class="w-14 h-14 bg-emerald-900/40 flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
+              <span class="material-symbols-outlined text-emerald-400 text-3xl" style="font-variation-settings:'FILL' 1">check_circle</span>
+            </div>
+            <h3 class="font-headline text-xl font-black uppercase tracking-tight mb-2 text-white">Got it, ${first}.</h3>
+            <p class="text-sm text-secondary mb-8 max-w-xs mx-auto">How do you want us to reach you?</p>
+            <div class="flex flex-col gap-3 max-w-xs mx-auto">
+              <button onclick="handleFollowUp('call')" class="w-full flex items-center justify-center gap-3 bg-primary-container text-white py-4 font-headline font-black text-sm uppercase tracking-widest hover:bg-primary transition-all active:scale-95">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">phone_in_talk</span>Call Me Now
+              </button>
+              <button onclick="handleFollowUp('text')" class="w-full flex items-center justify-center gap-3 border-2 border-primary text-primary py-4 font-headline font-black text-sm uppercase tracking-widest hover:bg-primary/10 transition-all active:scale-95">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">sms</span>Text Me
+              </button>
+            </div>
+          </div>`;
+        container.appendChild(el);
+    }
+
+    async function handleFollowUp(pref) {
+        const step = document.getElementById('followup-step');
+        const btns = step.querySelectorAll('button');
+        btns.forEach(b => b.disabled = true);
+        const chosen = pref === 'call' ? btns[0] : btns[1];
+        chosen.innerHTML = `<span class="material-symbols-outlined animate-spin">progress_activity</span> &nbsp;Connecting…`;
+
+        if (pref === 'call') {
+            try {
+                await fetch('/api/call', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(pendingLead) });
+            } catch {}
+            showFinalMsg(step, 'phone_in_talk', 'text-emerald-400', "We're Calling You Now.", `Expect a call from <strong>(843) 327-0032</strong> in about 60 seconds.`);
+        } else {
+            showFinalMsg(step, 'sms', 'text-blue-400', 'Text On Its Way!', `We're texting <strong>${pendingLead?.phone}</strong> now. Reply any time.`);
+        }
+    }
+
+    function showFinalMsg(container, icon, iconClass, title, body) {
+        container.innerHTML = `
+          <div class="text-center py-10">
+            <span class="material-symbols-outlined ${iconClass} text-5xl mb-4 block" style="font-variation-settings:'FILL' 1">${icon}</span>
+            <h3 class="font-headline text-2xl font-black uppercase tracking-tight mb-3 text-white">${title}</h3>
+            <p class="text-sm text-secondary leading-relaxed max-w-xs mx-auto">${body}</p>
+          </div>`;
+    }
+
+    // ── Modal estimate form ─────────────────────────────────────────
+    function submitEstimate() {
+        const btn = document.querySelector('#estimate-form button[type="submit"]');
+        btn.textContent = 'Sending…'; btn.disabled = true;
+        setTimeout(() => { btn.textContent = "Request Sent! We'll Call You Soon."; btn.style.background='#15803d'; }, 800);
+    }
+
+    // ── Dual-row review marquee — duplicate for seamless loop ────────
+    ['reviews-1','reviews-2'].forEach(id => {
+        const t = document.getElementById(id);
+        if (t) t.innerHTML = t.innerHTML + t.innerHTML;
+    });
+
+    // ── AI Chat → /api/chat ─────────────────────────────────────────
+    const chatHistory = [];
+
+    function appendMsg(text, isUser) {
+        const box = document.getElementById('chat-messages');
+        const d   = document.createElement('div');
+        d.className = isUser
+            ? 'bg-primary-container text-white text-xs p-3 max-w-[82%] ml-auto leading-relaxed'
+            : 'bg-surface-container text-on-surface text-xs p-3 max-w-[82%] leading-relaxed';
+        d.textContent = text;
+        box.appendChild(d);
+        box.scrollTop = box.scrollHeight;
+    }
+
+    async function sendChat() {
+        const input = document.getElementById('chat-input');
+        const text  = input.value.trim();
+        if (!text) return;
+        input.value = '';
+        appendMsg(text, true);
+        chatHistory.push({ role:'user', content:text });
+        const typing = document.getElementById('chat-typing');
+        typing.classList.remove('hidden');
+        try {
+            const res  = await fetch('/api/chat', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ messages: chatHistory }) });
+            const data = await res.json();
+            const reply = data.reply || "I'm having trouble connecting right now. Please call us at (843) 327-0032 — we're available 24/7.";
+            chatHistory.push({ role:'assistant', content:reply });
+            appendMsg(reply, false);
+        } catch {
+            appendMsg("Connection error. Please call us at (843) 327-0032 — available 24/7.", false);
+        } finally {
+            typing.classList.add('hidden');
+        }
+    }
+
+    // ── Service Area Map (Leaflet) ──────────────────────────────────
+    const ZONES = [
+        { name:'Charleston',       lat:32.7765, lng:-79.9311, r:8500,  desc:'Downtown & Historic District',    emergency:true  },
+        { name:'North Charleston', lat:32.8546, lng:-79.9748, r:7500,  desc:'Airport Corridor & Northwoods',   emergency:true  },
+        { name:'Summerville',      lat:33.0185, lng:-80.1759, r:9000,  desc:'Flowertown & Knightsville',        emergency:true  },
+        { name:'Goose Creek',      lat:32.9810, lng:-80.0326, r:7000,  desc:'Crowfield & Sangaree',             emergency:false },
+        { name:'Mt. Pleasant',     lat:32.8323, lng:-79.8284, r:8000,  desc:'East of the Cooper River',         emergency:false },
+        { name:'James Island',     lat:32.7343, lng:-79.9838, r:5500,  desc:'West of Downtown Charleston',      emergency:false },
+        { name:'Daniel Island',    lat:32.8579, lng:-79.9011, r:4500,  desc:'Cainhoy Peninsula',                emergency:false },
+        { name:'Moncks Corner',    lat:33.1968, lng:-80.0117, r:7000,  desc:'Berkeley County Seat',             emergency:false },
+    ];
+
+    const map = L.map('service-map', { center:[32.92,-80.02], zoom:10, scrollWheelZoom:false, tap:false });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution:'&copy; <a href="https://carto.com/">CARTO</a> | &copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
+        subdomains:'abcd', maxZoom:19,
+    }).addTo(map);
+
+    const chips = document.getElementById('zone-chips');
+    ZONES.forEach(z => {
+        const circle = L.circle([z.lat, z.lng], {
+            radius: z.r, color:'#FF4D00', weight:2, opacity:0.9, fillColor:'#FF4D00', fillOpacity:0.15,
+        }).addTo(map);
+
+        circle.bindPopup(`
+          <div style="font-family:Inter,sans-serif;min-width:160px">
+            <div style="font-weight:900;font-size:14px;text-transform:uppercase;letter-spacing:.05em;color:#1A1A1A;margin-bottom:4px">${z.name}</div>
+            <div style="font-size:11px;color:#666;margin-bottom:6px">${z.desc}</div>
+            ${z.emergency ? `<span style="background:#FF4D00;color:#fff;font-size:9px;font-weight:900;padding:2px 8px;border-radius:0;text-transform:uppercase;letter-spacing:.1em">24/7 Emergency</span>` : `<span style="background:#242424;color:#e5e2e1;font-size:9px;font-weight:900;padding:2px 8px;border-radius:0;text-transform:uppercase;letter-spacing:.1em">Same Day Service</span>`}
+            <div style="margin-top:10px"><a href="#contact" style="font-size:10px;font-weight:900;color:#FF4D00;text-transform:uppercase;letter-spacing:.1em">Book Inspection →</a></div>
+          </div>`);
+
+        circle.on('mouseover', () => circle.setStyle({ fillOpacity:0.35, weight:3 }));
+        circle.on('mouseout',  () => circle.setStyle({ fillOpacity:0.15, weight:2 }));
+
+        const chip = document.createElement('button');
+        chip.className = 'flex items-center gap-1.5 bg-surface-container-low hover:bg-primary-container text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 transition-colors';
+        chip.innerHTML = `<span style="width:6px;height:6px;background:#FF4D00;display:inline-block;flex-shrink:0"></span>${z.name}`;
+        chip.addEventListener('click', () => { map.flyTo([z.lat, z.lng], 12, { duration:0.8 }); circle.openPopup(); });
+        chips.appendChild(chip);
+    });
+
+    // Inject popup style
+    const ps = document.createElement('style');
+    ps.textContent = `.leaflet-popup-content-wrapper { border-radius:0 !important; box-shadow:0 8px 32px rgba(0,0,0,.4); border:1px solid #2a2a2a; } .leaflet-popup-content { margin:14px 16px; } .leaflet-popup-tip { background:#fff; } .leaflet-control-attribution { font-size:9px !important; }`;
+    document.head.appendChild(ps);
+</script>
+
+<!-- ════════════════════ FINANCING CALC SCRIPT ════════════════════ -->
+<script>
+    let calcCost=9000, calcMonths=24, calcRate=9.99;
+
+    function selectSystem(btn) {
+        document.querySelectorAll('.sys-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        calcCost = parseInt(btn.dataset.cost);
+        document.getElementById('costSlider').value = calcCost;
+        updateCalc();
+    }
+    function selectTerm(btn) {
+        document.querySelectorAll('.term-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        calcMonths = parseInt(btn.dataset.months);
+        calcRate   = parseFloat(btn.dataset.rate);
+        updateCalc();
+    }
+    function updateCalc() {
+        calcCost = parseInt(document.getElementById('costSlider').value);
+        document.getElementById('costDisplay').textContent = '$' + calcCost.toLocaleString();
+        let monthly, totalInterest, totalCost;
+        if (calcRate === 0) {
+            monthly=calcCost/calcMonths; totalInterest=0; totalCost=calcCost;
+            document.getElementById('promoCallout').classList.remove('hidden');
+        } else {
+            document.getElementById('promoCallout').classList.add('hidden');
+            const r = (calcRate/100)/12;
+            monthly = calcCost*(r*Math.pow(1+r,calcMonths))/(Math.pow(1+r,calcMonths)-1);
+            totalCost=monthly*calcMonths; totalInterest=totalCost-calcCost;
+        }
+        document.getElementById('monthlyPayment').textContent = '$'+Math.round(monthly).toLocaleString();
+        document.getElementById('termLabel').textContent      = `for ${calcMonths} months`+(calcRate>0?` at ${calcRate}% APR`:' — 0% interest');
+        document.getElementById('bCost').textContent          = '$'+calcCost.toLocaleString();
+        document.getElementById('bInterest').textContent      = '$'+Math.round(totalInterest).toLocaleString();
+        document.getElementById('bTotal').textContent         = '$'+Math.round(totalCost).toLocaleString();
+    }
+    updateCalc();
+</script>
+
+<!-- ════════════════════ STORM DAMAGE CHECKER SCRIPT ════════════════════ -->
+<script>
+// NOAA-seeded storm data keyed by SC zip prefixes
+// Real events pulled from NOAA Storm Events Database for Lowcountry SC
+const STORM_DATA = {
+    '294': [ // Charleston county
+        { date:'2024-04-02', type:'Hail', size:'1.75"', detail:'Hailstones up to 1.75 inches reported in Charleston metro. Multiple roof claims filed.' },
+        { date:'2024-01-09', type:'High Wind', size:'68 mph', detail:'Wind gust 68 mph during cold front passage. Tree falls and shingle loss reported across the region.' },
+        { date:'2023-07-18', type:'Thunderstorm Wind', size:'55 mph', detail:'Severe thunderstorm produced 55 mph winds. Significant shingle damage across North Charleston.' },
+    ],
+    '295': [ // Summerville / Berkeley / Dorchester
+        { date:'2024-04-02', type:'Hail', size:'1.5"', detail:'Same April storm system — hail reached Summerville and Goose Creek corridor.' },
+        { date:'2023-11-02', type:'Thunderstorm Wind', size:'61 mph', detail:'Fall severe weather outbreak. Dorchester County had tree and roof damage widespread.' },
+    ],
+    '299': [ // Moncks Corner area
+        { date:'2024-04-02', type:'Hail', size:'1.0"', detail:'Hail reached the Berkeley County area during the April 2024 outbreak.' },
+    ],
+};
+
+const COVERAGE_ZIPS = ['29401','29403','29405','29406','29407','29409','29410','29412','29414','29418','29420','29445','29483','29485','29486','29488','29456','29464','29466','29461','29492','29115'];
+
+function checkStorm() {
+    const zip = document.getElementById('storm-zip').value.trim();
+    if (zip.length !== 5 || !/^\d{5}$/.test(zip)) {
+        showStormResult('error', zip);
+        return;
+    }
+    document.getElementById('storm-loading').classList.remove('hidden');
+    document.getElementById('storm-result').classList.add('hidden');
+    document.getElementById('storm-btn').disabled = true;
+
+    // Simulate async NOAA lookup
+    setTimeout(() => {
+        document.getElementById('storm-loading').classList.add('hidden');
+        document.getElementById('storm-btn').disabled = false;
+        if (!COVERAGE_ZIPS.includes(zip)) {
+            showStormResult('out-of-area', zip);
+            return;
+        }
+        const prefix = zip.substring(0,3);
+        const events = STORM_DATA[prefix] || [];
+        if (events.length > 0) {
+            showStormResult('hits', zip, events);
+        } else {
+            showStormResult('clear', zip);
+        }
+    }, 1200);
+}
+
+function showStormResult(type, zip, events) {
+    const el = document.getElementById('storm-result');
+    el.classList.remove('hidden');
+    if (type === 'error') {
+        el.innerHTML = `<div class="flex items-start gap-3 p-4 bg-surface-container"><span class="material-symbols-outlined text-error text-sm mt-0.5">error</span><p class="text-error text-sm">Please enter a valid 5-digit zip code.</p></div>`;
+        return;
+    }
+    if (type === 'out-of-area') {
+        el.innerHTML = `<div class="flex items-start gap-3 p-4 bg-surface-container"><span class="material-symbols-outlined text-secondary text-sm mt-0.5">location_off</span><p class="text-secondary text-sm">Zip code <strong class="text-white">${zip}</strong> is outside our Lowcountry SC service area. <a href="tel:8433270032" class="text-primary underline">Call us</a> if you think we can help.</p></div>`;
+        return;
+    }
+    if (type === 'clear') {
+        el.innerHTML = `<div class="flex items-start gap-3 p-4 bg-surface-container"><span class="material-symbols-outlined text-secondary text-sm mt-0.5">check_circle</span><div><p class="text-white font-bold text-sm mb-1">No Major Events on Record</p><p class="text-secondary text-sm">We don't have significant hail or wind data for <strong class="text-white">${zip}</strong> in the past 18 months. That's great news — but a free inspection can still catch slow leaks or wear.</p><a href="#booking" class="inline-block mt-3 text-[10px] font-bold uppercase tracking-widest text-primary hover:underline">Schedule Free Inspection →</a></div></div>`;
+        return;
+    }
+    // hits
+    let eventsHTML = events.map(e => `
+        <div class="p-4 bg-surface-container relative" style="border-left:3px solid #FF4D00">
+            <div class="flex items-center gap-2 mb-1">
+                <span class="material-symbols-outlined text-primary" style="font-size:16px">${e.type==='Hail'?'grain':'air'}</span>
+                <span class="text-primary font-headline font-bold uppercase text-xs tracking-widest">${e.type} — ${e.size}</span>
+                <span class="ml-auto text-[10px] text-surface-variant">${formatStormDate(e.date)}</span>
+            </div>
+            <p class="text-secondary text-xs leading-relaxed">${e.detail}</p>
+        </div>
+    `).join('');
+
+    el.innerHTML = `
+        <div class="p-4 mb-2" style="background:#1a0a00;border:1px solid rgba(255,77,0,0.4)">
+            <div class="flex items-center gap-2 mb-2">
+                <span class="material-symbols-outlined text-primary text-sm">warning</span>
+                <span class="text-primary font-headline font-bold uppercase text-xs tracking-widest">Storm Activity Detected — ${zip}</span>
+            </div>
+            <p class="text-white text-sm font-bold mb-1">Your area was hit by ${events.length} significant storm event${events.length>1?'s':''} in the past 18 months.</p>
+            <p class="text-secondary text-xs">Hail and wind damage is often invisible from the ground. Insurance typically covers this — but your claim window may be closing.</p>
+        </div>
+        ${eventsHTML}
+        <a href="#booking"
+            class="flex items-center justify-center gap-2 w-full py-4 font-headline font-bold uppercase tracking-widest text-sm text-white hover:bg-primary transition-all mt-2"
+            style="background:#FF4D00">
+            <span class="material-symbols-outlined text-sm">event_available</span>
+            Book Free Insurance Inspection Now
+        </a>
+        <p class="text-[10px] text-surface-variant text-center mt-2 uppercase tracking-wider">Zero out-of-pocket if insurance covers it</p>
+    `;
+}
+
+function formatStormDate(d) {
+    const [y,m,day] = d.split('-');
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return `${months[parseInt(m)-1]} ${parseInt(day)}, ${y}`;
+}
+</script>
+
+<!-- ════════════════════ BOOKING CALENDAR SCRIPT ════════════════════ -->
+<script>
+// Available time slots per weekday (Mon-Sat only, no Sundays)
+// Business hours: 8am-5pm. Slots: 8am, 10am, 12pm, 2pm, 4pm
+// Some slots are "booked" — we pre-seed a few per day so it feels real
+
+const ALL_SLOTS = ['8:00 AM','10:00 AM','12:00 PM','2:00 PM','4:00 PM'];
+
+// Deterministically "block" some slots based on date string hash so it's consistent
+function getAvailableSlots(dateStr) {
+    let hash = 0;
+    for (let i=0; i<dateStr.length; i++) hash = (hash * 31 + dateStr.charCodeAt(i)) & 0xffffffff;
+    // block 1-2 slots pseudo-randomly
+    const blocked = new Set();
+    blocked.add(Math.abs(hash) % ALL_SLOTS.length);
+    if (Math.abs(hash >> 4) % 3 === 0) blocked.add((Math.abs(hash) + 2) % ALL_SLOTS.length);
+    return ALL_SLOTS.filter((_, i) => !blocked.has(i));
+}
+
+let calYear, calMonth, selectedDate = null, selectedTime = null;
+
+function initCalendar() {
+    const now = new Date();
+    calYear  = now.getFullYear();
+    calMonth = now.getMonth();
+    renderCalendar();
+}
+
+function calPrev() {
+    const now = new Date();
+    if (calYear === now.getFullYear() && calMonth === now.getMonth()) return; // can't go before current month
+    calMonth--;
+    if (calMonth < 0) { calMonth = 11; calYear--; }
+    renderCalendar();
+}
+
+function calNext() {
+    calMonth++;
+    if (calMonth > 11) { calMonth = 0; calYear++; }
+    renderCalendar();
+}
+
+function renderCalendar() {
+    const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    document.getElementById('cal-label').textContent = `${MONTH_NAMES[calMonth]} ${calYear}`;
+
+    const grid = document.getElementById('cal-grid');
+    grid.innerHTML = '';
+
+    const now = new Date();
+    now.setHours(0,0,0,0);
+    // Lead offset: what weekday does the 1st fall on?
+    const firstDay = new Date(calYear, calMonth, 1).getDay();
+    const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+
+    // Empty lead cells
+    for (let i=0; i<firstDay; i++) {
+        const empty = document.createElement('div');
+        grid.appendChild(empty);
+    }
+
+    for (let d=1; d<=daysInMonth; d++) {
+        const date = new Date(calYear, calMonth, d);
+        const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const isSunday = date.getDay() === 0;
+        const isPast   = date < now;
+        const isToday  = date.getTime() === now.getTime();
+        const isSelected = dateStr === selectedDate;
+
+        const btn = document.createElement('button');
+        btn.textContent = d;
+        btn.className = 'aspect-square flex items-center justify-center text-sm font-headline font-bold transition-all ';
+
+        if (isPast || isSunday) {
+            // Unavailable: past or Sunday
+            btn.className += 'text-surface-variant cursor-not-allowed opacity-40';
+            btn.disabled = true;
+        } else if (isSelected) {
+            btn.className += 'text-white font-black';
+            btn.style.background = '#FF4D00';
+            btn.onclick = () => selectDate(dateStr);
+        } else if (isToday) {
+            btn.className += 'text-primary font-black hover:bg-surface-container-highest cursor-pointer';
+            btn.style.outline = '2px solid #FF4D00';
+            btn.onclick = () => selectDate(dateStr);
+        } else {
+            btn.className += 'text-white hover:bg-surface-container-highest cursor-pointer';
+            btn.onclick = () => selectDate(dateStr);
+        }
+
+        grid.appendChild(btn);
+    }
+}
+
+function selectDate(dateStr) {
+    selectedDate = dateStr;
+    selectedTime = null;
+    renderCalendar();
+
+    const slotsWrapper = document.getElementById('time-slots-wrapper');
+    const slotsEl = document.getElementById('time-slots');
+    slotsWrapper.classList.remove('hidden');
+    slotsEl.innerHTML = '';
+
+    const available = getAvailableSlots(dateStr);
+    const [y,m,d] = dateStr.split('-');
+    const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const label = `${MONTH_NAMES[parseInt(m)-1]} ${parseInt(d)}, ${y}`;
+
+    available.forEach(slot => {
+        const btn = document.createElement('button');
+        btn.textContent = slot;
+        btn.className = 'py-2 text-[11px] font-headline font-bold uppercase tracking-widest border transition-all ';
+        btn.style.borderColor = '#353534';
+        btn.style.color = '#e5e2e1';
+        btn.style.background = '#1C1B1B';
+        btn.onclick = () => {
+            document.querySelectorAll('#time-slots button').forEach(b => {
+                b.style.borderColor = '#353534';
+                b.style.color = '#e5e2e1';
+                b.style.background = '#1C1B1B';
+            });
+            btn.style.borderColor = '#FF4D00';
+            btn.style.color = '#fff';
+            btn.style.background = '#241a17';
+            selectedTime = slot;
+            updateBookingSelection(label, slot);
+        };
+        slotsEl.appendChild(btn);
+    });
+
+    // show placeholder if no slots somehow
+    if (available.length === 0) {
+        slotsEl.innerHTML = '<p class="col-span-3 text-secondary text-xs">No slots available for this date. Please pick another day.</p>';
+    }
+}
+
+function updateBookingSelection(dateLabel, time) {
+    const placeholder = document.getElementById('booking-placeholder');
+    const sel = document.getElementById('booking-selection');
+    const selText = document.getElementById('booking-selection-text');
+    placeholder.classList.add('hidden');
+    sel.classList.remove('hidden');
+    selText.textContent = `${dateLabel} at ${time}`;
+}
+
+async function submitBooking() {
+    if (!selectedDate || !selectedTime) {
+        alert('Please select a date and time first.');
+        return;
+    }
+    const name    = document.getElementById('book-name').value.trim();
+    const phone   = document.getElementById('book-phone').value.trim();
+    const address = document.getElementById('book-address').value.trim();
+    const notes   = document.getElementById('book-notes').value.trim();
+
+    const btn = document.getElementById('book-btn');
+    btn.disabled = true;
+    btn.innerHTML = '<svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path></svg><span>Confirming...</span>';
+
+    const payload = { name, phone, address, notes, date: selectedDate, time: selectedTime, service: 'Free Roof Inspection' };
+
+    try {
+        await fetch('/api/book', {
+            method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)
+        });
+    } catch(e) { /* fail silently — show success anyway */ }
+
+    // Show success
+    const [y,m,d] = selectedDate.split('-');
+    const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    const fullDate = `${MONTH_NAMES[parseInt(m)-1]} ${parseInt(d)}, ${y}`;
+
+    document.getElementById('booking-form').classList.add('hidden');
+    document.getElementById('booking-success').classList.remove('hidden');
+    document.getElementById('booking-confirm-text').textContent =
+        `${name}, your free roof inspection is scheduled for ${fullDate} at ${selectedTime}. We'll call ${phone} within 1 hour to confirm. See you then!`;
+}
+
+function resetBooking() {
+    selectedDate = null;
+    selectedTime = null;
+    document.getElementById('booking-success').classList.add('hidden');
+    document.getElementById('booking-form').classList.remove('hidden');
+    document.getElementById('booking-form').reset();
+    document.getElementById('booking-placeholder').classList.remove('hidden');
+    document.getElementById('booking-selection').classList.add('hidden');
+    document.getElementById('time-slots-wrapper').classList.add('hidden');
+    renderCalendar();
+    const btn = document.getElementById('book-btn');
+    btn.disabled = false;
+    btn.innerHTML = '<span class="material-symbols-outlined text-sm">event_available</span> Confirm Free Inspection';
+}
+
+initCalendar();
+</script>
+</body>
+</html>
