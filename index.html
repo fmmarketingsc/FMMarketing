@@ -166,70 +166,9 @@
         button.bg-primary { color: white !important; }
         /* Nav phone link stays teal */
         nav a[href^="tel"] { color: #20C9B0 !important; }
-        /* Survey modal — smooth scroll on iOS */
-        #welcome-survey {
-            -webkit-overflow-scrolling: touch;
-            overscroll-behavior: contain;
-        }
     </style>
 </head>
 <body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-white">
-<!-- Welcome Survey Modal -->
-<div class=”fixed inset-0 z-[200] flex items-start justify-center px-4 py-8 overflow-y-auto” id=”welcome-survey” style=”display:none”>
-<div class=”absolute inset-0 bg-black/70 backdrop-blur-sm” onclick=”closeWelcomeSurvey()”></div>
-<div class=”relative w-full max-w-lg bg-surface-container-low border-2 border-primary-container/40 p-5 shadow-[0_0_80px_rgba(32,201,176,0.15)] my-auto”>
-    <!-- Close X -->
-    <button onclick=”closeWelcomeSurvey()” aria-label=”Close” class=”absolute top-3 right-3 w-8 h-8 flex items-center justify-center text-secondary hover:text-primary hover:bg-surface-container transition-colors”>
-        <span class=”material-symbols-outlined” style=”font-size:20px”>close</span>
-    </button>
-    <div class=”mb-1”>
-        <span class=”text-[10px] font-headline font-bold uppercase tracking-[0.25em] text-primary”>Welcome</span>
-    </div>
-    <h2 class=”text-2xl font-headline font-bold uppercase tracking-tighter mb-1 leading-tight”>Quick question <br/>before you explore</h2>
-    <p class=”text-secondary text-sm mb-4”>Help us point you in the right direction — takes 20 seconds.</p>
-    <form class=”space-y-3” id=”survey-form” onsubmit=”event.preventDefault(); submitSurvey(this);”>
-        <div>
-            <label class=”text-xs font-headline font-bold uppercase text-secondary”>What best describes you?</label>
-            <div class=”grid grid-cols-1 gap-2 mt-2”>
-                <label class=”flex items-center gap-3 p-2.5 bg-surface-container cursor-pointer border border-outline-variant/20 hover:border-primary/40 transition-colors group”>
-                    <input type=”radio” name=”role” value=”contractor” class=”accent-primary” required/>
-                    <span class=”text-sm font-headline font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors”>Contractor / Service Pro</span>
-                </label>
-                <label class=”flex items-center gap-3 p-2.5 bg-surface-container cursor-pointer border border-outline-variant/20 hover:border-primary/40 transition-colors group”>
-                    <input type=”radio” name=”role” value=”business” class=”accent-primary”/>
-                    <span class=”text-sm font-headline font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors”>Small Business Owner</span>
-                </label>
-                <label class=”flex items-center gap-3 p-2.5 bg-surface-container cursor-pointer border border-outline-variant/20 hover:border-primary/40 transition-colors group”>
-                    <input type=”radio” name=”role” value=”curious” class=”accent-primary”/>
-                    <span class=”text-sm font-headline font-bold uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors”>Just Browsing</span>
-                </label>
-            </div>
-        </div>
-        <div>
-            <label class=”text-xs font-headline font-bold uppercase text-secondary”>What's your biggest challenge right now?</label>
-            <select name=”challenge” class=”w-full bg-white border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-2 mt-1 transition-colors” required>
-                <option value=”” class=”bg-white text-[#0D2347]” disabled selected>Select one...</option>
-                <option value=”leads” class=”bg-white text-[#0D2347]”>Not getting enough leads</option>
-                <option value=”followup” class=”bg-white text-[#0D2347]”>Missing calls / slow follow-up</option>
-                <option value=”website” class=”bg-white text-[#0D2347]”>No website or outdated site</option>
-                <option value=”scaling” class=”bg-white text-[#0D2347]”>Struggling to scale</option>
-            </select>
-        </div>
-        <div>
-            <label class=”text-xs font-headline font-bold uppercase text-secondary”>Email Address <span class=”text-surface-variant normal-case”>(optional — we'll send you our solutions guide)</span></label>
-            <input name=”email” type=”email” placeholder=”you@example.com” class=”w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-2 mt-1 placeholder:text-[#6B9CC5] transition-colors”/>
-        </div>
-        <div>
-            <label class=”text-xs font-headline font-bold uppercase text-secondary”>Phone Number <span class=”text-surface-variant normal-case”>(optional — we'll call you first)</span></label>
-            <input name=”phone” type=”tel” placeholder=”(843) 000-0000” class=”w-full bg-transparent border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-[#0D2347] p-2 mt-1 placeholder:text-[#6B9CC5] transition-colors”/>
-        </div>
-        <div class=”flex gap-3 pt-1”>
-            <button type=”submit” class=”flex-1 bg-primary-container text-white font-headline font-bold uppercase py-3 tracking-widest hover:bg-primary transition-all”>Show Me Solutions</button>
-            <button type=”button” onclick=”closeWelcomeSurvey()” class=”flex-1 border-2 border-primary-container text-primary-container font-headline font-bold uppercase py-3 tracking-widest hover:bg-primary-container hover:text-white transition-all”>Skip</button>
-        </div>
-    </form>
-</div>
-</div>
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 rounded-none bg-white/80 backdrop-blur-xl border-b border-[#E5F0FF] shadow-sm">
 <div class="flex justify-between items-center w-full px-4 md:px-8 py-4 mx-auto">
@@ -967,17 +906,6 @@
             }
         }
 
-        // â”€â”€ Scroll Lock (WebView + iOS safe) â”€â”€
-        let _scrollY = 0;
-        function lockScroll() {
-            _scrollY = window.scrollY || 0;
-            document.documentElement.style.overflow = 'hidden';
-        }
-        function unlockScroll() {
-            document.documentElement.style.overflow = '';
-            window.scrollTo(0, _scrollY);
-        }
-
         // â”€â”€ AI helper â”€â”€
         function escapeHtml(str) {
             return String(str)
@@ -998,86 +926,8 @@
             } catch (e) { return null; }
         }
 
-        // â”€â”€ Welcome Survey â”€â”€
-        function setSurveyCookie() {
-            const exp = new Date();
-            exp.setDate(exp.getDate() + 30);
-            document.cookie = 'fm_survey_seen=1; expires=' + exp.toUTCString() + '; path=/; SameSite=Lax';
-        }
-
-        function hasSurveyCookie() {
-            return document.cookie.split(';').some(c => c.trim().startsWith('fm_survey_seen='));
-        }
-
-        function closeWelcomeSurvey() {
-            setSurveyCookie();
-            const el = document.getElementById('welcome-survey');
-            el.style.transition = 'opacity 0.3s ease';
-            el.style.opacity = '0';
-            setTimeout(() => {
-                el.style.display = 'none';
-                unlockScroll();
-                document.getElementById('ai-chat-widget').classList.remove('hidden');
-            }, 300);
-        }
-
-        function showWelcomeSurvey() {
-            if (hasSurveyCookie()) {
-                document.getElementById('ai-chat-widget').classList.remove('hidden');
-                return;
-            }
-            const el = document.getElementById('welcome-survey');
-            el.style.display = 'flex';
-            el.style.opacity = '0';
-            el.style.transition = 'opacity 0.4s ease';
-            lockScroll();
-            // Double rAF ensures the browser has painted display:flex before we animate opacity
-            requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = '1'; }));
-        }
-
-        async function submitSurvey(form) {
-            const data = new FormData(form);
-            const role      = data.get('role')      || 'Not selected';
-            const challenge = data.get('challenge') || 'Not selected';
-            const email     = data.get('email')     || '';
-            const phone     = data.get('phone')     || 'Not provided';
-            const btn = form.querySelector('button[type="submit"]');
-            setButtonState(btn, true);
-
-            const emailPayload = {
-                _subject: '🔔 New Survey Lead — FMMarketing',
-                Source: 'Welcome Survey',
-                Role: role,
-                Challenge: challenge,
-                Email: email || 'Not provided',
-                Phone: phone
-            };
-            if (email) emailPayload._replyto = email;
-
-            // Send email + get AI personalized message in parallel
-            const [, aiMessage] = await Promise.all([
-                sendEmail(emailPayload),
-                askAI('qualify', { leadData: { role, challenge, email, phone } })
-            ]);
-
-            const reply = aiMessage || "Thanks! We'll reach out within 24 hours with a plan tailored to your business.";
-            form.innerHTML = `
-                <div class="text-center py-8">
-                    <div class="w-14 h-14 bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                        <span class="material-symbols-outlined text-primary" style="font-size:36px">check_circle</span>
-                    </div>
-                    <h3 class="text-2xl font-headline font-bold uppercase tracking-tighter mb-3">You're all set!</h3>
-                    <p class="text-secondary text-sm leading-relaxed px-2">${escapeHtml(reply)}</p>
-                </div>`;
-            setTimeout(closeWelcomeSurvey, 3500);
-        }
-
         window.addEventListener('load', function () {
-            if (hasSurveyCookie()) {
-                document.getElementById('ai-chat-widget').classList.remove('hidden');
-            } else {
-                setTimeout(showWelcomeSurvey, 5000);
-            }
+            document.getElementById('ai-chat-widget').classList.remove('hidden');
         });
 
         // -- Audit Form --
