@@ -68,6 +68,13 @@
     button.text-white, .bg-primary-container .text-white, .bg-primary .text-white, footer .text-white { color: white; }
     button.text-white, button.bg-primary-container, button.bg-primary, a.bg-primary-container, a.bg-primary { color: white !important; }
     nav a[href^="tel"] { color: #20C9B0 !important; }
+    .service-tab { white-space: nowrap; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .msg-appear { animation: fadeInUp 0.25s ease forwards; }
+    @keyframes blink { 0%,100%{opacity:1}50%{opacity:0.3} }
+    .typing-dot { animation: blink 1s infinite; }
 </style>
 </head>
 <body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-white">
@@ -122,122 +129,289 @@
 </div>
 </section>
 
-<!-- Services Grid -->
+<!-- Services Interactive Explorer -->
 <section class="py-20 bg-surface-container-lowest relative">
 <div class="absolute inset-0 orange-glow pointer-events-none opacity-30"></div>
 <div class="container mx-auto px-8 relative">
 
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+  <!-- Tabs -->
+  <div class="flex overflow-x-auto scrollbar-hide border-b-2 border-outline-variant/30 mb-0">
+    <button onclick="showService('chat', this)" id="tab-chat"
+      class="service-tab flex items-center gap-2 px-5 py-4 font-headline font-bold uppercase tracking-tighter text-sm border-b-4 border-primary-container text-primary-container transition-all flex-shrink-0">
+      <span class="material-symbols-outlined" style="font-size:18px">chat_bubble</span>AI Chat Agent
+    </button>
+    <button onclick="showService('voice', this)" id="tab-voice"
+      class="service-tab flex items-center gap-2 px-5 py-4 font-headline font-bold uppercase tracking-tighter text-sm border-b-4 border-transparent text-secondary hover:text-primary-container transition-all flex-shrink-0">
+      <span class="material-symbols-outlined" style="font-size:18px">record_voice_over</span>AI Voice Agent
+    </button>
+    <button onclick="showService('consulting', this)" id="tab-consulting"
+      class="service-tab flex items-center gap-2 px-5 py-4 font-headline font-bold uppercase tracking-tighter text-sm border-b-4 border-transparent text-secondary hover:text-primary-container transition-all flex-shrink-0">
+      <span class="material-symbols-outlined" style="font-size:18px">psychology</span>AI Consulting
+    </button>
+    <button onclick="showService('web', this)" id="tab-web"
+      class="service-tab flex items-center gap-2 px-5 py-4 font-headline font-bold uppercase tracking-tighter text-sm border-b-4 border-transparent text-secondary hover:text-primary-container transition-all flex-shrink-0">
+      <span class="material-symbols-outlined" style="font-size:18px">web</span>Website + AI
+    </button>
+  </div>
 
-<!-- AI Chat Agent -->
-<div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-4 border-primary-container">
-    <div class="flex items-start gap-4 mb-6">
-        <span class="material-symbols-outlined text-primary text-4xl flex-shrink-0">chat_bubble</span>
-        <div>
-            <span class="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-primary mb-1 block">Always On</span>
-            <h2 class="text-2xl font-headline font-bold uppercase tracking-tighter">AI Chat Agent</h2>
-        </div>
-    </div>
-    <p class="text-secondary mb-6 leading-relaxed">Every visitor who lands on your site is a potential customer. Our AI chat agent greets them instantly, asks the right qualifying questions, captures their contact info, and books appointments — all without you lifting a finger. Custom-trained on your business, your tone, and your services.</p>
-    <ul class="space-y-3 mb-8">
-        <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Instant response — no visitor left waiting</li>
-        <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Custom qualification flow for your industry</li>
-        <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Books appointments directly to your calendar</li>
-        <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Multilingual — English, Spanish, Portuguese</li>
-        <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>CRM integration & instant lead notifications</li>
-        <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Trained on your FAQs, pricing, and services</li>
-    </ul>
-    <div class="flex flex-wrap gap-2 mb-8">
-        <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Real Estate</span>
-        <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">E-Commerce</span>
-        <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Legal</span>
-        <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Healthcare</span>
-        <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">+ Any Industry</span>
-    </div>
-    <button class="border-2 border-primary-container text-primary-container font-headline font-bold uppercase px-8 py-3 tracking-widest hover:bg-primary-container hover:text-white transition-all text-sm" onclick="window.location.href='contact.html'">Get Started</button>
-</div>
+  <!-- ── PANEL: AI Chat Agent ── -->
+  <div id="panel-chat" class="service-panel" style="display:grid">
+    <div class="grid grid-cols-1 lg:grid-cols-2 bg-surface-container-low border-l-4 border-primary-container">
 
-<!-- AI Voice Agent -->
-<div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-4 border-primary-container">
-    <div class="flex items-start gap-4 mb-6">
-        <span class="material-symbols-outlined text-primary text-4xl flex-shrink-0">record_voice_over</span>
-        <div>
-            <span class="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-primary mb-1 block">Never Miss a Call</span>
-            <h2 class="text-2xl font-headline font-bold uppercase tracking-tighter">AI Voice Agent</h2>
-        </div>
-    </div>
-    <p class="text-secondary mb-6 leading-relaxed">A missed call is a missed customer. Our AI Voice Agent answers every inbound call — day or night, weekend or holiday — in a natural, human-sounding voice. It holds intelligent conversations, qualifies callers, schedules appointments, and sends you a full summary so you're always in the loop.</p>
-    <ul class="space-y-3 mb-8">
-        <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Answers inbound calls 24/7/365</li>
-        <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Natural, human-sounding conversation</li>
-        <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Qualifies the caller with custom questions</li>
-        <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Schedules & confirms appointments</li>
-        <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Call recordings & transcripts delivered to you</li>
-        <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Outbound follow-up calls on hot leads</li>
-    </ul>
-    <div class="flex flex-wrap gap-2 mb-8">
-        <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Restaurants</span>
-        <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Home Services</span>
-        <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Medical</span>
-        <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Financial</span>
-        <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">+ Any Industry</span>
-    </div>
-    <button class="border-2 border-primary-container text-primary-container font-headline font-bold uppercase px-8 py-3 tracking-widest hover:bg-primary-container hover:text-white transition-all text-sm" onclick="window.location.href='contact.html'">Get Started</button>
-</div>
-
-</div>
-
-<!-- AI Consulting — full width highlight -->
-<div class="bg-primary-container mb-8 p-10 group">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-    <div>
-        <div class="flex items-start gap-4 mb-6">
-            <span class="material-symbols-outlined text-white text-4xl flex-shrink-0">psychology</span>
-            <div>
-                <span class="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-white/60 mb-1 block">For Businesses Ready to Scale with AI</span>
-                <h2 class="text-3xl font-headline font-bold uppercase tracking-tighter text-white">AI Consulting & Strategy</h2>
-            </div>
-        </div>
-        <p class="text-white/80 leading-relaxed mb-8">Not sure where AI fits in your business — or overwhelmed by the options? We map your entire workflow, identify every automation opportunity, and build a prioritized roadmap that delivers measurable ROI. No buzzwords, no vendor lock-in — just an honest plan built around your goals.</p>
-        <button class="bg-primary text-[#0D2347] font-headline font-bold uppercase px-8 py-4 tracking-widest hover:bg-white transition-all text-sm" onclick="window.location.href='contact.html'">Book a Consulting Session</button>
-    </div>
-    <ul class="space-y-4">
-        <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Full business workflow & automation audit</li>
-        <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>AI readiness assessment for your industry</li>
-        <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Prioritized AI roadmap with clear ROI projections</li>
-        <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Tool & platform selection guidance</li>
-        <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Implementation support & ongoing optimization</li>
-        <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Team training & AI adoption playbook</li>
-    </ul>
-</div>
-</div>
-
-<!-- Web + AI System -->
-<div class="bg-surface-container-low p-10 hover:bg-surface-container-high transition-all duration-300 group border-l-4 border-primary mb-8">
-    <div class="flex items-start gap-4 mb-6">
-        <span class="material-symbols-outlined text-primary text-4xl flex-shrink-0">web</span>
-        <div>
-            <span class="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-primary mb-1 block">Your Digital Foundation</span>
-            <h2 class="text-2xl font-headline font-bold uppercase tracking-tighter">Website + AI System</h2>
-        </div>
-    </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        <div>
-            <p class="text-secondary mb-6 leading-relaxed">Your website is your best salesperson — but only if it works. We hand-code custom, mobile-first websites built specifically to convert visitors into customers, then layer in your AI agents from day one. No page builders, no templates, no compromises.</p>
-            <button class="border-2 border-primary-container text-primary-container font-headline font-bold uppercase px-8 py-3 tracking-widest hover:bg-primary-container hover:text-white transition-all text-sm" onclick="window.location.href='contact.html'">Get Started</button>
-        </div>
-        <ul class="space-y-3">
-            <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Custom design matched to your brand</li>
-            <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Mobile-first & lightning fast</li>
-            <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>AI chat agent built in from day one</li>
-            <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Conversion-focused CTAs & forms</li>
-            <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Analytics, tracking & SEO setup</li>
-            <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Live within 48 hours of your strategy call</li>
+      <!-- Info -->
+      <div class="p-10 border-r border-outline-variant/20">
+        <span class="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-primary mb-4 block">Always On</span>
+        <h2 class="text-3xl font-headline font-bold uppercase tracking-tighter mb-4">AI Chat Agent</h2>
+        <p class="text-secondary mb-6 leading-relaxed">Every visitor who lands on your site is a potential customer. Our AI chat agent greets them instantly, asks the right qualifying questions, captures their contact info, and books appointments — all without you lifting a finger. Custom-trained on your business, your tone, and your services.</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Instant response — no visitor left waiting</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Custom qualification flow for your industry</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Books appointments directly to your calendar</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Multilingual — English, Spanish, Portuguese</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>CRM integration & instant lead notifications</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Trained on your FAQs, pricing, and services</li>
         </ul>
-    </div>
-</div>
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Real Estate</span>
+          <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">E-Commerce</span>
+          <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Legal</span>
+          <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Healthcare</span>
+          <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">+ Any Industry</span>
+        </div>
+        <button class="bg-primary-container text-white font-headline font-bold uppercase px-8 py-3 tracking-widest hover:bg-primary transition-all text-sm" onclick="window.location.href='contact.html'">Get Started</button>
+      </div>
 
-<p class="text-sm text-secondary/60 border-t border-outline-variant/20 pt-8 mt-2">Already have these running? Ask about advanced services — workflow automation, CRM integration, outbound AI campaigns, and more. For existing clients only.</p>
+      <!-- Live Chat Demo -->
+      <div class="p-8 bg-white flex flex-col gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <span class="text-xs font-headline font-bold uppercase tracking-[0.2em] text-primary">Live Demo — Try It</span>
+          <div class="flex gap-2">
+            <button onclick="setChatScenario('realestate', this)" class="chat-scenario-btn active-scenario text-[10px] font-headline font-bold uppercase px-3 py-1 border border-primary text-primary tracking-wide transition-all">Real Estate</button>
+            <button onclick="setChatScenario('legal', this)" class="chat-scenario-btn text-[10px] font-headline font-bold uppercase px-3 py-1 border border-outline-variant text-secondary hover:border-primary hover:text-primary tracking-wide transition-all">Legal</button>
+            <button onclick="setChatScenario('hvac', this)" class="chat-scenario-btn text-[10px] font-headline font-bold uppercase px-3 py-1 border border-outline-variant text-secondary hover:border-primary hover:text-primary tracking-wide transition-all">HVAC</button>
+          </div>
+        </div>
+        <div class="flex flex-col border border-outline-variant/30" style="height:360px">
+          <div class="bg-primary-container text-white px-4 py-3 flex items-center gap-2 flex-shrink-0">
+            <span class="w-2 h-2 bg-primary rounded-full typing-dot"></span>
+            <span class="font-headline font-bold uppercase text-sm tracking-tight">FM AI — Chat Demo</span>
+          </div>
+          <div id="demo-chat-messages" class="flex-1 overflow-y-auto p-4 space-y-3 bg-[#F5F9FF]"></div>
+          <div class="border-t border-outline-variant/20 px-3 pt-3 pb-3 flex gap-2 bg-white flex-shrink-0">
+            <input id="demo-chat-input" type="text" placeholder="Type a message..." autocomplete="off"
+              class="flex-1 text-sm border-0 border-b-2 border-outline-variant focus:border-primary focus:ring-0 text-on-surface p-1 bg-transparent placeholder:text-[#6B9CC5]"
+              onkeydown="if(event.key==='Enter')sendDemoChatMessage()"/>
+            <button onclick="sendDemoChatMessage()" class="bg-primary-container text-white px-3 hover:bg-primary transition-all flex items-center justify-center">
+              <span class="material-symbols-outlined" style="font-size:16px">send</span>
+            </button>
+          </div>
+        </div>
+        <p class="text-[10px] text-secondary/50 text-center">This is a live AI — it responds in real time.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PANEL: AI Voice Agent ── -->
+  <div id="panel-voice" class="service-panel" style="display:none">
+    <div class="grid grid-cols-1 lg:grid-cols-2 bg-surface-container-low border-l-4 border-primary-container">
+
+      <!-- Info -->
+      <div class="p-10 border-r border-outline-variant/20">
+        <span class="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-primary mb-4 block">Never Miss a Call</span>
+        <h2 class="text-3xl font-headline font-bold uppercase tracking-tighter mb-4">AI Voice Agent</h2>
+        <p class="text-secondary mb-6 leading-relaxed">A missed call is a missed customer. Our AI Voice Agent answers every inbound call — day or night, weekend or holiday — in a natural, human-sounding voice. It holds intelligent conversations, qualifies callers, schedules appointments, and sends you a full summary so you're always in the loop.</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Answers inbound calls 24/7/365</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Natural, human-sounding conversation</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Qualifies the caller with custom questions</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Schedules & confirms appointments</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Call recordings & transcripts delivered to you</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Outbound follow-up calls on hot leads</li>
+        </ul>
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Restaurants</span>
+          <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Home Services</span>
+          <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Medical</span>
+          <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">Financial</span>
+          <span class="text-[10px] font-headline font-bold uppercase bg-[#EDF4FF] text-secondary px-3 py-1 tracking-wide">+ Any Industry</span>
+        </div>
+        <button class="bg-primary-container text-white font-headline font-bold uppercase px-8 py-3 tracking-widest hover:bg-primary transition-all text-sm" onclick="window.location.href='contact.html'">Get Started</button>
+      </div>
+
+      <!-- Call Transcript Demo -->
+      <div class="p-8 bg-white flex flex-col gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <span class="text-xs font-headline font-bold uppercase tracking-[0.2em] text-primary">Call Simulation</span>
+          <div class="flex gap-2">
+            <button onclick="setVoiceScenario('restaurant', this)" class="voice-scenario-btn active-scenario text-[10px] font-headline font-bold uppercase px-3 py-1 border border-primary text-primary tracking-wide transition-all">Restaurant</button>
+            <button onclick="setVoiceScenario('hvac', this)" class="voice-scenario-btn text-[10px] font-headline font-bold uppercase px-3 py-1 border border-outline-variant text-secondary hover:border-primary hover:text-primary tracking-wide transition-all">HVAC</button>
+            <button onclick="setVoiceScenario('medical', this)" class="voice-scenario-btn text-[10px] font-headline font-bold uppercase px-3 py-1 border border-outline-variant text-secondary hover:border-primary hover:text-primary tracking-wide transition-all">Medical</button>
+          </div>
+        </div>
+        <div class="flex flex-col border border-outline-variant/30" style="height:360px">
+          <div class="bg-[#0D2347] text-white px-4 py-3 flex items-center justify-between flex-shrink-0">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary" style="font-size:20px">call</span>
+              <div>
+                <div class="font-headline font-bold uppercase text-sm tracking-tight">Inbound Call</div>
+                <div id="voice-call-timer" class="text-[10px] text-white/50">Ready to play</div>
+              </div>
+            </div>
+            <button id="voice-play-btn" onclick="playVoiceDemo()"
+              class="bg-primary text-[#0D2347] font-headline font-bold uppercase text-xs px-4 py-2 tracking-wide hover:bg-white transition-all flex items-center gap-1.5">
+              <span class="material-symbols-outlined" style="font-size:14px">play_arrow</span>Play Call
+            </button>
+          </div>
+          <div id="voice-transcript" class="flex-1 overflow-y-auto p-4 space-y-3 bg-[#F5F9FF]">
+            <div class="text-center text-xs text-secondary/50 py-10">Press Play to watch a real AI call simulation</div>
+          </div>
+        </div>
+        <p class="text-[10px] text-secondary/50 text-center">Simulated transcript of an actual AI voice call flow.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PANEL: AI Consulting ── -->
+  <div id="panel-consulting" class="service-panel" style="display:none">
+    <div class="grid grid-cols-1 lg:grid-cols-2 bg-primary-container">
+
+      <!-- Info -->
+      <div class="p-10 border-r border-white/10">
+        <span class="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-white/60 mb-4 block">For Businesses Ready to Scale with AI</span>
+        <h2 class="text-3xl font-headline font-bold uppercase tracking-tighter mb-4 text-white">AI Consulting & Strategy</h2>
+        <p class="text-white/80 mb-6 leading-relaxed">Not sure where AI fits in your business — or overwhelmed by the options? We map your entire workflow, identify every automation opportunity, and build a prioritized roadmap that delivers measurable ROI. No buzzwords, no vendor lock-in — just an honest plan built around your goals.</p>
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Full business workflow & automation audit</li>
+          <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>AI readiness assessment for your industry</li>
+          <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Prioritized AI roadmap with clear ROI projections</li>
+          <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Tool & platform selection guidance</li>
+          <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Implementation support & ongoing optimization</li>
+          <li class="flex items-center gap-3 text-sm text-white/80"><span class="material-symbols-outlined text-white" style="font-size:16px">check_circle</span>Team training & AI adoption playbook</li>
+        </ul>
+        <button class="bg-primary text-[#0D2347] font-headline font-bold uppercase px-8 py-4 tracking-widest hover:bg-white transition-all text-sm" onclick="window.location.href='contact.html'">Book a Consulting Session</button>
+      </div>
+
+      <!-- AI Readiness Quiz -->
+      <div class="p-8 bg-white flex flex-col gap-4">
+        <span class="text-xs font-headline font-bold uppercase tracking-[0.2em] text-primary">Your AI Readiness Score</span>
+
+        <div id="quiz-container" class="flex flex-col gap-5 overflow-y-auto" style="max-height:400px">
+          <!-- Q1 -->
+          <div id="quiz-q1">
+            <p class="text-sm font-headline font-bold uppercase tracking-tight text-on-surface mb-3">1. How do you handle inbound leads?</p>
+            <div class="flex flex-col gap-2">
+              <button onclick="quizAnswer(1,'A',this)" class="quiz-opt text-sm text-left px-4 py-3 border border-outline-variant/40 hover:border-primary hover:text-primary transition-all text-secondary">Manually — phone calls, we call them back</button>
+              <button onclick="quizAnswer(1,'B',this)" class="quiz-opt text-sm text-left px-4 py-3 border border-outline-variant/40 hover:border-primary hover:text-primary transition-all text-secondary">We have a form but follow-up is still manual</button>
+              <button onclick="quizAnswer(1,'C',this)" class="quiz-opt text-sm text-left px-4 py-3 border border-outline-variant/40 hover:border-primary hover:text-primary transition-all text-secondary">Partially automated — CRM but no AI</button>
+            </div>
+          </div>
+          <!-- Q2 -->
+          <div id="quiz-q2">
+            <p class="text-sm font-headline font-bold uppercase tracking-tight text-on-surface mb-3">2. What's your biggest bottleneck?</p>
+            <div class="flex flex-col gap-2">
+              <button onclick="quizAnswer(2,'A',this)" class="quiz-opt text-sm text-left px-4 py-3 border border-outline-variant/40 hover:border-primary hover:text-primary transition-all text-secondary">Getting new leads in the door</button>
+              <button onclick="quizAnswer(2,'B',this)" class="quiz-opt text-sm text-left px-4 py-3 border border-outline-variant/40 hover:border-primary hover:text-primary transition-all text-secondary">Following up fast enough</button>
+              <button onclick="quizAnswer(2,'C',this)" class="quiz-opt text-sm text-left px-4 py-3 border border-outline-variant/40 hover:border-primary hover:text-primary transition-all text-secondary">Scheduling & appointment management</button>
+              <button onclick="quizAnswer(2,'D',this)" class="quiz-opt text-sm text-left px-4 py-3 border border-outline-variant/40 hover:border-primary hover:text-primary transition-all text-secondary">Customer support after the sale</button>
+            </div>
+          </div>
+          <!-- Q3 -->
+          <div id="quiz-q3">
+            <p class="text-sm font-headline font-bold uppercase tracking-tight text-on-surface mb-3">3. How big is your team?</p>
+            <div class="flex flex-col gap-2">
+              <button onclick="quizAnswer(3,'A',this)" class="quiz-opt text-sm text-left px-4 py-3 border border-outline-variant/40 hover:border-primary hover:text-primary transition-all text-secondary">Just me (solo owner/operator)</button>
+              <button onclick="quizAnswer(3,'B',this)" class="quiz-opt text-sm text-left px-4 py-3 border border-outline-variant/40 hover:border-primary hover:text-primary transition-all text-secondary">2–5 people</button>
+              <button onclick="quizAnswer(3,'C',this)" class="quiz-opt text-sm text-left px-4 py-3 border border-outline-variant/40 hover:border-primary hover:text-primary transition-all text-secondary">6–20 people</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div id="quiz-result" style="display:none" class="flex flex-col gap-4">
+          <div class="bg-[#EDF4FF] border-l-4 border-primary-container p-5">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="material-symbols-outlined text-primary-container text-2xl">insights</span>
+              <span class="font-headline font-bold uppercase tracking-tight text-on-surface text-lg" id="quiz-score-label"></span>
+            </div>
+            <p class="text-sm text-secondary leading-relaxed" id="quiz-result-text"></p>
+          </div>
+          <div class="space-y-2" id="quiz-recommendations"></div>
+          <button onclick="resetQuiz()" class="text-xs font-headline uppercase tracking-wide text-secondary hover:text-primary transition-colors underline text-left">Retake Assessment</button>
+          <button class="bg-primary-container text-white font-headline font-bold uppercase px-6 py-3 tracking-widest hover:bg-primary transition-all text-sm" onclick="window.location.href='contact.html'">Get My Full AI Roadmap</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PANEL: Website + AI System ── -->
+  <div id="panel-web" class="service-panel" style="display:none">
+    <div class="grid grid-cols-1 lg:grid-cols-2 bg-surface-container-low border-l-4 border-primary">
+
+      <!-- Info -->
+      <div class="p-10 border-r border-outline-variant/20">
+        <span class="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-primary mb-4 block">Your Digital Foundation</span>
+        <h2 class="text-3xl font-headline font-bold uppercase tracking-tighter mb-4">Website + AI System</h2>
+        <p class="text-secondary mb-6 leading-relaxed">Your website is your best salesperson — but only if it works. We hand-code custom, mobile-first websites built specifically to convert visitors into customers, then layer in your AI agents from day one. No page builders, no templates, no compromises.</p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Custom design matched to your brand</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Mobile-first & lightning fast</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>AI chat agent built in from day one</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Conversion-focused CTAs & forms</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Analytics, tracking & SEO setup</li>
+          <li class="flex items-center gap-3 text-sm text-secondary"><span class="material-symbols-outlined text-primary" style="font-size:16px">check_circle</span>Live within 48 hours of your strategy call</li>
+        </ul>
+        <button class="bg-primary-container text-white font-headline font-bold uppercase px-8 py-3 tracking-widest hover:bg-primary transition-all text-sm" onclick="window.location.href='contact.html'">Get Started</button>
+      </div>
+
+      <!-- Feature Explorer -->
+      <div class="p-8 bg-white flex flex-col gap-4">
+        <span class="text-xs font-headline font-bold uppercase tracking-[0.2em] text-primary">What's Included — Hover to Explore</span>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="web-feature p-4 border border-outline-variant/30 hover:border-primary cursor-pointer transition-all group"
+               data-desc="Your site loads in under 1 second on mobile. Google ranks fast sites higher — we build for performance from line one of code.">
+            <span class="material-symbols-outlined text-primary mb-2 block group-hover:scale-110 transition-transform" style="font-size:24px">speed</span>
+            <span class="text-xs font-headline font-bold uppercase tracking-wide block mb-1">Lightning Fast</span>
+            <span class="text-[10px] text-secondary/60">Core Web Vitals optimized</span>
+          </div>
+          <div class="web-feature p-4 border border-outline-variant/30 hover:border-primary cursor-pointer transition-all group"
+               data-desc="AI chat agent is wired into your site from day one — not an afterthought. It knows your services, pricing, and how to book appointments.">
+            <span class="material-symbols-outlined text-primary mb-2 block group-hover:scale-110 transition-transform" style="font-size:24px">smart_toy</span>
+            <span class="text-xs font-headline font-bold uppercase tracking-wide block mb-1">AI Built In</span>
+            <span class="text-[10px] text-secondary/60">Chat agent from day one</span>
+          </div>
+          <div class="web-feature p-4 border border-outline-variant/30 hover:border-primary cursor-pointer transition-all group"
+               data-desc="Every button, form, and layout decision is driven by conversion data. We've built for roofing, legal, HVAC, real estate, and more.">
+            <span class="material-symbols-outlined text-primary mb-2 block group-hover:scale-110 transition-transform" style="font-size:24px">ads_click</span>
+            <span class="text-xs font-headline font-bold uppercase tracking-wide block mb-1">Conversion Focused</span>
+            <span class="text-[10px] text-secondary/60">Built to turn clicks into calls</span>
+          </div>
+          <div class="web-feature p-4 border border-outline-variant/30 hover:border-primary cursor-pointer transition-all group"
+               data-desc="Your site is live on the web within 48 hours of your first strategy call. No waiting weeks for a web agency to deliver a draft.">
+            <span class="material-symbols-outlined text-primary mb-2 block group-hover:scale-110 transition-transform" style="font-size:24px">rocket_launch</span>
+            <span class="text-xs font-headline font-bold uppercase tracking-wide block mb-1">48-Hour Launch</span>
+            <span class="text-[10px] text-secondary/60">Live in 2 days, guaranteed</span>
+          </div>
+          <div class="web-feature p-4 border border-outline-variant/30 hover:border-primary cursor-pointer transition-all group"
+               data-desc="Google Analytics, heatmaps, and lead tracking are set up from day one so you know exactly where every lead came from and what they did.">
+            <span class="material-symbols-outlined text-primary mb-2 block group-hover:scale-110 transition-transform" style="font-size:24px">bar_chart</span>
+            <span class="text-xs font-headline font-bold uppercase tracking-wide block mb-1">Full Analytics</span>
+            <span class="text-[10px] text-secondary/60">Know your numbers always</span>
+          </div>
+          <div class="web-feature p-4 border border-outline-variant/30 hover:border-primary cursor-pointer transition-all group"
+               data-desc="Hand-coded HTML/CSS — no WordPress, no Wix, no page builders. Faster, more secure, fully yours, and impossible to break with a bad plugin update.">
+            <span class="material-symbols-outlined text-primary mb-2 block group-hover:scale-110 transition-transform" style="font-size:24px">code</span>
+            <span class="text-xs font-headline font-bold uppercase tracking-wide block mb-1">Custom Code</span>
+            <span class="text-[10px] text-secondary/60">No page builders, ever</span>
+          </div>
+        </div>
+        <div id="web-feature-detail" class="p-4 bg-[#EDF4FF] border-l-4 border-outline-variant/30 transition-all min-h-[64px] flex items-center">
+          <p class="text-sm text-secondary/60 italic">Hover any feature above to learn more.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="text-sm text-secondary/60 border-t border-outline-variant/20 pt-8 mt-8">Already have these running? Ask about advanced services — workflow automation, CRM integration, outbound AI campaigns, and more. For existing clients only.</p>
 
 </div>
 </section>
@@ -413,5 +587,257 @@
             document.getElementById('mobile-menu-icon').textContent = 'menu';
         }
     });
+
+    // ── SERVICE TABS ──
+    function showService(id, btn) {
+        document.querySelectorAll('.service-panel').forEach(p => { p.style.display = 'none'; });
+        document.getElementById('panel-' + id).style.display = 'grid';
+        document.querySelectorAll('.service-tab').forEach(t => {
+            t.classList.remove('border-primary-container', 'text-primary-container');
+            t.classList.add('border-transparent', 'text-secondary');
+        });
+        btn.classList.remove('border-transparent', 'text-secondary');
+        btn.classList.add('border-primary-container', 'text-primary-container');
+    }
+
+    // ── CHAT DEMO ──
+    const chatScenarios = {
+        realestate: "Hi, I'm looking to buy a home in the Charleston area. Can you help?",
+        legal: "I need to speak with an attorney about a contract dispute.",
+        hvac: "My AC stopped working and I need someone out today if possible."
+    };
+    const demoChatHistory = [];
+
+    function addDemoChatMsg(role, text, isTyping) {
+        const container = document.getElementById('demo-chat-messages');
+        const id = 'dm-' + Date.now() + Math.random();
+        let html;
+        if (role === 'user') {
+            html = `<div class="flex justify-end msg-appear" id="${id}"><div class="bg-primary-container text-white px-3 py-2 text-sm leading-relaxed" style="max-width:85%">${escapeHtml(text)}</div></div>`;
+        } else {
+            const body = isTyping ? `<span class="typing-dot" style="display:inline-block">•••</span>` : escapeHtml(text);
+            html = `<div class="flex gap-2 msg-appear" id="${id}"><div class="w-6 h-6 bg-primary-container flex items-center justify-center flex-shrink-0 mt-0.5"><span class="material-symbols-outlined text-white" style="font-size:12px">smart_toy</span></div><div class="bg-white border border-outline-variant/20 px-3 py-2 text-sm text-on-surface leading-relaxed" style="max-width:85%">${body}</div></div>`;
+        }
+        container.insertAdjacentHTML('beforeend', html);
+        container.scrollTop = container.scrollHeight;
+        return id;
+    }
+
+    function seedDemoChat(scenario) {
+        demoChatHistory.length = 0;
+        const container = document.getElementById('demo-chat-messages');
+        container.innerHTML = '';
+        const greeting = "Hey there! I'm the FM AI assistant. How can I help you today?";
+        addDemoChatMsg('ai', greeting);
+        demoChatHistory.push({ role: 'assistant', content: greeting });
+        const input = document.getElementById('demo-chat-input');
+        if (input && chatScenarios[scenario]) input.value = chatScenarios[scenario];
+    }
+
+    function setChatScenario(scenario, btn) {
+        document.querySelectorAll('.chat-scenario-btn').forEach(b => {
+            b.classList.remove('border-primary', 'text-primary', 'active-scenario');
+            b.classList.add('border-outline-variant', 'text-secondary');
+        });
+        btn.classList.remove('border-outline-variant', 'text-secondary');
+        btn.classList.add('border-primary', 'text-primary', 'active-scenario');
+        seedDemoChat(scenario);
+    }
+
+    async function sendDemoChatMessage() {
+        const input = document.getElementById('demo-chat-input');
+        const text = input.value.trim();
+        if (!text) return;
+        input.value = ''; input.disabled = true;
+        addDemoChatMsg('user', text);
+        demoChatHistory.push({ role: 'user', content: text });
+        const typingId = addDemoChatMsg('ai', '', true);
+        const reply = await askAI('chat', { messages: [...demoChatHistory] });
+        document.getElementById(typingId)?.remove();
+        const aiText = reply || "Thanks for reaching out! Let me connect you with our team — call us at 843-327-0032.";
+        addDemoChatMsg('ai', aiText);
+        demoChatHistory.push({ role: 'assistant', content: aiText });
+        input.disabled = false; input.focus();
+    }
+
+    // ── VOICE DEMO ──
+    const voiceScripts = {
+        restaurant: [
+            { role: 'caller', text: "Hi, I'd like to make a reservation for Saturday evening." },
+            { role: 'ai', text: "Of course! How many guests will be joining you, and around what time?" },
+            { role: 'caller', text: "Four people, around 7 PM if possible." },
+            { role: 'ai', text: "We have a table available at 7:00 PM this Saturday for four. Can I get your name and a callback number?" },
+            { role: 'caller', text: "John Smith, 843-555-0198." },
+            { role: 'ai', text: "Perfect — you're booked for Saturday at 7 PM, John. You'll get a confirmation text shortly. Anything else I can help with?" },
+            { role: 'caller', text: "No, that's all. Thanks!" },
+            { role: 'ai', text: "Great! We look forward to seeing you Saturday. Have a wonderful day!" }
+        ],
+        hvac: [
+            { role: 'caller', text: "Yeah my AC stopped working. It's almost 90 degrees in here." },
+            { role: 'ai', text: "I'm sorry — let's get you taken care of right away. What's your service address?" },
+            { role: 'caller', text: "412 Oak Street, Charleston." },
+            { role: 'ai', text: "Got it. Are you the homeowner, and is this a repair or a replacement?" },
+            { role: 'caller', text: "I own the home. Definitely a repair — it's only 3 years old." },
+            { role: 'ai', text: "Understood. We have a tech available today between 2 and 5 PM. Does that work?" },
+            { role: 'caller', text: "Yes, that works perfectly." },
+            { role: 'ai', text: "You're all set — service today 2–5 PM at 412 Oak Street. You'll get a text with your tech's name and a live tracker. Stay cool!" }
+        ],
+        medical: [
+            { role: 'caller', text: "I need to schedule an appointment with Dr. Patel." },
+            { role: 'ai', text: "Of course! Is this a new patient visit or a follow-up?" },
+            { role: 'caller', text: "New patient — I just moved to the area." },
+            { role: 'ai', text: "Welcome! Dr. Patel has openings Thursday at 10 AM or Friday at 2 PM. Which works better?" },
+            { role: 'caller', text: "Thursday at 10 is great." },
+            { role: 'ai', text: "Can I get your full name and date of birth to set up your patient profile?" },
+            { role: 'caller', text: "Maria Johnson, March 15, 1985." },
+            { role: 'ai', text: "You're all set, Maria — Thursday at 10 AM with Dr. Patel. A patient intake form will be texted to you before your visit. See you Thursday!" }
+        ]
+    };
+
+    let currentVoiceScenario = 'restaurant';
+    let voicePlaying = false;
+    let voiceTimeouts = [];
+    let voiceTimerInterval = null;
+
+    function setVoiceScenario(scenario, btn) {
+        currentVoiceScenario = scenario;
+        voicePlaying = false;
+        voiceTimeouts.forEach(t => clearTimeout(t));
+        voiceTimeouts = [];
+        clearInterval(voiceTimerInterval);
+        document.querySelectorAll('.voice-scenario-btn').forEach(b => {
+            b.classList.remove('border-primary', 'text-primary', 'active-scenario');
+            b.classList.add('border-outline-variant', 'text-secondary');
+        });
+        btn.classList.remove('border-outline-variant', 'text-secondary');
+        btn.classList.add('border-primary', 'text-primary', 'active-scenario');
+        document.getElementById('voice-transcript').innerHTML = '<div class="text-center text-xs text-secondary/50 py-10">Press Play to watch a real AI call simulation</div>';
+        document.getElementById('voice-call-timer').textContent = 'Ready to play';
+        const playBtn = document.getElementById('voice-play-btn');
+        playBtn.disabled = false;
+        playBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size:14px">play_arrow</span>Play Call';
+    }
+
+    function playVoiceDemo() {
+        if (voicePlaying) return;
+        voicePlaying = true;
+        const transcript = document.getElementById('voice-transcript');
+        transcript.innerHTML = '';
+        const playBtn = document.getElementById('voice-play-btn');
+        playBtn.disabled = true;
+        playBtn.innerHTML = '<span class="material-symbols-outlined typing-dot" style="font-size:14px;display:inline-block">radio_button_checked</span> Live';
+        const script = voiceScripts[currentVoiceScenario];
+        let elapsed = 0;
+        let seconds = 0;
+        const timerEl = document.getElementById('voice-call-timer');
+        timerEl.textContent = '00:00';
+        voiceTimerInterval = setInterval(() => {
+            seconds++;
+            timerEl.textContent = String(Math.floor(seconds / 60)).padStart(2, '0') + ':' + String(seconds % 60).padStart(2, '0');
+        }, 1000);
+
+        script.forEach((line, i) => {
+            elapsed += i === 0 ? 700 : 2300;
+            const t = setTimeout(() => {
+                const isCaller = line.role === 'caller';
+                const html = `<div class="flex ${isCaller ? 'justify-end' : 'gap-2'} items-end msg-appear">
+                    ${!isCaller ? `<div class="w-6 h-6 bg-primary-container flex items-center justify-center flex-shrink-0 mb-0.5"><span class="material-symbols-outlined text-white" style="font-size:12px">smart_toy</span></div>` : ''}
+                    <div class="${isCaller ? 'bg-[#E5F0FF] text-on-surface' : 'bg-white border border-outline-variant/20 text-on-surface'} px-3 py-2 text-xs leading-relaxed" style="max-width:80%">
+                        <div class="text-[9px] font-headline font-bold uppercase tracking-wide ${isCaller ? 'text-secondary' : 'text-primary'} mb-1">${isCaller ? 'Caller' : 'FM AI'}</div>
+                        ${escapeHtml(line.text)}
+                    </div>
+                </div>`;
+                transcript.insertAdjacentHTML('beforeend', html);
+                transcript.scrollTop = transcript.scrollHeight;
+                if (i === script.length - 1) {
+                    clearInterval(voiceTimerInterval);
+                    timerEl.textContent = 'Call ended';
+                    voicePlaying = false;
+                    playBtn.disabled = false;
+                    playBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size:14px">replay</span>Replay';
+                }
+            }, elapsed);
+            voiceTimeouts.push(t);
+        });
+    }
+
+    // ── QUIZ ──
+    const quizAnswers = {};
+    const quizScores = { 1: { A: 1, B: 2, C: 3 }, 2: { A: 1, B: 3, C: 2, D: 2 }, 3: { A: 1, B: 2, C: 3 } };
+
+    function quizAnswer(q, answer, btn) {
+        quizAnswers[q] = answer;
+        const questionEl = document.getElementById('quiz-q' + q);
+        questionEl.querySelectorAll('.quiz-opt').forEach(b => {
+            b.classList.remove('border-primary', 'text-primary', 'bg-[#EDF4FF]');
+            b.classList.add('border-outline-variant/40', 'text-secondary');
+        });
+        btn.classList.remove('border-outline-variant/40', 'text-secondary');
+        btn.classList.add('border-primary', 'text-primary', 'bg-[#EDF4FF]');
+        if (Object.keys(quizAnswers).length === 3) setTimeout(showQuizResult, 400);
+    }
+
+    function showQuizResult() {
+        const score = (quizScores[1][quizAnswers[1]] || 0) + (quizScores[2][quizAnswers[2]] || 0) + (quizScores[3][quizAnswers[3]] || 0);
+        let label, text, recs;
+        if (score <= 4) {
+            label = 'Great Starting Point';
+            text = "Your business is at the perfect stage to start with AI. One well-placed agent can save 10+ hours per week and capture leads you're currently missing.";
+            recs = ['AI Chat Agent — respond to every visitor instantly', 'AI Voice Agent — never miss another inbound call'];
+        } else if (score <= 6) {
+            label = 'Strong AI Potential';
+            text = "You have solid operations and you're ready to automate the gaps. A chat + voice bundle would immediately free your team and increase conversion rate.";
+            recs = ['AI Chat + Voice Bundle — full 24/7 coverage', 'CRM integration to auto-log every lead'];
+        } else {
+            label = 'Ready to Scale with AI';
+            text = "Your business has the volume and complexity where a full AI strategy delivers the highest ROI. We'd map your entire workflow and prioritize the highest-impact automations.";
+            recs = ['AI Consulting & Roadmap session', 'Full AI stack: Chat + Voice + Automation', 'Workflow integration across your CRM and tools'];
+        }
+        const bottleneckRecs = {
+            A: 'Priority: Website + AI System to increase lead volume from search',
+            B: 'Priority: AI Chat Agent for under-5-second follow-up on every lead',
+            C: 'Priority: AI Voice Agent for 24/7 scheduling without lifting a finger',
+            D: 'Priority: AI Chat Agent to handle post-sale FAQs automatically'
+        };
+        if (quizAnswers[2] && bottleneckRecs[quizAnswers[2]]) recs.unshift(bottleneckRecs[quizAnswers[2]]);
+        document.getElementById('quiz-score-label').textContent = label;
+        document.getElementById('quiz-result-text').textContent = text;
+        document.getElementById('quiz-recommendations').innerHTML = recs.slice(0, 3).map(r =>
+            `<div class="flex items-start gap-2 text-sm text-secondary"><span class="material-symbols-outlined text-primary-container flex-shrink-0" style="font-size:16px;margin-top:2px">arrow_forward</span>${escapeHtml(r)}</div>`
+        ).join('');
+        document.getElementById('quiz-container').style.display = 'none';
+        document.getElementById('quiz-result').style.display = 'flex';
+        document.getElementById('quiz-result').style.flexDirection = 'column';
+    }
+
+    function resetQuiz() {
+        Object.keys(quizAnswers).forEach(k => delete quizAnswers[k]);
+        document.getElementById('quiz-container').style.display = 'flex';
+        document.getElementById('quiz-container').style.flexDirection = 'column';
+        document.getElementById('quiz-result').style.display = 'none';
+        document.querySelectorAll('.quiz-opt').forEach(b => {
+            b.classList.remove('border-primary', 'text-primary', 'bg-[#EDF4FF]');
+            b.classList.add('border-outline-variant/40', 'text-secondary');
+        });
+    }
+
+    // ── WEB FEATURES ──
+    document.querySelectorAll('.web-feature').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            const detail = document.getElementById('web-feature-detail');
+            detail.innerHTML = `<p class="text-sm text-secondary leading-relaxed">${el.dataset.desc}</p>`;
+            detail.classList.add('border-primary-container');
+            detail.classList.remove('border-outline-variant/30');
+        });
+        el.addEventListener('mouseleave', () => {
+            const detail = document.getElementById('web-feature-detail');
+            detail.innerHTML = '<p class="text-sm text-secondary/60 italic">Hover any feature above to learn more.</p>';
+            detail.classList.remove('border-primary-container');
+            detail.classList.add('border-outline-variant/30');
+        });
+    });
+
+    // Init
+    seedDemoChat('realestate');
 </script>
 </body></html>
